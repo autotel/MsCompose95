@@ -1,0 +1,399 @@
+<!doctype html>
+<style>
+.sequencer{
+  float:left;
+  /*border:solid 1px;*/
+  /*margin:-1px;*/
+}
+.color_0{
+  background-color: rgb(247, 216, 77);
+}
+.color_1{
+  background-color: rgb(150, 187, 28);
+}
+.color_2{
+  background-color: rgb(86, 2, 152);
+}
+.color_3{
+  background-color: rgb(20, 116, 210);
+}
+.color_4{
+  background-color: rgb(218, 197, 66);
+}
+.color_5{
+  background-color: rgb(244, 245, 43);
+}
+.color_6{
+  background-color: rgb(172, 173, 6);
+}
+.color_7{
+  background-color: rgb(36, 9, 152);
+}
+.color_8{
+  background-color: rgb(20,50,210);
+}
+.color_9{
+  background-color: rgb(27, 28, 35);
+}
+.color_10{
+  background-color: rgb(160, 52, 52);
+}
+.color_11{
+  background-color: rgb(214, 14, 14);
+}
+.color_12{
+  background-color: rgb(69, 94, 226);
+}
+.editorPanel{
+  padding-top:3px;
+  box-shadow: 3px black;
+}
+.nx{
+  /*display:inline-block;*/
+}
+.seqbutton{
+  background-color: #FFF;
+  /*margin:-1px;*/
+  float:left;
+  width:16px;
+  height:16px;
+  opacity:0.1;
+  transition:0.04s;
+}
+.seqbutton:hover{
+  opacity:0.3;
+  transition:0.2s;
+}
+.seqbutton.on{
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.turn{
+  background-color: #000;
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.on.turn{
+  opacity:1;
+  transition:0.2s;
+}
+.panel{
+  display:block;
+  overflow-x:hidden;
+  overflow-y:auto;
+  height:100%;
+  width:50%;
+  float:left;
+}
+#pane{
+  width:324px;
+}
+</style>
+
+   	<html>
+	<head>
+		<title>NexusUI Demo</title>
+		<script type="text/javascript" src="js/nexusUI.js"></script>
+		<script type="text/javascript" src="js/Tone.js"></script>
+    <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+	</head>
+	<body style="background-color:#ddd;margin:0;padding:0;width:100%;height:100%;position:absolute">
+    <div id="pane" class="panel">
+      <canvas nx="metro"></canvas>
+    </div>
+    <div id="sequencers" class="panel">
+    </div>
+	</body>
+<script type="text/javascript">
+var channels=[{
+  "type": "sampler",
+  "name": "Sampler0",
+  "source": "audio/PVC (3).wav",
+  "startOffset": 0.146,
+  "endTime": 0.191
+}, {
+  "type": "sampler",
+  "name": "Sampler1",
+  "source": "audio/PVC (2).wav",
+  "startOffset": 0.179,
+  "endTime": 0.292
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (1).wav",
+  "startOffset": 0.645,
+  "endTime": 1.486
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (4).wav",
+  "startOffset": 0.367,
+  "endTime": 0.992
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (5).wav",
+  "startOffset": 0.12,
+  "endTime": 0.153
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (6).wav",
+  "startOffset": 1.83,
+  "endTime": 2.783
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (7).wav",
+  "startOffset": 1.431,
+  "endTime": 2.127
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (8).wav",
+  "startOffset": 1.453,
+  "endTime": 2.313
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (9).wav",
+  "startOffset": 0.444,
+  "endTime": 1.021
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (10).wav",
+  "startOffset": 0.106,
+  "endTime": 0.974
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (11).wav",
+  "startOffset": 1.208,
+  "endTime": 2.289
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (12).wav",
+  "startOffset": 0.267,
+  "endTime": 0.616
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/PVC (13).wav",
+  "startOffset": 0.072,
+  "endTime": 0.281
+}]
+
+
+function chanexp(){
+  return JSON.stringify(channels);
+}
+
+var seqs=[];
+for(a=0; a<148;a++){
+  seqs[a]={};
+}
+var mouse={};
+stepFunction=function(data){};
+SequencerButton=function(n,parent){
+  this.jq=$('<div class="seqbutton"></div>');
+  parent.jq.append(this.jq);
+  this.data=0;
+  var me=this;
+  this.jq.on("mousedown",function(event){
+    event.preventDefault();
+    me.data=Math.abs(me.data-1);
+    if(me.data==1){
+      $(this).addClass("on");
+      parent.aliveChild++;
+      mouse.switching=true;
+    }else{
+      $(this).removeClass("on");
+      parent.aliveChild--;
+      mouse.switching=false;
+    }
+  });
+  this.jq.on("mouseenter",function(){
+    if(mouse.buttonDown){
+      if(mouse.switching){
+        if(me.data==0){
+          me.data=1;
+          $(this).addClass("on");
+          parent.aliveChild++;
+        }
+      }else{
+        if(me.data==1){
+          me.data=0;
+          $(this).removeClass("on");
+          parent.aliveChild--;
+        }
+      }
+    }
+  });
+  this.eval=function(){
+    var jq=this.jq;
+    jq.addClass("turn");
+    window.setTimeout(function(){
+      jq.removeClass("turn");
+    },200);
+    return this.data;
+  }
+}
+Sequencer=function(n){
+  $("#sequencers").append('<div class="sequencer" id="seq_'+n+'"></div>');
+  this.alive=false;
+  this.jq=$('#seq_'+n);
+  this.pos=0;
+  this.data=[];
+  this.len=Math.pow(2,(n%5)+1);
+  this.evry=Math.pow(2,(n%4)+1);
+  //must count an [every] amount of beats for each pos increment.
+  this.subpos=0;
+  this.jq.css({width:16*Math.ceil(this.len/4)+"px"});
+  this.jq.addClass("color_"+n%channels.length);
+  this.disp=0;
+  this.id=n;
+  for(bn=0; bn<this.len; bn++){
+    this.data[bn]=new SequencerButton(bn,this)
+  }
+  this.aliveChild=0;
+  this.step=function(){
+    this.alive=this.aliveChild>0;
+    if(this.alive){
+      if(this.subpos%this.evry==0){
+        // console.log("sq"+this.pos);
+        data={sequencer:this.id,pos:this.pos,stepVal:this.data[this.pos].eval()};
+        this.onStep(data);
+        stepFunction(data);
+        this.pos=(this.pos+1)%this.len;
+      }else{
+      }
+    }
+    this.subpos++;
+  }
+  this.onStep=function(data){
+    // console.log(data);
+  }
+}
+
+$(document).ready(function(){
+  for(n in seqs){
+    seqs[n]=new Sequencer(n);
+  }
+})
+
+
+//repeated event every 8th note
+// Tone.Transport.setInterval(function(time){
+// 	//do something with the time
+//   // console.log(time);
+//   // foreach(seqs,function(sequencer){
+//   //   sequencer.step();
+//   // });
+//   for(n in seqs){
+//     seqs[n].step();
+//   }
+// }, "8n");
+// Tone.Transport.bpm.value = 80;
+// //ramp the bpm to 120 over 10 seconds
+// Tone.Transport.bpm.rampTo(240, 10);
+// Tone.Transport.start();
+
+
+nx.onload = function() {
+
+  nx.colorize("accent", "#0CC");
+  nx.globalWidgets=false;
+  nx.widgets["metro1"].sendsTo(function(data){
+    // console.log(data);
+    for(n in seqs){
+      seqs[n].step();
+    }
+  });
+  nx.widgets["metro1"].speed=64;
+
+
+  for(chan in channels){
+    thiscontainer=$('<div class="color_'+chan+' editorPanel" id="editorPanel_'+chan+'"></div>');
+    $("#pane").append(thiscontainer);
+    nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer});
+    nx.add( "dial" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
+    nx.add( "waveform" ,{name:"cuep"+chan, parent:thiscontainer,width:200,height:30});
+    channels[chan].engine=new Tone.Player({
+      url:channels[chan].source,
+      retrigger:true
+    }).toMaster();
+  }
+
+  stepFunction=function(data){
+    if(data.stepVal==1){
+      selection=data.sequencer%channels.length;
+      channels[selection].engine.start(0,channels[selection].startOffset,channels[selection].endTime);
+    }
+  }
+  //
+  // var player = new Tone.Player({
+  //   url:"./audio/splash.wav",
+  //   retrigger:true
+  // }).toMaster();
+  var dials=[0];
+  function activate(){};
+
+  // matrix.sequence(240);
+
+        // channels[1].engine.start();
+//
+
+  Tone.Buffer.onload = function(){
+    // player.start();
+    console.log("tone buffer ready");
+    for(chan in channels){
+
+      function a(){
+        var thisChan=chan;
+        nx.widgets["trigger"+thisChan].on("*",function(data){
+          if(data.press==1){
+            channels[thisChan].engine.start(0,channels[thisChan].startOffset,channels[thisChan].endTime);
+            // console.log(thisChan);
+          }
+        });
+        nx.widgets["vol"+thisChan].sendsTo(function(data){
+          console.log(data);
+          channels[thisChan].engine.volume.value=data.value*70-60;
+        })
+        initval=0.75;
+        nx.widgets["vol"+thisChan].set({
+          value:initval
+        });
+        channels[thisChan].engine.volume.value=initval*70-60;
+        // channels[thisChan].engine.volume=0.5*70-60;
+
+        nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine.buffer );
+        nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,channels[thisChan].endTime*1000)
+        $("#cuep"+thisChan).css({width:"200px",height:"50px"})
+        nx.widgets["cuep"+thisChan].on("*",function(data){
+          // if(data.press==1){
+          //pendiente:endoffset??
+            channels[thisChan].startOffset=data.starttime/1000;
+            channels[thisChan].endTime=data.stoptime/1000;
+            // channels[thisChan].engine.start(0,channels[thisChan].startOffset,channels[thisChan].endTime);
+            // console.log(data);
+          // }
+        });
+
+      };
+      a();
+    }
+  }
+};
+$(document).ready(function(){
+  $(document).on("mousedown",function(event){
+    mouse.buttonDown=true;
+  });
+  $(document).on("mouseup",function(event){
+    mouse.buttonDown=false;
+  });
+});
+</script>
+</html>
