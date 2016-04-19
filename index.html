@@ -1,5 +1,9 @@
 <!doctype html>
+<html>
 <style>
+body{
+  font-family: "helvetica", sans-serif;
+}
 .sequencer{
   float:left;
   /*border:solid 1px;*/
@@ -42,11 +46,29 @@
   background-color: rgb(214, 14, 14);
 }
 .color_12{
-  background-color: rgb(69, 94, 226);
+  background-color: rgb(159, 169, 183);
 }
 .editorPanel{
   padding-top:3px;
   box-shadow: 3px black;
+  position:absolute;
+  bottom:-0px;
+  left:0;
+  opacity:0;
+  /*width:200px;*/
+  overflow:hidden;
+}
+.mixerPanel{
+  /*position:relative;*/
+  display:inline-block;
+  width:30px;
+  height:260px;
+  transition:0.2s;
+}
+.mixerPanel.onFocus>.editorPanel{
+  opacity:1;
+  transition:0.2s;
+  z-index:2
 }
 .nx{
   /*display:inline-block;*/
@@ -78,31 +100,103 @@
   transition:0.2s;
 }
 .panel{
-  display:block;
-  overflow-x:hidden;
-  overflow-y:auto;
-  height:100%;
-  width:50%;
-  float:left;
+  display:inline-block;
+  width:390px;
 }
 #pane{
-  width:324px;
+  width:390px;
+}
+#sequencers{
+  width:384px;
+}
+#metro1{
+  display:block;
+}
+#adderButton{
+  transition:0.2s;
+  cursor: pointer;
+}
+#adderButton:hover{
+  background-color: rgba(255,255,255,0.2);
+  transition:1;
+}
+.centered{
+  text-align: center;
+}
+.leftalign{
+  text-align: left;
+
+}
+.contentContainer{
+  display:block;
+  width:100%;
+}
+@media only screen and (min-width:815px) {
+  #leftpanel{
+    position:absolute!important;
+    left:10px;
+    top:0px;
+    width:50%;
+  }
+  #rightpanel{
+    position:fixed!important;
+    right:10px;
+    bottom:10px;
+    width:50%;
+  }
 }
 </style>
 
-   	<html>
+
 	<head>
-		<title>NexusUI Demo</title>
+		<title>Autotel.MsCompose95</title>
 		<script type="text/javascript" src="js/nexusUI.js"></script>
 		<script type="text/javascript" src="js/Tone.js"></script>
     <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
-	</head>
-	<body style="background-color:#ddd;margin:0;padding:0;width:100%;height:100%;position:absolute">
-    <div id="pane" class="panel">
-      <canvas nx="metro"></canvas>
-    </div>
-    <div id="sequencers" class="panel">
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+	<body style="background-color:#ddd;margin:0;padding:0">
+    <div class="contentContainer centered">
+      <div id="leftpanel" class="panel">
+        <div class="panel leftalign">
+          <h1>MsCompose95</h1>
+          <p>
+            Just click a square or click and drag to get started.
+            Tested on firefox 45 &amp; chrome
+          </p>
+        </div>
+        <br>
+        <div id="sequencers" class="panel">
+        </div>
+        <br>
+        <a href="javascript:addMoreSequencers(15)">
+          <div id="adderButton" class="panel">
+            <h1>+</h1>
+          </div>
+        </a>
+      </div>
+      <br>
+      <div id="rightpanel" class="panel">
+        <div id="pane" class="panel leftalign" style="position:relative">
+          <h2>Mixer&amp;editor</h2>
+          <p>
+            Try channels with the round buttons, adjust volume and sample start &amp; end points.
+          </p>
+
+        </div>
+        <br>
+        <div class="panel">
+          <p>Bpm speed:
+            <canvas nx="metro" style="display:inline"></canvas>
+            <span style="display:inline-block"><canvas nx="number"></canvas></span>
+          </p>
+          <small>For advanced stuff, press f12. try channels and seqs</small>
+        </div>
+        <!-- <div style="width:100px; height:100px"></div> -->
+      </div>
+    <br>
+
+  </div>
 	</body>
 <script type="text/javascript">
 var channels=[{
@@ -184,49 +278,63 @@ var channels=[{
   "startOffset": 0.072,
   "endTime": 0.281
 }]
+for(c in channels){
+  channels[c].id=c;
+}
 
 
 function chanexp(){
   return JSON.stringify(channels);
 }
-
+var sw="switch";
 var seqs=[];
-for(a=0; a<148;a++){
+
+for(a=0; a<45;a++){
   seqs[a]={};
 }
-var mouse={};
+
+var mouse={
+  tool:"draw"
+};
 stepFunction=function(data){};
 SequencerButton=function(n,parent){
   this.jq=$('<div class="seqbutton"></div>');
   parent.jq.append(this.jq);
   this.data=0;
   var me=this;
+  this.setData=function(to){
+    if(to==1){
+      this.data=1;
+      this.jq.addClass("on");
+      parent.aliveChild++;
+    }
+    if(to==0){
+      this.data=0;
+      this.jq.removeClass("on");
+      parent.aliveChild--;
+    }
+  }
   this.jq.on("mousedown",function(event){
     event.preventDefault();
-    me.data=Math.abs(me.data-1);
+    me.setData(Math.abs(me.data-1));
+    // me.data=;
     if(me.data==1){
-      $(this).addClass("on");
-      parent.aliveChild++;
-      mouse.switching=true;
+       mouse.switching=true;
     }else{
-      $(this).removeClass("on");
-      parent.aliveChild--;
-      mouse.switching=false;
-    }
+    //   $(this).removeClass("on");
+    //   parent.aliveChild--;
+       mouse.switching=false;
+     }
   });
   this.jq.on("mouseenter",function(){
     if(mouse.buttonDown){
       if(mouse.switching){
         if(me.data==0){
-          me.data=1;
-          $(this).addClass("on");
-          parent.aliveChild++;
+          me.setData(1);
         }
       }else{
         if(me.data==1){
-          me.data=0;
-          $(this).removeClass("on");
-          parent.aliveChild--;
+          me.setData(0);
         }
       }
     }
@@ -254,6 +362,8 @@ Sequencer=function(n){
   this.jq.addClass("color_"+n%channels.length);
   this.disp=0;
   this.id=n;
+  var me=this;
+  this.channel=channels[this.id%channels.length];
   for(bn=0; bn<this.len; bn++){
     this.data[bn]=new SequencerButton(bn,this)
   }
@@ -263,18 +373,29 @@ Sequencer=function(n){
     if(this.alive){
       if(this.subpos%this.evry==0){
         // console.log("sq"+this.pos);
-        data={sequencer:this.id,pos:this.pos,stepVal:this.data[this.pos].eval()};
-        this.onStep(data);
-        stepFunction(data);
+        // data={sequencer:this.id,pos:this.pos,stepVal:this.data[this.pos].eval()};
+        // this.onStepTrigger(data);
+        // stepFunction(data);
+        if(this.data[this.pos].eval()==1){
+
+          this.channel.engine.start(0,this.channel.startOffset,this.channel.endTime);
+        }
         this.pos=(this.pos+1)%this.len;
       }else{
       }
     }
     this.subpos++;
   }
-  this.onStep=function(data){
-    // console.log(data);
-  }
+  // this.onStepTrigger=function(data){
+  //   // console.log(data);
+  // }
+  this.jq.on("mouseenter",function(){
+    focusChannel(me.channel.id);
+  });
+}
+focusChannel=function(id){
+  $(".mixerPanel").removeClass("onFocus");
+  $("#editorPanel_"+id).addClass("onFocus");
 }
 
 $(document).ready(function(){
@@ -283,23 +404,12 @@ $(document).ready(function(){
   }
 })
 
-
-//repeated event every 8th note
-// Tone.Transport.setInterval(function(time){
-// 	//do something with the time
-//   // console.log(time);
-//   // foreach(seqs,function(sequencer){
-//   //   sequencer.step();
-//   // });
-//   for(n in seqs){
-//     seqs[n].step();
-//   }
-// }, "8n");
-// Tone.Transport.bpm.value = 80;
-// //ramp the bpm to 120 over 10 seconds
-// Tone.Transport.bpm.rampTo(240, 10);
-// Tone.Transport.start();
-
+function addMoreSequencers(count){
+  newLength=seqs.length+count;
+  for(a=seqs.length;a<newLength;a++){
+    seqs.push(new Sequencer(a));
+  }
+}
 
 nx.onload = function() {
 
@@ -312,31 +422,40 @@ nx.onload = function() {
     }
   });
   nx.widgets["metro1"].speed=64;
-
+  nx.widgets["number1"].set({
+    value: nx.widgets["metro1"].speed
+  })
+  nx.widgets["number1"].sendsTo(function(data){
+    nx.widgets["metro1"].speed=data.value;
+  });
 
   for(chan in channels){
-    thiscontainer=$('<div class="color_'+chan+' editorPanel" id="editorPanel_'+chan+'"></div>');
+    thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="editorPanel_'+chan+'"></div>');
+    editorContainer=$('<div class="color_'+chan+' editorPanel"></div>');
+    (function(){
+      var mychan=chan;
+      thiscontainer.on("mousedown",function(){
+        focusChannel(mychan);
+      });
+    }());
     $("#pane").append(thiscontainer);
-    nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer});
-    nx.add( "dial" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
-    nx.add( "waveform" ,{name:"cuep"+chan, parent:thiscontainer,width:200,height:30});
+    $(thiscontainer).append(editorContainer);
+    nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer, class:"trhee"});
+    nx.add( "slider" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
+    $("#trigger"+chan).css({width:"30px",height:"30px",display:"block"});
+    nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
     channels[chan].engine=new Tone.Player({
       url:channels[chan].source,
       retrigger:true
     }).toMaster();
   }
+  // stepFunction=function(data){
+  //   if(data.stepVal==1){
+  //     selection=data.sequencer%channels.length;
+  //     channels[selection].engine.start(0,channels[selection].startOffset,channels[selection].endTime);
+  //   }
+  // }
 
-  stepFunction=function(data){
-    if(data.stepVal==1){
-      selection=data.sequencer%channels.length;
-      channels[selection].engine.start(0,channels[selection].startOffset,channels[selection].endTime);
-    }
-  }
-  //
-  // var player = new Tone.Player({
-  //   url:"./audio/splash.mp3",
-  //   retrigger:true
-  // }).toMaster();
   var dials=[0];
   function activate(){};
 
@@ -366,17 +485,18 @@ nx.onload = function() {
         nx.widgets["vol"+thisChan].set({
           value:initval
         });
+
         channels[thisChan].engine.volume.value=initval*70-60;
         // channels[thisChan].engine.volume=0.5*70-60;
 
         nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine.buffer );
-        nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,channels[thisChan].endTime*1000)
-        $("#cuep"+thisChan).css({width:"200px",height:"50px"})
+        nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,(channels[thisChan].endTime+channels[thisChan].startOffset)*1000)
+        $("#cuep"+thisChan).css({width:"390px",height:"100px"});
         nx.widgets["cuep"+thisChan].on("*",function(data){
           // if(data.press==1){
           //pendiente:endoffset??
             channels[thisChan].startOffset=data.starttime/1000;
-            channels[thisChan].endTime=data.stoptime/1000;
+            channels[thisChan].endTime=(data.stoptime-data.starttime)/1000;
             // channels[thisChan].engine.start(0,channels[thisChan].startOffset,channels[thisChan].endTime);
             // console.log(data);
           // }
