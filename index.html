@@ -429,6 +429,9 @@ nx.onload = function() {
     nx.widgets["metro1"].speed=data.value;
   });
 
+  var masterDelay = new Tone.FeedbackDelay("8n", 0.32).toMaster();
+  masterDelay.delayTime.value=0.14;
+  masterDelay.feedback.value=0.14;
   for(chan in channels){
     thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="editorPanel_'+chan+'"></div>');
     editorContainer=$('<div class="color_'+chan+' editorPanel"></div>');
@@ -447,7 +450,7 @@ nx.onload = function() {
     channels[chan].engine=new Tone.Player({
       url:channels[chan].source,
       retrigger:true
-    }).toMaster();
+    }).connect(masterDelay);
   }
   // stepFunction=function(data){
   //   if(data.stepVal==1){
