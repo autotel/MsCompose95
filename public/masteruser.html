@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Autotel.Collaborative MsCompose95</title>
+		<script type="text/javascript" src="js/nexusUI.js"></script>
+		<script type="text/javascript" src="js/Tone.js"></script>
+    <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="style/custom.css"></style>
+  </head>
+	<body style="background-color:#ddd;margin:0;padding:0">
+    <div class="contentContainer centered">
+      <div id="leftpanel" class="panel">
+        <div class="panel leftalign">
+          <h1>MsCompose95</h1>
+          <p>
+            Just click a square or click and drag to get started.
+            Tested on firefox 45 &amp; chrome
+          </p>
+        </div>
+        <br>
+        <div id="sequencers" class="panel">
+        </div>
+        <br>
+        <a href="javascript:addMoreSequencers(15)">
+          <div id="adderButton" class="panel">
+            <h1>+</h1>
+          </div>
+        </a>
+      </div>
+      <br>
+      <div id="rightpanel" class="panel">
+        <div id="pane" class="panel leftalign" style="position:relative">
+          <h2>Mixer&amp;editor</h2>
+          <p>
+            Try channels with the round buttons, adjust volume and sample start &amp; end points.
+          </p>
+
+        </div>
+        <br>
+        <div class="panel">
+          <p>Bpm speed:
+            <canvas nx="metro" style="display:inline"></canvas>
+            <span style="display:inline-block"><canvas nx="number"></canvas></span>
+          </p>
+          <small>For advanced stuff, press f12. try channels and seqs</small>
+        </div>
+        <!-- <div style="width:100px; height:100px"></div> -->
+      </div>
+    <br>
+
+  </div>
+</body>
+<script type="text/javascript" src="js/soundchannels.js"></script>
+<script type="text/javascript" src="js/sequencerClass.js"></script>
+<script type="text/javascript" src="js/nexusElements.js"></script>
+<script type="text/javascript" src="js/mouseObject.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script type="text/javascript" src="js/sockGlobal.js"></script>
+
+
+<script type="text/javascript">
+
+var sw="switch";
+var seqs=[];
+
+for(a=0; a<4;a++){
+  seqs[a]={};
+}
+
+stepFunction=function(data){};
+
+
+focusChannel=function(id){
+  $(".mixerPanel").removeClass("onFocus");
+  $("#editorPanel_"+id).addClass("onFocus");
+}
+
+$(document).ready(function(){
+  for(n in seqs){
+    seqs[n]=new Sequencer(n);
+  }
+})
+
+function giveUserASequencer(){
+  seqs.push(new Sequencer(seqs.length));
+	return {index:seqs.length-1,seqProg:seqProg-1};
+}
+
+function addMoreSequencers(count){
+  newLength=seqs.length+count;
+  for(a=seqs.length;a<newLength;a++){
+    seqs.push(new Sequencer(a));
+  }
+}
+
+</script>
+</html>

@@ -1,0 +1,147 @@
+body{
+  font-family: "helvetica", sans-serif;
+}
+.sequencer{
+  float:left;
+  /*border:solid 1px;*/
+  /*margin:-1px;*/
+}
+.dead{
+  display:none;
+}
+.color_0{
+  background-color: rgb(247, 216, 77);
+}
+.color_1{
+  background-color: rgb(150, 187, 28);
+}
+.color_2{
+  background-color: rgb(86, 2, 152);
+}
+.color_3{
+  background-color: rgb(20, 116, 210);
+}
+.color_4{
+  background-color: rgb(218, 197, 66);
+}
+.color_5{
+  background-color: rgb(244, 245, 43);
+}
+.color_6{
+  background-color: rgb(172, 173, 6);
+}
+.color_7{
+  background-color: rgb(36, 9, 152);
+}
+.color_8{
+  background-color: rgb(20,50,210);
+}
+.color_9{
+  background-color: rgb(27, 28, 35);
+}
+.color_10{
+  background-color: rgb(160, 52, 52);
+}
+.color_11{
+  background-color: rgb(214, 14, 14);
+}
+.color_12{
+  background-color: rgb(159, 169, 183);
+}
+.editorPanel{
+  padding-top:3px;
+  box-shadow: 3px black;
+  position:absolute;
+  bottom:-0px;
+  left:0;
+  opacity:0;
+  /*width:200px;*/
+  overflow:hidden;
+}
+.mixerPanel{
+  /*position:relative;*/
+  display:inline-block;
+  width:30px;
+  height:260px;
+  transition:0.2s;
+}
+.mixerPanel.onFocus>.editorPanel{
+  opacity:1;
+  transition:0.2s;
+  z-index:2
+}
+.nx{
+  /*display:inline-block;*/
+}
+.seqbutton{
+  background-color: #FFF;
+  /*margin:-1px;*/
+  float:left;
+  width:16px;
+  height:16px;
+  opacity:0.1;
+  transition:0.04s;
+}
+.seqbutton:hover{
+  opacity:0.3;
+  transition:0.2s;
+}
+.seqbutton.on{
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.turn{
+  background-color: #000;
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.on.turn{
+  opacity:1;
+  transition:0.2s;
+}
+.panel{
+  display:inline-block;
+  width:490px;
+}
+#pane{
+  width:490px;
+}
+#sequencers{
+  width:384px;
+}
+#metro1{
+  display:block;
+}
+#adderButton{
+  transition:0.2s;
+  cursor: pointer;
+}
+#adderButton:hover{
+  background-color: rgba(255,255,255,0.2);
+  transition:1;
+}
+.centered{
+  text-align: center;
+}
+.leftalign{
+  text-align: left;
+
+}
+.contentContainer{
+  display:block;
+  width:100%;
+}
+@media only screen and (min-width:815px) {
+  #leftpanel{
+    position:absolute!important;
+    left:10px;
+    top:0px;
+    width:50%;
+  }
+  #rightpanel{
+    position:fixed!important;
+    right:10px;
+    bottom:10px;
+    width:50%;
+  }
+}
