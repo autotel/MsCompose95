@@ -5,10 +5,14 @@ var mouse={
 
 
 $(document).ready(function(){
-  $(document).on("mousedown",function(event){
+  $(document).on("mousedown touchstart touchmove",function(event){
     mouse.buttonDown=true;
+    // console.log(event);
   });
-  $(document).on("mouseup",function(event){
+  $(document).on("mouseup touchend",function(event){
     mouse.buttonDown=false;
   });
+  document.ontouchmove = function(event){
+    event.preventDefault();
+  }
 });

@@ -19,7 +19,7 @@ SequencerButton=function(n,parent){
       parent.aliveChild--;
     }
   }
-  this.jq.on("mousedown",function(event){
+  this.jq.on("mousedown tap touchstart",function(event){
     event.preventDefault();
     me.setData(Math.abs(me.data-1),true);
     // me.data=;
@@ -31,7 +31,7 @@ SequencerButton=function(n,parent){
        mouse.switching=false;
      }
   });
-  this.jq.on("mouseenter",function(){
+  this.jq.on("mouseenter touchenter",function(){
     if(mouse.buttonDown){
       if(mouse.switching){
         if(me.data==0){
