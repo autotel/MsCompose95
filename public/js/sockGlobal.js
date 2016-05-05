@@ -24,6 +24,10 @@ $(document).ready(function(){
     console.log("sockchange");
 		socket.emit('change',{change:change,subject:subject,val:value});
 	}
+
+  socket.on('areYouAlive',function(){
+    socket.emit("imAlive");
+  });
   socket.on('change', function(data){
     console.log("data io msg change");
 		console.log(data);
@@ -52,7 +56,7 @@ $(document).ready(function(){
       console.log('client with sequencer '+number+' disconnected');
       //pendiente: when user leaves, remove squencer. it is tricky due to c
       //arrays changing sizes everywhere
-      
+
       seqs[number].die();
     });
   });

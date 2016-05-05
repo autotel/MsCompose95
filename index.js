@@ -56,13 +56,27 @@ sMaster.io.on('connection', function(socket){
 });
 sClients.sockets=[];
 sClients.io.on('connection', function(socket){
+  socket.timeout=setInterval(function(){
+    if(socket.expectingMessage){
+      console.log("Socket "+socket.arrayIndex+"no longer alive. disconnected");
+      socket.disconnect();
+      socket.expectingMessage=true;
+    }else{
+      socket.emit("areYouAlive");
+      // console.log("emitted areYouAlive to "+socket.arrayIndex);
+    }
+  },80*1000);
+  socket.on('imAlive',function(){
+    // console.log("Socket "+socket.arrayIndex+" is still alive");
+    socket.expectingMessage=false;
+  });
   socket.arrayIndex=sClients.sockets.length;
   console.log('a client '+socket.arrayIndex+' connected');
   sClients.sockets.push(socket);
   sMaster.io.emit('userEntered',socket.arrayIndex);
   socket.on('disconnect', function(number){
     console.log(number);
-    console.log('client '+socket.arrayIndex+' seq num '+sClients.sockets[socket.arrayIndex].sequencer.index+' disconnected');
+    console.log('client '+(socket.arrayIndex||-1)+' seq num '+(sClients.sockets[socket.arrayIndex].sequencer.index||-1)+' disconnected');
     // sClients.sockets.splice(socket.arrayIndex,1);
     // dataTracker.seqs.splice(number,1);
     sMaster.io.emit('userLeft',sClients.sockets[socket.arrayIndex].sequencer.index);
