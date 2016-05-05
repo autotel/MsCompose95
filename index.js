@@ -3,6 +3,7 @@ var sMaster={};
 var sClients={};
 var dataTracker={seqs:[]};
 var express = require('express');
+
 sMaster.app=express();
 sClients.app=express();
 sMaster.http = require('http').Server(sMaster.app);
@@ -40,6 +41,7 @@ sMaster.io.on('connection', function(socket){
     sClients.sockets[data.loggingSocket].emit('helloUser',data.sequencer);
     sClients.sockets[data.loggingSocket].sequencer=data.sequencer;
     dataTracker.seqs[data.sequencer.index]=data.sequencer;
+    console.log("created sequencer index pos: "+data.loggingSocket+"sequencer: "+data.sequencer.index);
   });
   socket.on('disconnect', function(){
     console.log('master disconnected');
@@ -54,15 +56,16 @@ sMaster.io.on('connection', function(socket){
 });
 sClients.sockets=[];
 sClients.io.on('connection', function(socket){
-  console.log('a client connected');
-  var loggingSocket=sClients.sockets.length;
+  socket.arrayIndex=sClients.sockets.length;
+  console.log('a client '+socket.arrayIndex+' connected');
   sClients.sockets.push(socket);
-  sMaster.io.emit('userEntered',loggingSocket);
-  socket.on('disconnect', function(){
-    console.log('client disconnected');
-    sClients.sockets.splice(loggingSocket,1);
-    dataTracker.seqs.splice(number,1);
-    sMaster.io.emit('userLeft',sClients.sockets[loggingSocket].sequencer.index);
+  sMaster.io.emit('userEntered',socket.arrayIndex);
+  socket.on('disconnect', function(number){
+    console.log(number);
+    console.log('client '+socket.arrayIndex+' seq num '+sClients.sockets[socket.arrayIndex].sequencer.index+' disconnected');
+    // sClients.sockets.splice(socket.arrayIndex,1);
+    // dataTracker.seqs.splice(number,1);
+    sMaster.io.emit('userLeft',sClients.sockets[socket.arrayIndex].sequencer.index);
   });
 
   socket.on('change', function(data){

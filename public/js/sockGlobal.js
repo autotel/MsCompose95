@@ -21,7 +21,7 @@ $(document).ready(function(){
 	var socket = io();
 	//this is here just for easier maintenance, maybe could be shortcutted.
 	sockChange=function(subject,change,value){
-    console.log("socchange");
+    console.log("sockchange");
 		socket.emit('change',{change:change,subject:subject,val:value});
 	}
   socket.on('change', function(data){
@@ -44,15 +44,16 @@ $(document).ready(function(){
     console.log("hello master");
 		console.log(msg);
     socket.on('userEntered',function(loggingSocket){
-      console.log("user socket "+loggingSocket+" connected. giving id & sequencer");
-      socket.emit('newSequencerCreated',{loggingSocket:loggingSocket,sequencer:giveUserASequencer()});
+      var seqNo=giveUserASequencer();
+      console.log("user socket "+loggingSocket+" connected. giving id & sequencer n° "+seqNo.index);
+      socket.emit('newSequencerCreated',{loggingSocket:loggingSocket,sequencer:seqNo});
     });
     socket.on('userLeft', function(number){
-      console.log('client'+number+' disconnected');
+      console.log('client with sequencer '+number+' disconnected');
       //pendiente: when user leaves, remove squencer. it is tricky due to c
       //arrays changing sizes everywhere
-      // seqs[number].jq.addClass("dead");
-      // seqs.splice(number,1);
+      
+      seqs[number].die();
     });
   });
 	$(window).on('beforeunload', function(){

@@ -84,6 +84,7 @@ $(document).ready(function(){
 })
 
 function giveUserASequencer(){
+	// console.log("maybe not push but put at the end. i dont know what push does exactly");
   seqs.push(new Sequencer(seqs.length));
 	return {index:seqs.length-1,seqProg:seqProg-1};
 }
