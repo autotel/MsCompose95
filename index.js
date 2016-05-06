@@ -34,14 +34,19 @@ sMaster.io.on('connection', function(socket){
   //maybe the socket server is the one that rules the sequencer ids...
   //or rather not...
   socket.emit('helloMaster',"nothing");
+  socket.emit('ipAddress',ipname);
+
   socket.on('newSequencerCreated',function(data){
     //this code particularizes a single socket
     //otherwise, every client gets the helloUser.
     //it is in array because is called outside the socket event of clients
-    sClients.sockets[data.loggingSocket].emit('helloUser',data.sequencer);
-    sClients.sockets[data.loggingSocket].sequencer=data.sequencer;
-    dataTracker.seqs[data.sequencer.index]=data.sequencer;
-    console.log("created sequencer index pos: "+data.loggingSocket+"sequencer: "+data.sequencer.index);
+    sClients.sockets[data.loggingSocket].emit('helloUser');
+    for(itm in data.sequencers){
+      sClients.sockets[data.loggingSocket].emit('newSequencer',data.sequencers[itm]);
+      dataTracker.seqs[data.sequencers[itm].index]=data.sequencers;
+      console.log("created sequencer socket index: "+data.loggingSocket+"sequencer: "+data.sequencers[itm].index);
+    }
+    sClients.sockets[data.loggingSocket].sequencers=data.sequencers;
   });
   socket.on('disconnect', function(){
     console.log('master disconnected');
@@ -76,10 +81,13 @@ sClients.io.on('connection', function(socket){
   sMaster.io.emit('userEntered',socket.arrayIndex);
   socket.on('disconnect', function(number){
     console.log(number);
-    console.log('client '+(socket.arrayIndex||-1)+' seq num '+(sClients.sockets[socket.arrayIndex].sequencer.index||-1)+' disconnected');
     // sClients.sockets.splice(socket.arrayIndex,1);
     // dataTracker.seqs.splice(number,1);
-    sMaster.io.emit('userLeft',sClients.sockets[socket.arrayIndex].sequencer.index);
+    var thisSocket=sClients.sockets[socket.arrayIndex];
+    for(itm in thisSocket.sequencers){
+      console.log('client '+(socket.arrayIndex||-1)+' seq num '+(thisSocket.sequencers[itm].index||-1)+' disconnected');
+      sMaster.io.emit('userLeft',thisSocket.sequencers[itm].index);
+    }
   });
 
   socket.on('change', function(data){
@@ -89,3 +97,37 @@ sClients.io.on('connection', function(socket){
     sMaster.io.emit('change',data);
   });
 });
+
+//get ip, from http://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js
+'use strict';
+
+var os = require('os');
+var ifaces = os.networkInterfaces();
+var ipname={name:"error",address:"error"};
+Object.keys(ifaces).forEach(function (ifname) {
+  var alias = 0;
+
+  ifaces[ifname].forEach(function (iface) {
+    if ('IPv4' !== iface.family || iface.internal !== false) {
+      // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+      return;
+    }
+
+    if (alias >= 1) {
+      // this single interface has multiple ipv4 addresses
+      console.log(ifname + ':' + alias, iface.address);
+      // sMaster.io.emit('ipAddress',ifname + ':' + alias, iface.address);
+      // ipname=ifname + ':' + alias, iface.address;
+      ipname={name:ifname+":"+alias,address:iface.address};
+    } else {
+      // this interface has only one ipv4 adress
+      console.log(ifname, iface.address);
+      // sMaster.io.emit('ipAddress',ifname, iface.address);
+      ipname={name:ifname,address:iface.address};
+    }
+    ++alias;
+  });
+});
+
+// en0 192.168.1.101
+// eth0 10.0.0.101

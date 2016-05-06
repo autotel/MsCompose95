@@ -10,12 +10,40 @@
 		<script type="text/javascript" src="js/sockGlobal.js"></script>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=2.0"/> -->
 		<link rel="stylesheet" href="style/custom.css"></style>
-		<meta name="viewport" content=" initial-scale=4, maximum-scale=4, user-scalable=0"/> <!--320-->
+		<meta name="viewport" content="width=device-width, initial-scale=2">
 
+		<style>
+		/*.seqbutton{
+			width:32px;
+			height:32px;
+		}*/
+		.sequencer {
+    	display: inline-block;
+		    /* border: solid 1px; */
+		    /* margin: -1px; */
+		}
+		body{
+			width:50%;
+			/*height:50%;*/
+			overflow-x: hidden;
+			/*text-align: center;*/
+			/*position:absolute;*/
+			/*bottom:0px;*/
+			margin:7px;
+		}
+		document{
+			width:50%;
+		}
+		.contentContainer{
+			display:block;
+
+
+		}
+		</style>
   </head>
-	<body style="background-color:#ddd;margin:0;padding:0; width:300px;">
-    <div class="contentContainer centered">
-      <div id="leftpanel" class="panel">
+	<body style="background-color:#ddd;">
+    <div class="contentContainer">
+      <div id="leftpanel" class="panel" style="">
         <div id="sequencers" class="panel">
         </div>
       </div>
@@ -26,9 +54,13 @@
 <script src="js/nexusElements.js"></script>
 <script src="js/mouseObject.js"></script>
 <script type="text/javascript">
-
+// var nx={onload : function() {}}
 var sw="switch";
 var seqs={};
-
+// $(document).ready(function(){
+// 	// $(".seqbutton, .sequencer").each(function(){
+// 	//
+// 	// });
+// });
 </script>
 </html>

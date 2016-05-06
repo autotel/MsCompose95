@@ -8,13 +8,59 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script type="text/javascript" src="js/sliderClass.js"></script>
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.js"></script>
 		<link rel="stylesheet" href="style/custom.css"></style>
   </head>
+	<style>
+	#pane{
+	  width: 512px;
+	  height: 348px;
+	}
+	#sequencers{
+	  width:384px;
+	}
+	#metro1{
+	  display:block;
+	}
+	#adderButton{
+	  transition:0.2s;
+	  cursor: pointer;
+	}
+	#adderButton:hover{
+	  background-color: rgba(255,255,255,0.2);
+	  transition:1;
+	}
+	.panel{
+		width:490px;
+	}
+	.contentContainer{
+		width:100%;
+	}
+	@media only screen and (min-width:815px) {
+	  #leftpanel{
+	    position:absolute!important;
+	    left:10px;
+	    top:0px;
+	    width:50%;
+	  }
+	  #rightpanel{
+	    position:fixed!important;
+	    right:10px;
+	    bottom:10px;
+	    width:50%;
+	  }
+	}
+	</style>
 	<body style="background-color:#ddd;margin:0;padding:0">
     <div class="contentContainer centered">
       <div id="leftpanel" class="panel">
         <div class="panel leftalign">
           <h1>MsCompose95</h1>
+					<div id="howToConnect">
+						<h2 id="ipAddress"></h2>
+						<div id="qrcode"></div>
+					</div>
           <p>
             Just click a square or click and drag to get started.
             Tested on firefox 45 &amp; chrome

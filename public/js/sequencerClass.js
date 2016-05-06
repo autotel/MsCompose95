@@ -86,7 +86,6 @@ Sequencer=function(n){
         // this.onStepTrigger(data);
         // stepFunction(data);
         if(this.data[this.pos].eval()==1){
-
           this.channel.engine.start(0,this.channel.startOffset,this.channel.endTime);
         }
         this.pos=(this.pos+1)%this.len;
@@ -96,6 +95,9 @@ Sequencer=function(n){
     this.subpos++;
   }
   this.die=function(){
+    for(bn in this.data){
+      this.data[bn].setData(0);
+    }
     this.alive=false;
     this.jq.detach();
   }

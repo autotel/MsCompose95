@@ -43,18 +43,26 @@ $(document).ready(function(){
     for(s in seqs){
       seqs[s].die();
     }
-    console.log("Hello user. Add sequencer");
+    console.log("Hello user.");
+    console.log(msg);
+  });
+  socket.on('newSequencer', function(msg){
+    console.log("Add sequencer "+msg.index);
     console.log(msg);
     seqProg=msg.seqProg;
     seqs[msg.index]=new Sequencer(msg.index,msg.seqProg);
   });
+
   socket.on('helloMaster', function(msg){
     console.log("hello master");
 		console.log(msg);
     socket.on('userEntered',function(loggingSocket){
-      var seqNo=giveUserASequencer();
-      console.log("user socket "+loggingSocket+" connected. giving id & sequencer n° "+seqNo.index);
-      socket.emit('newSequencerCreated',{loggingSocket:loggingSocket,sequencer:seqNo});
+      var tseqs=[];
+      for(a=0;a<4;a++){
+        tseqs.push(giveUserASequencer());
+        console.log("user socket "+loggingSocket+" connected. giving id & sequencer n° "+tseqs[a].index);
+      }
+      socket.emit('newSequencerCreated',{loggingSocket:loggingSocket,sequencers:tseqs});
     });
     socket.on('userLeft', function(number){
       console.log('client with sequencer '+number+' disconnected');
@@ -62,6 +70,10 @@ $(document).ready(function(){
       //arrays changing sizes everywhere
 
       seqs[number].die();
+    });
+    socket.on('ipAddress',function(addr){
+      $("#ipAddress").html("type:"+addr.address+" or scan:");
+      $('#qrcode').qrcode({text:addr.address});
     });
   });
 	$(window).on('beforeunload', function(){

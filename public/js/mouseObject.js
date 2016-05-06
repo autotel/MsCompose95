@@ -12,7 +12,7 @@ $(document).ready(function(){
   $(document).on("mouseup touchend",function(event){
     mouse.buttonDown=false;
   });
-  document.ontouchmove = function(event){
-    event.preventDefault();
-  }
+  // document.ontouchmove = function(event){
+  //   event.preventDefault();
+  // }
 });
