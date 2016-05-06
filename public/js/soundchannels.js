@@ -1,87 +1,129 @@
-var channels=[{
+var channels = [{
   "type": "sampler",
   "name": "Sampler0",
-  "source": "audio/PVC (3).mp3",
-  "startOffset": 0.146,
-  "endTime": 0.191
+  "source": "audio/mscomposeKit-03.mp3",
+  "startOffset": 0.016,
+  "endTime": 0.008,
+  "id": "0"
 }, {
   "type": "sampler",
   "name": "Sampler1",
-  "source": "audio/PVC (2).mp3",
-  "startOffset": 0.179,
-  "endTime": 0.292
+  "source": "audio/mscomposeKit-02.mp3",
+  "startOffset": 0.021,
+  "endTime": 0.019,
+  "id": "1"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (1).mp3",
-  "startOffset": 0.645,
-  "endTime": 1.486
+  "source": "audio/mscomposeKit-01.mp3",
+  "startOffset": 0.014,
+  "endTime": 0.168,
+  "id": "2"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (4).mp3",
-  "startOffset": 0.367,
-  "endTime": 0.992
+  "source": "audio/mscomposeKit-04.mp3",
+  "startOffset": 0,
+  "endTime": 0.457,
+  "id": "3"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (5).mp3",
-  "startOffset": 0.12,
-  "endTime": 0.153
+  "source": "audio/mscomposeKit-05.mp3",
+  "startOffset": 0.046,
+  "endTime": 0.011,
+  "id": "4"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (6).mp3",
-  "startOffset": 1.83,
-  "endTime": 2.783
+  "source": "audio/mscomposeKit-06.mp3",
+  "startOffset": 0.107,
+  "endTime": 0.033,
+  "id": "5"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (7).mp3",
-  "startOffset": 1.431,
-  "endTime": 2.127
+  "source": "audio/mscomposeKit-07.mp3",
+  "startOffset": 0.005,
+  "endTime": 0.243,
+  "id": "6"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (8).mp3",
-  "startOffset": 1.453,
-  "endTime": 2.313
+  "source": "audio/mscomposeKit-08.mp3",
+  "startOffset": 0.095,
+  "endTime": 1.444,
+  "id": "7"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (9).mp3",
-  "startOffset": 0.444,
-  "endTime": 1.021
+  "source": "audio/mscomposeKit-09.mp3",
+  "startOffset": 0.248,
+  "endTime": 0.75,
+  "id": "8"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (10).mp3",
-  "startOffset": 0.106,
-  "endTime": 0.974
+  "source": "audio/mscomposeKit-10.mp3",
+  "startOffset": 0.01,
+  "endTime": 0.048,
+  "id": "9"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (11).mp3",
-  "startOffset": 1.208,
-  "endTime": 2.289
+  "source": "audio/mscomposeKit-11.mp3",
+  "startOffset": 0.056,
+  "endTime": 0.33,
+  "volume":0.4,
+  "id": "10"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (12).mp3",
-  "startOffset": 0.267,
-  "endTime": 0.616
+  "source": "audio/mscomposeKit-12.mp3",
+  "startOffset": 0.394,
+  "endTime": 1.815,
+  "id": "11"
 }, {
   "type": "sampler",
   "name": "Sampler2",
-  "source": "audio/PVC (13).mp3",
-  "startOffset": 0.072,
-  "endTime": 0.281
-}]
-for(c in channels){
-  channels[c].id=c;
+  "source": "audio/mscomposeKit-13.mp3",
+  "startOffset": 0,
+  "endTime": 2.593,
+  "id": "12"
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/mscomposeKit-14.mp3",
+  "startOffset": 0.001,
+  "endTime": 0.061,
+  "id": "13"
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/mscomposeKit-15.mp3",
+  "startOffset": 0,
+  "endTime": 0.119,
+  "id": "14"
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/mscomposeKit-16.mp3",
+  "startOffset": 0,
+  "endTime": 0.268,
+  "id": "15"
+}, {
+  "type": "sampler",
+  "name": "Sampler2",
+  "source": "audio/mscomposeKit-17.mp3",
+  "startOffset": 0,
+  "endTime": 0.122,
+  "id": "16"
+}];
+for (c in channels) {
+  channels[c].id = c;
 }
 
 
-function chanexp(){
+function chanexp() {
   return JSON.stringify(channels);
 }

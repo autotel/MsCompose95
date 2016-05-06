@@ -1,21 +1,22 @@
+var mixerSliders=[];
+var dials=[0];
+function activate(){};
 
 nx.onload = function() {
 
   nx.colorize("accent", "#0CC");
   nx.globalWidgets=false;
-  nx.widgets["metro1"].sendsTo(function(data){
-    // console.log(data);
-    for(n in seqs){
-      seqs[n].step();
-    }
-  });
-  nx.widgets["metro1"].speed=64;
+  // nx.widgets["metro1"].sendsTo(function(data){
+  //   // console.log(data);
+  //
+  // });
+  // nx.widgets["metro1"].speed=33;
   nx.widgets["number1"].set({
-    value: nx.widgets["metro1"].speed
+    value: Tone.Transport.bpm.value
   })
-  nx.widgets["number1"].sendsTo(function(data){
-    nx.widgets["metro1"].speed=data.value;
-  });
+  // nx.widgets["number1"].sendsTo(function(data){
+  //   nx.widgets["metro1"].speed=data.value;
+  // });
 
   for(chan in channels){
     thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="editorPanel_'+chan+'"></div>');
@@ -29,13 +30,17 @@ nx.onload = function() {
     $("#pane").append(thiscontainer);
     $(thiscontainer).append(editorContainer);
     nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer, class:"trhee"});
-    nx.add( "slider" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
+    // nx.add( "slider" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
+    mixerSliders[chan]=new Slider(chan,thiscontainer);
     $("#trigger"+chan).css({width:"30px",height:"30px",display:"block"});
     nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
+    delay=new Tone.JCReverb(0.3);
+    delay.wet=0.2;
     channels[chan].engine=new Tone.Player({
       url:channels[chan].source,
       retrigger:true
-    }).toMaster();
+    }).connect(delay);
+    delay.toMaster();
   }
   // stepFunction=function(data){
   //   if(data.stepVal==1){
@@ -44,17 +49,15 @@ nx.onload = function() {
   //   }
   // }
 
-  var dials=[0];
-  function activate(){};
 
   // matrix.sequence(240);
 
         // channels[1].engine.start();
 //
 
-  Tone.Buffer.onload = function(){
+  Tone.Buffer.on('load',function(){
     // player.start();
-    console.log("tone buffer ready");
+    // console.log("tone buffer ready");
     for(chan in channels){
 
       function a(){
@@ -65,19 +68,22 @@ nx.onload = function() {
             // console.log(thisChan);
           }
         });
-        nx.widgets["vol"+thisChan].sendsTo(function(data){
-          console.log(data);
-          channels[thisChan].engine.volume.value=data.value*70-60;
-        })
-        initval=0.75;
-        nx.widgets["vol"+thisChan].set({
-          value:initval
-        });
+        initval=0.5;
+        if(channels[thisChan].hasOwnProperty("volume")){
+          initval=channels[thisChan].volume;
+        }
+        mixerSliders[thisChan].setData(initval);
 
         channels[thisChan].engine.volume.value=initval*70-60;
         // channels[thisChan].engine.volume=0.5*70-60;
-
-        nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine.buffer );
+        mixerSliders[thisChan].onChange(function(data){
+          console.log(data);
+          channels[thisChan].engine.volume.value=data.value*70-60;
+          //just for export purposes:
+          channels[thisChan].volume=data.value*70-60;
+        })
+        // mixerSliders[thisChan].addClass("color_"+thischan);
+        nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine._buffer._buffer);
         nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,(channels[thisChan].endTime+channels[thisChan].startOffset)*1000)
         $("#cuep"+thisChan).css({width:"390px",height:"100px"});
         nx.widgets["cuep"+thisChan].on("*",function(data){
@@ -93,5 +99,5 @@ nx.onload = function() {
       };
       a();
     }
-  }
+  });
 };

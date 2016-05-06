@@ -39,6 +39,10 @@ $(document).ready(function(){
     }
   });
   socket.on('helloUser', function(msg){
+    //if user device goes to sleep and comes back, sequencers will accumulate through sessions, unless...
+    for(s in seqs){
+      seqs[s].die();
+    }
     console.log("Hello user. Add sequencer");
     console.log(msg);
     seqProg=msg.seqProg;

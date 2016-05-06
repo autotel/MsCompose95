@@ -65,7 +65,7 @@ sClients.io.on('connection', function(socket){
       socket.emit("areYouAlive");
       // console.log("emitted areYouAlive to "+socket.arrayIndex);
     }
-  },80*1000);
+  },30*1000);
   socket.on('imAlive',function(){
     // console.log("Socket "+socket.arrayIndex+" is still alive");
     socket.expectingMessage=false;
