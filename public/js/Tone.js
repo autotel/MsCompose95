@@ -16,7 +16,7 @@
 	 *  @copyright 2014-2015 Yotam Mann
 	 */
 	Main(function () {
-	    
+
 	    //////////////////////////////////////////////////////////////////////////
 	    //	WEB AUDIO CONTEXT
 	    ///////////////////////////////////////////////////////////////////////////
@@ -94,10 +94,10 @@
 	    //	TONE
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  @class  Tone is the base class of all other classes. It provides 
+		 *  @class  Tone is the base class of all other classes. It provides
 		 *          a lot of methods and functionality to all classes that extend
-		 *          it. 
-		 *  
+		 *          it.
+		 *
 		 *  @constructor
 		 *  @alias Tone
 		 *  @param {number} [inputs=1] the number of input nodes
@@ -127,7 +127,7 @@
 		 *  Set the parameters at once. Either pass in an
 		 *  object mapping parameters to values, or to set a
 		 *  single parameter, by passing in a string and value.
-		 *  The last argument is an optional ramp time which 
+		 *  The last argument is an optional ramp time which
 		 *  will ramp any signal values to their destination value
 		 *  over the duration of the rampTime.
 		 *  @param {Object|string} params
@@ -143,7 +143,7 @@
 		 *  @example
 		 * filter.set("type", "highpass");
 		 *  @example
-		 * //ramp to the value 220 over 3 seconds. 
+		 * //ramp to the value 220 over 3 seconds.
 		 * oscillator.set({
 		 * 	"frequency" : 220
 		 * }, 3);
@@ -206,7 +206,7 @@
 		 * //use dot notation to access deep properties
 		 * synth.get(["envelope.attack", "envelope.release"]);
 		 * //returns {"envelope" : {"attack" : 0.2, "release" : 0.4}}
-		 *  @param {Array=|string|undefined} params the parameters to get, otherwise will return 
+		 *  @param {Array=|string|undefined} params the parameters to get, otherwise will return
 		 *  					                  all available.
 		 *  @returns {Object}
 		 */
@@ -287,7 +287,7 @@
 	    //	CLASS VARS
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  A static pointer to the audio context accessible as Tone.context. 
+		 *  A static pointer to the audio context accessible as Tone.context.
 		 *  @type {AudioContext}
 		 */
 	    Tone.context = audioContext;
@@ -304,7 +304,7 @@
 		 */
 	    Tone.prototype.bufferSize = 2048;
 	    /**
-		 *  The delay time of a single frame (128 samples according to the spec). 
+		 *  The delay time of a single frame (128 samples according to the spec).
 		 *  @type {number}
 		 *  @static
 		 *  @const
@@ -336,7 +336,7 @@
 		 *  a silent connection to the DesinationNode
 		 *  which will ensure that anything connected to it
 		 *  will not be garbage collected
-		 *  
+		 *
 		 *  @private
 		 */
 	    var _silentNode = null;
@@ -357,7 +357,7 @@
 	    };
 	    /**
 		 *  connect the output of a ToneNode to an AudioParam, AudioNode, or ToneNode
-		 *  @param  {Tone | AudioParam | AudioNode} unit 
+		 *  @param  {Tone | AudioParam | AudioNode} unit
 		 *  @param {number} [outputNum=0] optionally which output to connect from
 		 *  @param {number} [inputNum=0] optionally which input to connect to
 		 *  @returns {Tone} this
@@ -454,18 +454,18 @@
 	    //	UTILITIES / HELPERS / MATHS
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  If the `given` parameter is undefined, use the `fallback`. 
+		 *  If the `given` parameter is undefined, use the `fallback`.
 		 *  If both `given` and `fallback` are object literals, it will
-		 *  return a deep copy which includes all of the parameters from both 
+		 *  return a deep copy which includes all of the parameters from both
 		 *  objects. If a parameter is undefined in given, it will return
-		 *  the fallback property. 
+		 *  the fallback property.
 		 *  <br><br>
-		 *  WARNING: if object is self referential, it will go into an an 
+		 *  WARNING: if object is self referential, it will go into an an
 		 *  infinite recursive loop.
-		 *  
-		 *  @param  {*} given    
-		 *  @param  {*} fallback 
-		 *  @return {*}          
+		 *
+		 *  @param  {*} given
+		 *  @param  {*} fallback
+		 *  @return {*}
 		 */
 	    Tone.prototype.defaultArg = function (given, fallback) {
 	        if (this.isObject(given) && this.isObject(fallback)) {
@@ -484,16 +484,16 @@
 	    };
 	    /**
 		 *  returns the args as an options object with given arguments
-		 *  mapped to the names provided. 
+		 *  mapped to the names provided.
 		 *
 		 *  if the args given is an array containing only one object, it is assumed
-		 *  that that's already the options object and will just return it. 
-		 *  
+		 *  that that's already the options object and will just return it.
+		 *
 		 *  @param  {Array} values  the 'arguments' object of the function
 		 *  @param  {Array} keys the names of the arguments as they
 		 *                                 should appear in the options object
-		 *  @param {Object=} defaults optional defaults to mixin to the returned 
-		 *                            options object                              
+		 *  @param {Object=} defaults optional defaults to mixin to the returned
+		 *                            options object
 		 *  @return {Object}       the options object with the names mapped to the arguments
 		 */
 	    Tone.prototype.optionsObject = function (values, keys, defaults) {
@@ -575,7 +575,7 @@
 	    Tone.noOp = function () {
 	    };
 	    /**
-		 *  Make the property not writable. Internal use only. 
+		 *  Make the property not writable. Internal use only.
 		 *  @private
 		 *  @param  {string}  property  the property to make not writable
 		 */
@@ -592,7 +592,7 @@
 	        }
 	    };
 	    /**
-		 *  Make an attribute writeable. Interal use only. 
+		 *  Make an attribute writeable. Interal use only.
 		 *  @private
 		 *  @param  {string}  property  the property to make writable
 		 */
@@ -606,7 +606,7 @@
 	        }
 	    };
 	    /**
-		 * Possible play states. 
+		 * Possible play states.
 		 * @enum {string}
 		 */
 	    Tone.State = {
@@ -629,7 +629,7 @@
 	    /**
 		 *  Convert decibels into gain.
 		 *  @param  {Decibels} db
-		 *  @return {Number}   
+		 *  @return {Number}
 		 */
 	    Tone.prototype.dbToGain = function (db) {
 	        return Math.pow(2, db / 6);
@@ -637,7 +637,7 @@
 	    /**
 		 *  Convert gain to decibels.
 		 *  @param  {Number} gain (0-1)
-		 *  @return {Decibels}   
+		 *  @return {Decibels}
 		 */
 	    Tone.prototype.gainToDb = function (gain) {
 	        return 20 * (Math.log(gain) / Math.LN10);
@@ -646,9 +646,9 @@
 	    //	TIMING
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  Return the current time of the clock + a single buffer frame. 
+		 *  Return the current time of the clock + a single buffer frame.
 		 *  If this value is used to schedule a value to change, the earliest
-		 *  it could be scheduled is the following frame. 
+		 *  it could be scheduled is the following frame.
 		 *  @return {number} the currentTime from the AudioContext
 		 */
 	    Tone.prototype.now = function () {
@@ -659,13 +659,13 @@
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
 		 *  have a child inherit all of Tone's (or a parent's) prototype
-		 *  to inherit the parent's properties, make sure to call 
+		 *  to inherit the parent's properties, make sure to call
 		 *  Parent.call(this) in the child's constructor
 		 *
 		 *  based on closure library's inherit function
 		 *
 		 *  @static
-		 *  @param  {function} 	child  
+		 *  @param  {function} 	child
 		 *  @param  {function=} parent (optional) parent to inherit from
 		 *                             if no parent is supplied, the child
 		 *                             will inherit from Tone
@@ -687,14 +687,14 @@
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
 		 *  array of callbacks to be invoked when a new context is added
-		 *  @private 
+		 *  @private
 		 *  @private
 		 */
 	    var newContextCallbacks = [];
 	    /**
 		 *  invoke this callback when a new context is added
 		 *  will be invoked initially with the first context
-		 *  @private 
+		 *  @private
 		 *  @static
 		 *  @param {function(AudioContext)} callback the callback to be invoked
 		 *                                           with the audio context
@@ -708,7 +708,7 @@
 	    /**
 		 *  Tone automatically creates a context on init, but if you are working
 		 *  with other libraries which also create an AudioContext, it can be
-		 *  useful to set your own. If you are going to set your own context, 
+		 *  useful to set your own. If you are going to set your own context,
 		 *  be sure to do it at the start of your code, before creating any objects.
 		 *  @static
 		 *  @param {AudioContext} ctx The new audio context to set
@@ -723,7 +723,7 @@
 	        }
 	    };
 	    /**
-		 *  Bind this to a touchstart event to start the audio on mobile devices. 
+		 *  Bind this to a touchstart event to start the audio on mobile devices.
 		 *  <br>
 		 *  http://stackoverflow.com/questions/12517000/no-sound-on-ios-6-web-audio-api/12569290#12569290
 		 *  @static
@@ -751,9 +751,9 @@
 	    return Tone;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Base class for all Signals. Used Internally. 
+		 *  @class  Base class for all Signals. Used Internally.
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
@@ -762,12 +762,12 @@
 	    };
 	    Tone.extend(Tone.SignalBase);
 	    /**
-		 *  When signals connect to other signals or AudioParams, 
-		 *  they take over the output value of that signal or AudioParam. 
-		 *  For all other nodes, the behavior is the same as a default <code>connect</code>. 
+		 *  When signals connect to other signals or AudioParams,
+		 *  they take over the output value of that signal or AudioParam.
+		 *  For all other nodes, the behavior is the same as a default <code>connect</code>.
 		 *
 		 *  @override
-		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node 
+		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node
 		 *  @param {number} [outputNumber=0] The output number to connect from.
 		 *  @param {number} [inputNumber=0] The input number to connect to.
 		 *  @returns {Tone.SignalBase} this
@@ -791,22 +791,22 @@
 	    return Tone.SignalBase;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Wraps the native Web Audio API 
+		 *  @class Wraps the native Web Audio API
 		 *         [WaveShaperNode](http://webaudio.github.io/web-audio-api/#the-waveshapernode-interface).
 		 *
 		 *  @extends {Tone.SignalBase}
 		 *  @constructor
-		 *  @param {function|Array|Number} mapping The function used to define the values. 
-		 *                                    The mapping function should take two arguments: 
-		 *                                    the first is the value at the current position 
-		 *                                    and the second is the array position. 
+		 *  @param {function|Array|Number} mapping The function used to define the values.
+		 *                                    The mapping function should take two arguments:
+		 *                                    the first is the value at the current position
+		 *                                    and the second is the array position.
 		 *                                    If the argument is an array, that array will be
 		 *                                    set as the wave shaping function. The input
 		 *                                    signal is an AudioRange [-1, 1] value and the output
-		 *                                    signal can take on any numerical values. 
-		 *                                    
+		 *                                    signal can take on any numerical values.
+		 *
 		 *  @param {Number} [bufferLen=1024] The length of the WaveShaperNode buffer.
 		 *  @example
 		 * var timesTwo = new Tone.WaveShaper(function(val){
@@ -840,12 +840,12 @@
 	    };
 	    Tone.extend(Tone.WaveShaper, Tone.SignalBase);
 	    /**
-		 *  Uses a mapping function to set the value of the curve. 
-		 *  @param {function} mapping The function used to define the values. 
-		 *                            The mapping function take two arguments: 
-		 *                            the first is the value at the current position 
+		 *  Uses a mapping function to set the value of the curve.
+		 *  @param {function} mapping The function used to define the values.
+		 *                            The mapping function take two arguments:
+		 *                            the first is the value at the current position
 		 *                            which goes from -1 to 1 over the number of elements
-		 *                            in the curve array. The second argument is the array position. 
+		 *                            in the curve array. The second argument is the array position.
 		 *  @returns {Tone.WaveShaper} this
 		 *  @example
 		 * //map the input signal from [-1, 1] to [0, 10]
@@ -864,7 +864,7 @@
 	    /**
 		 * The array to set as the waveshaper curve. For linear curves
 		 * array length does not make much difference, but for complex curves
-		 * longer arrays will provide smoother interpolation. 
+		 * longer arrays will provide smoother interpolation.
 		 * @memberOf Tone.WaveShaper#
 		 * @type {Array}
 		 * @name curve
@@ -879,8 +879,8 @@
 	        }
 	    });
 	    /**
-		 * Specifies what type of oversampling (if any) should be used when 
-		 * applying the shaping curve. Can either be "none", "2x" or "4x". 
+		 * Specifies what type of oversampling (if any) should be used when
+		 * applying the shaping curve. Can either be "none", "2x" or "4x".
 		 * @memberOf Tone.WaveShaper#
 		 * @type {string}
 		 * @name oversample
@@ -915,7 +915,7 @@
 	    return Tone.WaveShaper;
 	});
 	Module(function (Tone) {
-	    
+
 	    ///////////////////////////////////////////////////////////////////////////
 	    //	TYPES
 	    ///////////////////////////////////////////////////////////////////////////
@@ -924,7 +924,7 @@
 		 * @enum {String}
 		 */
 	    Tone.Type = {
-	        /** 
+	        /**
 			 *  The default value is a number which can take on any value between [-Infinity, Infinity]
 			 */
 	        Default: 'number',
@@ -934,104 +934,104 @@
 			 *  <ul>
 			 *  <li>Numbers, which will be taken literally as the time (in seconds).</li>
 			 *  <li>Notation, ("4n", "8t") describes time in BPM and time signature relative values.</li>
-			 *  <li>TransportTime, ("4:3:2") will also provide tempo and time signature relative times 
+			 *  <li>TransportTime, ("4:3:2") will also provide tempo and time signature relative times
 			 *  in the form BARS:QUARTERS:SIXTEENTHS.</li>
 			 *  <li>Frequency, ("8hz") is converted to the length of the cycle in seconds.</li>
-			 *  <li>Now-Relative, ("+1") prefix any of the above with "+" and it will be interpreted as 
+			 *  <li>Now-Relative, ("+1") prefix any of the above with "+" and it will be interpreted as
 			 *  "the current time plus whatever expression follows".</li>
-			 *  <li>Expressions, ("3:0 + 2 - (1m / 7)") any of the above can also be combined 
+			 *  <li>Expressions, ("3:0 + 2 - (1m / 7)") any of the above can also be combined
 			 *  into a mathematical expression which will be evaluated to compute the desired time.</li>
-			 *  <li>No Argument, for methods which accept time, no argument will be interpreted as 
+			 *  <li>No Argument, for methods which accept time, no argument will be interpreted as
 			 *  "now" (i.e. the currentTime).</li>
 			 *  </ul>
-			 *  
+			 *
 			 *  @typedef {Time}
 			 */
 	        Time: 'time',
 	        /**
 			 *  Frequency can be described similar to time, except ultimately the
 			 *  values are converted to frequency instead of seconds. A number
-			 *  is taken literally as the value in hertz. Additionally any of the 
+			 *  is taken literally as the value in hertz. Additionally any of the
 			 *  Time encodings can be used. Note names in the form
 			 *  of NOTE OCTAVE (i.e. C4) are also accepted and converted to their
-			 *  frequency value. 
+			 *  frequency value.
 			 *  @typedef {Frequency}
 			 */
 	        Frequency: 'frequency',
-	        /** 
+	        /**
 			 *  Normal values are within the range [0, 1].
 			 *  @typedef {NormalRange}
 			 */
 	        NormalRange: 'normalRange',
-	        /** 
+	        /**
 			 *  AudioRange values are between [-1, 1].
 			 *  @typedef {AudioRange}
 			 */
 	        AudioRange: 'audioRange',
-	        /** 
+	        /**
 			 *  Decibels are a logarithmic unit of measurement which is useful for volume
-			 *  because of the logarithmic way that we perceive loudness. 0 decibels 
-			 *  means no change in volume. -10db is approximately half as loud and 10db 
-			 *  is twice is loud. 
+			 *  because of the logarithmic way that we perceive loudness. 0 decibels
+			 *  means no change in volume. -10db is approximately half as loud and 10db
+			 *  is twice is loud.
 			 *  @typedef {Decibels}
 			 */
 	        Decibels: 'db',
-	        /** 
+	        /**
 			 *  Half-step note increments, i.e. 12 is an octave above the root. and 1 is a half-step up.
 			 *  @typedef {Interval}
 			 */
 	        Interval: 'interval',
-	        /** 
-			 *  Beats per minute. 
+	        /**
+			 *  Beats per minute.
 			 *  @typedef {BPM}
 			 */
 	        BPM: 'bpm',
-	        /** 
+	        /**
 			 *  The value must be greater than or equal to 0.
 			 *  @typedef {Positive}
 			 */
 	        Positive: 'positive',
-	        /** 
-			 *  A cent is a hundredth of a semitone. 
+	        /**
+			 *  A cent is a hundredth of a semitone.
 			 *  @typedef {Cents}
 			 */
 	        Cents: 'cents',
-	        /** 
-			 *  Angle between 0 and 360. 
+	        /**
+			 *  Angle between 0 and 360.
 			 *  @typedef {Degrees}
 			 */
 	        Degrees: 'degrees',
-	        /** 
+	        /**
 			 *  A number representing a midi note.
 			 *  @typedef {MIDI}
 			 */
 	        MIDI: 'midi',
-	        /** 
+	        /**
 			 *  A colon-separated representation of time in the form of
-			 *  BARS:QUARTERS:SIXTEENTHS. 
+			 *  BARS:QUARTERS:SIXTEENTHS.
 			 *  @typedef {TransportTime}
 			 */
 	        TransportTime: 'transportTime',
-	        /** 
+	        /**
 			 *  Ticks are the basic subunit of the Transport. They are
 			 *  the smallest unit of time that the Transport supports.
 			 *  @typedef {Ticks}
 			 */
 	        Ticks: 'tick',
-	        /** 
-			 *  A frequency represented by a letter name, 
+	        /**
+			 *  A frequency represented by a letter name,
 			 *  accidental and octave. This system is known as
 			 *  [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 			 *  @typedef {Note}
 			 */
 	        Note: 'note',
-	        /** 
-			 *  One millisecond is a thousandth of a second. 
+	        /**
+			 *  One millisecond is a thousandth of a second.
 			 *  @typedef {Milliseconds}
 			 */
 	        Milliseconds: 'milliseconds',
-	        /** 
-			 *  A string representing a duration relative to a measure. 
+	        /**
+			 *  A string representing a duration relative to a measure.
 			 *  <ul>
 			 *  	<li>"4n" = quarter note</li>
 			 *   	<li>"2m" = two measures</li>
@@ -1046,9 +1046,9 @@
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
 		 *  Test if a function is "now-relative", i.e. starts with "+".
-		 *  
+		 *
 		 *  @param {String} str The string to test
-		 *  @return {boolean} 
+		 *  @return {boolean}
 		 *  @method isNowRelative
 		 *  @lends Tone.prototype.isNowRelative
 		 */
@@ -1059,10 +1059,10 @@
 	        };
 	    }();
 	    /**
-		 *  Tests if a string is in Ticks notation. 
-		 *  
+		 *  Tests if a string is in Ticks notation.
+		 *
 		 *  @param {String} str The string to test
-		 *  @return {boolean} 
+		 *  @return {boolean}
 		 *  @method isTicks
 		 *  @lends Tone.prototype.isTicks
 		 */
@@ -1080,9 +1080,9 @@
 		 *   	<li>2m = two measures</li>
 		 *    	<li>8t = eighth-note triplet</li>
 		 *  </ul>
-		 *  
+		 *
 		 *  @param {String} str The string to test
-		 *  @return {boolean} 
+		 *  @return {boolean}
 		 *  @method isNotation
 		 *  @lends Tone.prototype.isNotation
 		 */
@@ -1093,10 +1093,10 @@
 	        };
 	    }();
 	    /**
-		 *  Test if a string is in the transportTime format. 
+		 *  Test if a string is in the transportTime format.
 		 *  "Bars:Beats:Sixteenths"
 		 *  @param {String} transportTime
-		 *  @return {boolean} 
+		 *  @return {boolean}
 		 *  @method isTransportTime
 		 *  @lends Tone.prototype.isTransportTime
 		 */
@@ -1107,7 +1107,7 @@
 	        };
 	    }();
 	    /**
-		 *  Test if a string is in Scientific Pitch Notation: i.e. "C4". 
+		 *  Test if a string is in Scientific Pitch Notation: i.e. "C4".
 		 *  @param  {String}  note The note to test
 		 *  @return {boolean}      true if it's in the form of a note
 		 *  @method isNote
@@ -1124,8 +1124,8 @@
 		 *  Test if the input is in the format of number + hz
 		 *  i.e.: 10hz
 		 *
-		 *  @param {String} freq 
-		 *  @return {boolean} 
+		 *  @param {String} freq
+		 *  @return {boolean}
 		 *  @function
 		 */
 	    Tone.prototype.isFrequency = function () {
@@ -1139,7 +1139,7 @@
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
 		 *  @private
-		 *  @return  {Object}  The Transport's BPM if the Transport exists, 
+		 *  @return  {Object}  The Transport's BPM if the Transport exists,
 		 *                         otherwise returns reasonable defaults.
 		 */
 	    function getTransportBpm() {
@@ -1151,7 +1151,7 @@
 	    }
 	    /**
 		 *  @private
-		 *  @return  {Object}  The Transport's Time Signature if the Transport exists, 
+		 *  @return  {Object}  The Transport's Time Signature if the Transport exists,
 		 *                         otherwise returns reasonable defaults.
 		 */
 	    function getTransportTimeSignature() {
@@ -1164,12 +1164,12 @@
 	    /**
 		 *
 		 *  convert notation format strings to seconds
-		 *  
-		 *  @param  {String} notation     
-		 *  @param {BPM=} bpm 
-		 *  @param {number=} timeSignature 
-		 *  @return {number} 
-		 *                
+		 *
+		 *  @param  {String} notation
+		 *  @param {BPM=} bpm
+		 *  @param {number=} timeSignature
+		 *  @return {number}
+		 *
 		 */
 	    Tone.prototype.notationToSeconds = function (notation, bpm, timeSignature) {
 	        bpm = this.defaultArg(bpm, getTransportBpm());
@@ -1198,11 +1198,11 @@
 	    };
 	    /**
 		 *  convert transportTime into seconds.
-		 *  
+		 *
 		 *  ie: 4:2:3 == 4 measures + 2 quarters + 3 sixteenths
 		 *
-		 *  @param  {TransportTime} transportTime 
-		 *  @param {BPM=} bpm 
+		 *  @param  {TransportTime} transportTime
+		 *  @param {BPM=} bpm
 		 *  @param {number=} timeSignature
 		 *  @return {number}               seconds
 		 */
@@ -1228,8 +1228,8 @@
 	    };
 	    /**
 		 *  Convert ticks into seconds
-		 *  @param  {Ticks} ticks 
-		 *  @param {BPM=} bpm 
+		 *  @param  {Ticks} ticks
+		 *  @param {BPM=} bpm
 		 *  @return {number}               seconds
 		 */
 	    Tone.prototype.ticksToSeconds = function (ticks, bpm) {
@@ -1243,27 +1243,27 @@
 	    };
 	    /**
 		 *  Convert a frequency into seconds.
-		 *  Accepts numbers and strings: i.e. "10hz" or 
-		 *  10 both return 0.1. 
-		 *  
-		 *  @param  {Frequency} freq 
-		 *  @return {number}      
+		 *  Accepts numbers and strings: i.e. "10hz" or
+		 *  10 both return 0.1.
+		 *
+		 *  @param  {Frequency} freq
+		 *  @return {number}
 		 */
 	    Tone.prototype.frequencyToSeconds = function (freq) {
 	        return 1 / parseFloat(freq);
 	    };
 	    /**
 		 *  Convert a sample count to seconds.
-		 *  @param  {number} samples 
-		 *  @return {number}         
+		 *  @param  {number} samples
+		 *  @return {number}
 		 */
 	    Tone.prototype.samplesToSeconds = function (samples) {
 	        return samples / this.context.sampleRate;
 	    };
 	    /**
-		 *  Convert from seconds to samples. 
-		 *  @param  {number} seconds 
-		 *  @return {number} The number of samples        
+		 *  Convert from seconds to samples.
+		 *  @param  {number} seconds
+		 *  @return {number} The number of samples
 		 */
 	    Tone.prototype.secondsToSamples = function (seconds) {
 	        return seconds * this.context.sampleRate;
@@ -1272,13 +1272,13 @@
 	    //	FROM SECOND CONVERSIONS
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  Convert seconds to transportTime in the form 
+		 *  Convert seconds to transportTime in the form
 		 *  	"measures:quarters:sixteenths"
 		 *
-		 *  @param {Number} seconds 
-		 *  @param {BPM=} bpm 
+		 *  @param {Number} seconds
+		 *  @param {BPM=} bpm
 		 *  @param {Number=} timeSignature
-		 *  @return {TransportTime}  
+		 *  @return {TransportTime}
 		 */
 	    Tone.prototype.secondsToTransportTime = function (seconds, bpm, timeSignature) {
 	        bpm = this.defaultArg(bpm, getTransportBpm());
@@ -1297,8 +1297,8 @@
 	    };
 	    /**
 		 *  Convert a number in seconds to a frequency.
-		 *  @param  {number} seconds 
-		 *  @return {number}         
+		 *  @param  {number} seconds
+		 *  @return {number}
 		 */
 	    Tone.prototype.secondsToFrequency = function (seconds) {
 	        return 1 / seconds;
@@ -1307,16 +1307,16 @@
 	    //	GENERALIZED CONVERSIONS
 	    ///////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  Convert seconds to the closest transportTime in the form 
+		 *  Convert seconds to the closest transportTime in the form
 		 *  	measures:quarters:sixteenths
 		 *
 		 *  @method toTransportTime
-		 *  
-		 *  @param {Time} time 
-		 *  @param {BPM=} bpm 
+		 *
+		 *  @param {Time} time
+		 *  @param {BPM=} bpm
 		 *  @param {number=} timeSignature
-		 *  @return {TransportTime}  
-		 *  
+		 *  @return {TransportTime}
+		 *
 		 *  @lends Tone.prototype.toTransportTime
 		 */
 	    Tone.prototype.toTransportTime = function (time, bpm, timeSignature) {
@@ -1325,9 +1325,9 @@
 	    };
 	    /**
 		 *  Convert a frequency representation into a number.
-		 *  	
-		 *  @param  {Frequency} freq 
-		 *  @param {number=} 	now 	if passed in, this number will be 
+		 *
+		 *  @param  {Frequency} freq
+		 *  @param {number=} 	now 	if passed in, this number will be
 		 *                        		used for all 'now' relative timings
 		 *  @return {number}      the frequency in hertz
 		 */
@@ -1345,9 +1345,9 @@
 	    /**
 		 *  Convert the time representation into ticks.
 		 *  Now-Relative timing will be relative to the current
-		 *  Tone.Transport.ticks. 
+		 *  Tone.Transport.ticks.
 		 *  @param  {Time} time
-		 *  @return {Ticks}   
+		 *  @return {Ticks}
 		 */
 	    Tone.prototype.toTicks = function (time) {
 	        if (this.isUndef(Tone.Transport)) {
@@ -1371,9 +1371,9 @@
 	    };
 	    /**
 		 *  convert a time into samples
-		 *  
+		 *
 		 *  @param  {Time} time
-		 *  @return {number}         
+		 *  @return {number}
 		 */
 	    Tone.prototype.toSamples = function (time) {
 	        var seconds = this.toSeconds(time);
@@ -1381,8 +1381,8 @@
 	    };
 	    /**
 		 *  Convert Time into seconds.
-		 *  
-		 *  Unlike the method which it overrides, this takes into account 
+		 *
+		 *  Unlike the method which it overrides, this takes into account
 		 *  transporttime and musical notation.
 		 *
 		 *  Time : 1.40
@@ -1392,10 +1392,10 @@
 		 *  Math: 3n+16n or even complicated expressions ((3n*2)/6 + 1)
 		 *
 		 *  @override
-		 *  @param  {Time} time       
-		 *  @param {number=} 	now 	if passed in, this number will be 
+		 *  @param  {Time} time
+		 *  @param {number=} 	now 	if passed in, this number will be
 		 *                        		used for all 'now' relative timings
-		 *  @return {number} 
+		 *  @return {number}
 		 */
 	    Tone.prototype.toSeconds = function (time, now) {
 	        now = this.defaultArg(now, this.now());
@@ -1471,11 +1471,11 @@
 	        }
 	    };
 	    /**
-		 *  Convert a Time to Notation. Values will be thresholded to the nearest 128th note. 
-		 *  @param {Time} time 
-		 *  @param {BPM=} bpm 
+		 *  Convert a Time to Notation. Values will be thresholded to the nearest 128th note.
+		 *  @param {Time} time
+		 *  @param {BPM=} bpm
 		 *  @param {number=} timeSignature
-		 *  @return {Notation}  
+		 *  @return {Notation}
 		 */
 	    Tone.prototype.toNotation = function (time, bpm, timeSignature) {
 	        var testNotations = [
@@ -1658,16 +1658,16 @@
 	        'B'
 	    ];
 	    /**
-		 *  The [concert pitch](https://en.wikipedia.org/wiki/Concert_pitch, 
-		 *  A4's values in Hertz. 
+		 *  The [concert pitch](https://en.wikipedia.org/wiki/Concert_pitch,
+		 *  A4's values in Hertz.
 		 *  @type {Frequency}
 		 *  @static
 		 */
 	    Tone.A4 = 440;
 	    /**
-		 *  Convert a note name to frequency. 
+		 *  Convert a note name to frequency.
 		 *  @param  {String} note
-		 *  @return {number}     
+		 *  @return {number}
 		 *  @example
 		 * var freq = tone.noteToFrequency("A4"); //returns 440
 		 */
@@ -1686,7 +1686,7 @@
 	    /**
 		 *  Convert a frequency to a note name (i.e. A4, C#5).
 		 *  @param  {number} freq
-		 *  @return {String}         
+		 *  @return {String}
 		 */
 	    Tone.prototype.frequencyToNote = function (freq) {
 	        var log = Math.log(freq / Tone.A4) / Math.LN2;
@@ -1711,7 +1711,7 @@
 	        return Math.pow(2, interval / 12);
 	    };
 	    /**
-		 *  Convert a midi note number into a note name. 
+		 *  Convert a midi note number into a note name.
 		 *
 		 *  @param  {MIDI} midiNumber the midi note number
 		 *  @return {String}            the note's name and octave
@@ -1724,7 +1724,7 @@
 	        return scaleIndexToNote[note] + octave;
 	    };
 	    /**
-		 *  Convert a note to it's midi value. 
+		 *  Convert a note to it's midi value.
 		 *
 		 *  @param  {String} note the note name (i.e. "C3")
 		 *  @return {MIDI} the midi value of that note
@@ -1743,7 +1743,7 @@
 	        }
 	    };
 	    /**
-		 *  Convert a MIDI note to frequency value. 
+		 *  Convert a MIDI note to frequency value.
 		 *
 		 *  @param  {MIDI} midi The midi number to convert.
 		 *  @return {Frequency} the corresponding frequency value
@@ -1756,12 +1756,12 @@
 	    return Tone;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Param wraps the native Web Audio's AudioParam to provide
 		 *         additional unit conversion functionality. It also
 		 *         serves as a base-class for classes which have a single,
-		 *         automatable parameter. 
+		 *         automatable parameter.
 		 *  @extends {Tone}
 		 *  @param  {AudioParam}  param  The parameter to wrap.
 		 *  @param  {Tone.Type} units The units of the audio param.
@@ -1790,7 +1790,7 @@
 			 */
 	        this.convert = options.convert;
 	        /**
-			 *  True if the signal value is being overridden by 
+			 *  True if the signal value is being overridden by
 			 *  a connected signal.
 			 *  @readOnly
 			 *  @type  {boolean}
@@ -1813,7 +1813,7 @@
 	        'param': undefined
 	    };
 	    /**
-		 * The current value of the parameter. 
+		 * The current value of the parameter.
 		 * @memberOf Tone.Param#
 		 * @type {Number}
 		 * @name value
@@ -1886,7 +1886,7 @@
 		 *  @param {Time}  time The time when the change should occur.
 		 *  @returns {Tone.Param} this
 		 *  @example
-		 * //set the frequency to "G4" in exactly 1 second from now. 
+		 * //set the frequency to "G4" in exactly 1 second from now.
 		 * freq.setValueAtTime("G4", "+1");
 		 */
 	    Tone.Param.prototype.setValueAtTime = function (value, time) {
@@ -1896,10 +1896,10 @@
 	    };
 	    /**
 		 *  Creates a schedule point with the current value at the current time.
-		 *  This is useful for creating an automation anchor point in order to 
-		 *  schedule changes from the current value. 
+		 *  This is useful for creating an automation anchor point in order to
+		 *  schedule changes from the current value.
 		 *
-		 *  @param {number=} now (Optionally) pass the now value in. 
+		 *  @param {number=} now (Optionally) pass the now value in.
 		 *  @returns {Tone.Param} this
 		 */
 	    Tone.Param.prototype.setRampPoint = function (now) {
@@ -1909,11 +1909,11 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules a linear continuous change in parameter value from the 
+		 *  Schedules a linear continuous change in parameter value from the
 		 *  previous scheduled parameter value to the given value.
-		 *  
-		 *  @param  {number} value   
-		 *  @param  {Time} endTime 
+		 *
+		 *  @param  {number} value
+		 *  @param  {Time} endTime
 		 *  @returns {Tone.Param} this
 		 */
 	    Tone.Param.prototype.linearRampToValueAtTime = function (value, endTime) {
@@ -1922,11 +1922,11 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules an exponential continuous change in parameter value from 
+		 *  Schedules an exponential continuous change in parameter value from
 		 *  the previous scheduled parameter value to the given value.
-		 *  
-		 *  @param  {number} value   
-		 *  @param  {Time} endTime 
+		 *
+		 *  @param  {number} value
+		 *  @param  {Time} endTime
 		 *  @returns {Tone.Param} this
 		 */
 	    Tone.Param.prototype.exponentialRampToValueAtTime = function (value, endTime) {
@@ -1936,16 +1936,16 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules an exponential continuous change in parameter value from 
-		 *  the current time and current value to the given value over the 
+		 *  Schedules an exponential continuous change in parameter value from
+		 *  the current time and current value to the given value over the
 		 *  duration of the rampTime.
-		 *  
+		 *
 		 *  @param  {number} value   The value to ramp to.
-		 *  @param  {Time} rampTime the time that it takes the 
+		 *  @param  {Time} rampTime the time that it takes the
 		 *                               value to ramp from it's current value
 		 *  @returns {Tone.Param} this
 		 *  @example
-		 * //exponentially ramp to the value 2 over 4 seconds. 
+		 * //exponentially ramp to the value 2 over 4 seconds.
 		 * signal.exponentialRampToValue(2, 4);
 		 */
 	    Tone.Param.prototype.exponentialRampToValue = function (value, rampTime) {
@@ -1958,16 +1958,16 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules an linear continuous change in parameter value from 
-		 *  the current time and current value to the given value over the 
+		 *  Schedules an linear continuous change in parameter value from
+		 *  the current time and current value to the given value over the
 		 *  duration of the rampTime.
-		 *  
+		 *
 		 *  @param  {number} value   The value to ramp to.
-		 *  @param  {Time} rampTime the time that it takes the 
+		 *  @param  {Time} rampTime the time that it takes the
 		 *                               value to ramp from it's current value
 		 *  @returns {Tone.Param} this
 		 *  @example
-		 * //linearly ramp to the value 4 over 3 seconds. 
+		 * //linearly ramp to the value 4 over 3 seconds.
 		 * signal.linearRampToValue(4, 3);
 		 */
 	    Tone.Param.prototype.linearRampToValue = function (value, rampTime) {
@@ -1979,10 +1979,10 @@
 	    /**
 		 *  Start exponentially approaching the target value at the given time with
 		 *  a rate having the given time constant.
-		 *  @param {number} value        
-		 *  @param {Time} startTime    
-		 *  @param {number} timeConstant 
-		 *  @returns {Tone.Param} this 
+		 *  @param {number} value
+		 *  @param {Time} startTime
+		 *  @param {number} timeConstant
+		 *  @returns {Tone.Param} this
 		 */
 	    Tone.Param.prototype.setTargetAtTime = function (value, startTime, timeConstant) {
 	        value = this._fromUnits(value);
@@ -1997,10 +1997,10 @@
 	    /**
 		 *  Sets an array of arbitrary parameter values starting at the given time
 		 *  for the given duration.
-		 *  	
-		 *  @param {Array} values    
-		 *  @param {Time} startTime 
-		 *  @param {Time} duration  
+		 *
+		 *  @param {Array} values
+		 *  @param {Time} startTime
+		 *  @param {Time} duration
 		 *  @returns {Tone.Param} this
 		 */
 	    Tone.Param.prototype.setValueCurveAtTime = function (values, startTime, duration) {
@@ -2011,9 +2011,9 @@
 	        return this;
 	    };
 	    /**
-		 *  Cancels all scheduled parameter changes with times greater than or 
+		 *  Cancels all scheduled parameter changes with times greater than or
 		 *  equal to startTime.
-		 *  
+		 *
 		 *  @param  {Time} startTime
 		 *  @returns {Tone.Param} this
 		 */
@@ -2022,16 +2022,16 @@
 	        return this;
 	    };
 	    /**
-		 *  Ramps to the given value over the duration of the rampTime. 
+		 *  Ramps to the given value over the duration of the rampTime.
 		 *  Automatically selects the best ramp type (exponential or linear)
 		 *  depending on the `units` of the signal
-		 *  
-		 *  @param  {number} value   
-		 *  @param  {Time} rampTime the time that it takes the 
+		 *
+		 *  @param  {number} value
+		 *  @param  {Time} rampTime the time that it takes the
 		 *                               value to ramp from it's current value
 		 *  @returns {Tone.Param} this
 		 *  @example
-		 * //ramp to the value either linearly or exponentially 
+		 * //ramp to the value either linearly or exponentially
 		 * //depending on the "units" value of the signal
 		 * signal.rampTo(0, 10);
 		 */
@@ -2056,14 +2056,14 @@
 	    return Tone.Param;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class A thin wrapper around the Native Web Audio GainNode.
 		 *         The GainNode is a basic building block of the Web Audio
-		 *         API and is useful for routing audio and adjusting gains. 
+		 *         API and is useful for routing audio and adjusting gains.
 		 *  @extends {Tone}
 		 *  @param  {Number=}  gain  The initial gain of the GainNode
-		 *  @param {Tone.Type=} units The units of the gain parameter. 
+		 *  @param {Tone.Type=} units The units of the gain parameter.
 		 */
 	    Tone.Gain = function () {
 	        var options = this.optionsObject(arguments, [
@@ -2114,21 +2114,21 @@
 	    return Tone.Gain;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  A signal is an audio-rate value. Tone.Signal is a core component of the library.
 		 *          Unlike a number, Signals can be scheduled with sample-level accuracy. Tone.Signal
-		 *          has all of the methods available to native Web Audio 
+		 *          has all of the methods available to native Web Audio
 		 *          [AudioParam](http://webaudio.github.io/web-audio-api/#the-audioparam-interface)
-		 *          as well as additional conveniences. Read more about working with signals 
+		 *          as well as additional conveniences. Read more about working with signals
 		 *          [here](https://github.com/Tonejs/Tone.js/wiki/Signals).
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Param}
 		 *  @param {Number|AudioParam} [value] Initial value of the signal. If an AudioParam
 		 *                                     is passed in, that parameter will be wrapped
-		 *                                     and controlled by the Signal. 
-		 *  @param {string} [units=Number] unit The units the signal is in. 
+		 *                                     and controlled by the Signal.
+		 *  @param {string} [units=Number] unit The units the signal is in.
 		 *  @example
 		 * var signal = new Tone.Signal(10);
 		 */
@@ -2167,12 +2167,12 @@
 	        'convert': true
 	    };
 	    /**
-		 *  When signals connect to other signals or AudioParams, 
-		 *  they take over the output value of that signal or AudioParam. 
-		 *  For all other nodes, the behavior is the same as a default <code>connect</code>. 
+		 *  When signals connect to other signals or AudioParams,
+		 *  they take over the output value of that signal or AudioParam.
+		 *  For all other nodes, the behavior is the same as a default <code>connect</code>.
 		 *
 		 *  @override
-		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node 
+		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node
 		 *  @param {number} [outputNumber=0] The output number to connect from.
 		 *  @param {number} [inputNumber=0] The input number to connect to.
 		 *  @returns {Tone.SignalBase} this
@@ -2221,11 +2221,11 @@
 	    return Tone.Signal;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class A Timeline class for scheduling and maintaining state
-		 *         along a timeline. All events must have a "time" property. 
-		 *         Internally, events are stored in time order for fast 
+		 *         along a timeline. All events must have a "time" property.
+		 *         Internally, events are stored in time order for fast
 		 *         retrieval.
 		 *  @extends {Tone}
 		 *  @param {Positive} [memory=Infinity] The number of previous events that are retained.
@@ -2239,7 +2239,7 @@
 			 */
 	        this._timeline = [];
 	        /**
-			 *  An array of items to remove from the list. 
+			 *  An array of items to remove from the list.
 			 *  @type {Array}
 			 *  @private
 			 */
@@ -2278,8 +2278,8 @@
 	    });
 	    /**
 		 *  Insert an event object onto the timeline. Events must have a "time" attribute.
-		 *  @param  {Object}  event  The event object to insert into the 
-		 *                           timeline. 
+		 *  @param  {Object}  event  The event object to insert into the
+		 *                           timeline.
 		 *  @returns {Tone.Timeline} this
 		 */
 	    Tone.Timeline.prototype.addEvent = function (event) {
@@ -2397,10 +2397,10 @@
 	        return this;
 	    };
 	    /**
-		 *  Does a binary serach on the timeline array and returns the 
+		 *  Does a binary serach on the timeline array and returns the
 		 *  event which is after or equal to the time.
-		 *  @param  {Number}  time  
-		 *  @return  {Number} the index in the timeline array 
+		 *  @param  {Number}  time
+		 *  @return  {Number} the index in the timeline array
 		 *  @private
 		 */
 	    Tone.Timeline.prototype._search = function (time) {
@@ -2432,11 +2432,11 @@
 	        return beginning - 1;
 	    };
 	    /**
-		 *  Internal iterator. Applies extra safety checks for 
-		 *  removing items from the array. 
-		 *  @param  {Function}  callback 
-		 *  @param  {Number=}    lowerBound     
-		 *  @param  {Number=}    upperBound    
+		 *  Internal iterator. Applies extra safety checks for
+		 *  removing items from the array.
+		 *  @param  {Function}  callback
+		 *  @param  {Number=}    lowerBound
+		 *  @param  {Number=}    upperBound
 		 *  @private
 		 */
 	    Tone.Timeline.prototype._iterate = function (callback, lowerBound, upperBound) {
@@ -2495,7 +2495,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Iterate over everything in the array at or after the given time. Similar to 
+		 *  Iterate over everything in the array at or after the given time. Similar to
 		 *  forEachAfter, but includes the item(s) at the given time.
 		 *  @param  {Time}  time The time to check if items are before
 		 *  @param  {Function}  callback The callback to invoke with every item
@@ -2543,9 +2543,9 @@
 	    return Tone.Timeline;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class A signal which adds the method getValueAtTime. 
+		 *  @class A signal which adds the method getValueAtTime.
 		 *         Code and inspiration from https://github.com/jsantell/web-audio-automation-timeline
 		 *  @extends {Tone.Param}
 		 *  @param {Number=} value The initial value of the signal
@@ -2585,7 +2585,7 @@
 	        Set: 'set'
 	    };
 	    /**
-		 * The current value of the signal. 
+		 * The current value of the signal.
 		 * @memberOf Tone.TimelineSignal#
 		 * @type {Number}
 		 * @name value
@@ -2609,7 +2609,7 @@
 		 *  @param {Time}  time The time when the change should occur.
 		 *  @returns {Tone.TimelineSignal} this
 		 *  @example
-		 * //set the frequency to "G4" in exactly 1 second from now. 
+		 * //set the frequency to "G4" in exactly 1 second from now.
 		 * freq.setValueAtTime("G4", "+1");
 		 */
 	    Tone.TimelineSignal.prototype.setValueAtTime = function (value, startTime) {
@@ -2625,11 +2625,11 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules a linear continuous change in parameter value from the 
+		 *  Schedules a linear continuous change in parameter value from the
 		 *  previous scheduled parameter value to the given value.
-		 *  
-		 *  @param  {number} value   
-		 *  @param  {Time} endTime 
+		 *
+		 *  @param  {number} value
+		 *  @param  {Time} endTime
 		 *  @returns {Tone.TimelineSignal} this
 		 */
 	    Tone.TimelineSignal.prototype.linearRampToValueAtTime = function (value, endTime) {
@@ -2644,11 +2644,11 @@
 	        return this;
 	    };
 	    /**
-		 *  Schedules an exponential continuous change in parameter value from 
+		 *  Schedules an exponential continuous change in parameter value from
 		 *  the previous scheduled parameter value to the given value.
-		 *  
-		 *  @param  {number} value   
-		 *  @param  {Time} endTime 
+		 *
+		 *  @param  {number} value
+		 *  @param  {Time} endTime
 		 *  @returns {Tone.TimelineSignal} this
 		 */
 	    Tone.TimelineSignal.prototype.exponentialRampToValueAtTime = function (value, endTime) {
@@ -2666,10 +2666,10 @@
 	    /**
 		 *  Start exponentially approaching the target value at the given time with
 		 *  a rate having the given time constant.
-		 *  @param {number} value        
-		 *  @param {Time} startTime    
-		 *  @param {number} timeConstant 
-		 *  @returns {Tone.TimelineSignal} this 
+		 *  @param {number} value
+		 *  @param {Time} startTime
+		 *  @param {number} timeConstant
+		 *  @returns {Tone.TimelineSignal} this
 		 */
 	    Tone.TimelineSignal.prototype.setTargetAtTime = function (value, startTime, timeConstant) {
 	        value = this._fromUnits(value);
@@ -2686,9 +2686,9 @@
 	        return this;
 	    };
 	    /**
-		 *  Cancels all scheduled parameter changes with times greater than or 
+		 *  Cancels all scheduled parameter changes with times greater than or
 		 *  equal to startTime.
-		 *  
+		 *
 		 *  @param  {Time} startTime
 		 *  @returns {Tone.TimelineSignal} this
 		 */
@@ -2700,10 +2700,10 @@
 	    /**
 		 *  Sets the computed value at the given time. This provides
 		 *  a point from which a linear or exponential curve
-		 *  can be scheduled after. Will cancel events after 
+		 *  can be scheduled after. Will cancel events after
 		 *  the given time and shorten the currently scheduled
 		 *  linear or exponential ramp so that it ends at `time` .
-		 *  This is to avoid discontinuities and clicks in envelopes. 
+		 *  This is to avoid discontinuities and clicks in envelopes.
 		 *  @param {Time} time When to set the ramp point
 		 *  @returns {Tone.TimelineSignal} this
 		 */
@@ -2806,12 +2806,12 @@
 	        return value;
 	    };
 	    /**
-		 *  When signals connect to other signals or AudioParams, 
-		 *  they take over the output value of that signal or AudioParam. 
-		 *  For all other nodes, the behavior is the same as a default <code>connect</code>. 
+		 *  When signals connect to other signals or AudioParams,
+		 *  they take over the output value of that signal or AudioParam.
+		 *  For all other nodes, the behavior is the same as a default <code>connect</code>.
 		 *
 		 *  @override
-		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node 
+		 *  @param {AudioParam|AudioNode|Tone.Signal|Tone} node
 		 *  @param {number} [outputNumber=0] The output number to connect from.
 		 *  @param {number} [inputNumber=0] The input number to connect to.
 		 *  @returns {Tone.TimelineSignal} this
@@ -2857,18 +2857,18 @@
 	    return Tone.TimelineSignal;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Pow applies an exponent to the incoming signal. The incoming signal
 		 *         must be AudioRange.
 		 *
 		 *  @extends {Tone.SignalBase}
 		 *  @constructor
-		 *  @param {Positive} exp The exponent to apply to the incoming signal, must be at least 2. 
+		 *  @param {Positive} exp The exponent to apply to the incoming signal, must be at least 2.
 		 *  @example
 		 * var pow = new Tone.Pow(2);
 		 * var sig = new Tone.Signal(0.5).connect(pow);
-		 * //output of pow is 0.25. 
+		 * //output of pow is 0.25.
 		 */
 	    Tone.Pow = function (exp) {
 	        /**
@@ -2923,22 +2923,22 @@
 	    return Tone.Pow;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Envelope is an [ADSR](https://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope)
-		 *          envelope generator. Tone.Envelope outputs a signal which 
-		 *          can be connected to an AudioParam or Tone.Signal. 
+		 *          envelope generator. Tone.Envelope outputs a signal which
+		 *          can be connected to an AudioParam or Tone.Signal.
 		 *          <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/ADSR_parameter.svg">
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
-		 *  @param {Time} [attack] The amount of time it takes for the envelope to go from 
-		 *                         0 to it's maximum value. 
+		 *  @param {Time} [attack] The amount of time it takes for the envelope to go from
+		 *                         0 to it's maximum value.
 		 *  @param {Time} [decay]	The period of time after the attack that it takes for the envelope
-		 *                       	to fall to the sustain value. 
+		 *                       	to fall to the sustain value.
 		 *  @param {NormalRange} [sustain]	The percent of the maximum value that the envelope rests at until
-		 *                                	the release is triggered. 
-		 *  @param {Time} [release]	The amount of time after the release is triggered it takes to reach 0. 
+		 *                                	the release is triggered.
+		 *  @param {Time} [release]	The amount of time after the release is triggered it takes to reach 0.
 		 *  @example
 		 * //an amplitude envelope
 		 * var gainNode = Tone.context.createGain();
@@ -2958,29 +2958,29 @@
 	            'sustain',
 	            'release'
 	        ], Tone.Envelope.defaults);
-	        /** 
+	        /**
 			 *  When triggerAttack is called, the attack time is the amount of
-			 *  time it takes for the envelope to reach it's maximum value. 
+			 *  time it takes for the envelope to reach it's maximum value.
 			 *  @type {Time}
 			 */
 	        this.attack = options.attack;
 	        /**
 			 *  After the attack portion of the envelope, the value will fall
-			 *  over the duration of the decay time to it's sustain value. 
+			 *  over the duration of the decay time to it's sustain value.
 			 *  @type {Time}
 			 */
 	        this.decay = options.decay;
 	        /**
-			 * 	The sustain value is the value 
+			 * 	The sustain value is the value
 			 * 	which the envelope rests at after triggerAttack is
-			 * 	called, but before triggerRelease is invoked. 
+			 * 	called, but before triggerRelease is invoked.
 			 *  @type {NormalRange}
 			 */
 	        this.sustain = options.sustain;
 	        /**
 			 *  After triggerRelease is called, the envelope's
 			 *  value will fall to it's miminum value over the
-			 *  duration of the release time. 
+			 *  duration of the release time.
 			 *  @type {Time}
 			 */
 	        this.release = options.release;
@@ -3034,8 +3034,8 @@
 		 */
 	    Tone.Envelope.prototype._timeMult = 0.25;
 	    /**
-		 * Read the current value of the envelope. Useful for 
-		 * syncronizing visual output to the envelope. 
+		 * Read the current value of the envelope. Useful for
+		 * syncronizing visual output to the envelope.
 		 * @memberOf Tone.Envelope#
 		 * @type {Number}
 		 * @name value
@@ -3047,7 +3047,7 @@
 	        }
 	    });
 	    /**
-		 * The slope of the attack. Either "linear" or "exponential". 
+		 * The slope of the attack. Either "linear" or "exponential".
 		 * @memberOf Tone.Envelope#
 		 * @type {string}
 		 * @name attackCurve
@@ -3087,7 +3087,7 @@
 	        }
 	    });
 	    /**
-		 *  Trigger the attack/decay portion of the ADSR envelope. 
+		 *  Trigger the attack/decay portion of the ADSR envelope.
 		 *  @param  {Time} [time=now] When the attack should start.
 		 *  @param {NormalRange} [velocity=1] The velocity of the envelope scales the vales.
 		 *                               number between 0-1
@@ -3116,7 +3116,7 @@
 	    };
 	    /**
 		 *  Triggers the release of the envelope.
-		 *  @param  {Time} [time=now] When the release portion of the envelope should start. 
+		 *  @param  {Time} [time=now] When the release portion of the envelope should start.
 		 *  @returns {Tone.Envelope} this
 		 *  @example
 		 *  //trigger release immediately
@@ -3135,10 +3135,10 @@
 	    };
 	    /**
 		 *  triggerAttackRelease is shorthand for triggerAttack, then waiting
-		 *  some duration, then triggerRelease. 
+		 *  some duration, then triggerRelease.
 		 *  @param {Time} duration The duration of the sustain.
 		 *  @param {Time} [time=now] When the attack should be triggered.
-		 *  @param {number} [velocity=1] The velocity of the envelope. 
+		 *  @param {number} [velocity=1] The velocity of the envelope.
 		 *  @returns {Tone.Envelope} this
 		 *  @example
 		 * //trigger the attack and then the release after 0.6 seconds.
@@ -3151,7 +3151,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Borrows the connect method from Tone.Signal. 
+		 *  Borrows the connect method from Tone.Signal.
 		 *  @function
 		 *  @private
 		 */
@@ -3167,7 +3167,7 @@
 	        return this;
 	    };
 	    /**
-		 *  The phase of the envelope. 
+		 *  The phase of the envelope.
 		 *  @enum {string}
 		 */
 	    Tone.Envelope.Phase = {
@@ -3178,7 +3178,7 @@
 	        Standby: 'standby'
 	    };
 	    /**
-		 *  The phase of the envelope. 
+		 *  The phase of the envelope.
 		 *  @enum {string}
 		 */
 	    Tone.Envelope.Type = {
@@ -3188,22 +3188,22 @@
 	    return Tone.Envelope;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.AmplitudeEnvelope is a Tone.Envelope connected to a gain node. 
+		 *  @class  Tone.AmplitudeEnvelope is a Tone.Envelope connected to a gain node.
 		 *          Unlike Tone.Envelope, which outputs the envelope's value, Tone.AmplitudeEnvelope accepts
 		 *          an audio signal as the input and will apply the envelope to the amplitude
 		 *          of the signal. Read more about ADSR Envelopes on [Wikipedia](https://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope).
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Envelope}
-		 *  @param {Time|Object} [attack] The amount of time it takes for the envelope to go from 
-		 *                               0 to it's maximum value. 
+		 *  @param {Time|Object} [attack] The amount of time it takes for the envelope to go from
+		 *                               0 to it's maximum value.
 		 *  @param {Time} [decay]	The period of time after the attack that it takes for the envelope
-		 *                       	to fall to the sustain value. 
+		 *                       	to fall to the sustain value.
 		 *  @param {NormalRange} [sustain]	The percent of the maximum value that the envelope rests at until
-		 *                                	the release is triggered. 
-		 *  @param {Time} [release]	The amount of time after the release is triggered it takes to reach 0. 
+		 *                                	the release is triggered.
+		 *  @param {Time} [release]	The amount of time after the release is triggered it takes to reach 0.
 		 *  @example
 		 * var ampEnv = new Tone.AmplitudeEnvelope({
 		 * 	"attack": 0.1,
@@ -3240,15 +3240,15 @@
 	    return Tone.AmplitudeEnvelope;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Wrapper around the native Web Audio's 
+		 *  @class  Wrapper around the native Web Audio's
 		 *          [AnalyserNode](http://webaudio.github.io/web-audio-api/#idl-def-AnalyserNode).
 		 *          Extracts FFT or Waveform data from the incoming signal.
 		 *  @extends {Tone}
-		 *  @param {Number=} size The size of the FFT. Value must be a power of 
+		 *  @param {Number=} size The size of the FFT. Value must be a power of
 		 *                       two in the range 32 to 32768.
-		 *  @param {String=} type The return type of the analysis, either "fft", or "waveform". 
+		 *  @param {String=} type The return type of the analysis, either "fft", or "waveform".
 		 */
 	    Tone.Analyser = function () {
 	        var options = this.optionsObject(arguments, [
@@ -3317,8 +3317,8 @@
 	        Float: 'float'
 	    };
 	    /**
-		 *  Run the analysis given the current settings and return the 
-		 *  result as a TypedArray. 
+		 *  Run the analysis given the current settings and return the
+		 *  result as a TypedArray.
 		 *  @returns {TypedArray}
 		 */
 	    Tone.Analyser.prototype.analyse = function () {
@@ -3353,9 +3353,9 @@
 	        }
 	    });
 	    /**
-		 *  The return type of Tone.Analyser.value, either "byte" or "float". 
+		 *  The return type of Tone.Analyser.value, either "byte" or "float".
 		 *  When the type is set to "byte" the range of values returned in the array
-		 *  are between 0-255, when set to "float" the values are between 0-1. 
+		 *  are between 0-255, when set to "float" the values are between 0-1.
 		 *  @memberOf Tone.Analyser#
 		 *  @type {String}
 		 *  @name type
@@ -3376,7 +3376,7 @@
 	        }
 	    });
 	    /**
-		 *  The analysis function returned by Tone.Analyser.value, either "fft" or "waveform". 
+		 *  The analysis function returned by Tone.Analyser.value, either "fft" or "waveform".
 		 *  @memberOf Tone.Analyser#
 		 *  @type {String}
 		 *  @name type
@@ -3407,7 +3407,7 @@
 	        }
 	    });
 	    /**
-		 *  The smallest decibel value which is analysed by the FFT. 
+		 *  The smallest decibel value which is analysed by the FFT.
 		 *  @memberOf Tone.Analyser#
 		 *  @type {Decibels}
 		 *  @name minDecibels
@@ -3421,7 +3421,7 @@
 	        }
 	    });
 	    /**
-		 *  The largest decibel value which is analysed by the FFT. 
+		 *  The largest decibel value which is analysed by the FFT.
 		 *  @memberOf Tone.Analyser#
 		 *  @type {Decibels}
 		 *  @name maxDecibels
@@ -3447,12 +3447,12 @@
 	    return Tone.Analyser;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Compressor is a thin wrapper around the Web Audio 
+		 *  @class Tone.Compressor is a thin wrapper around the Web Audio
 		 *         [DynamicsCompressorNode](http://webaudio.github.io/web-audio-api/#the-dynamicscompressornode-interface).
-		 *         Compression reduces the volume of loud sounds or amplifies quiet sounds 
-		 *         by narrowing or "compressing" an audio signal's dynamic range. 
+		 *         Compression reduces the volume of loud sounds or amplifies quiet sounds
+		 *         by narrowing or "compressing" an audio signal's dynamic range.
 		 *         Read more on [Wikipedia](https://en.wikipedia.org/wiki/Dynamic_range_compression).
 		 *
 		 *  @extends {Tone}
@@ -3553,17 +3553,17 @@
 	    return Tone.Compressor;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Add a signal and a number or two signals. When no value is
 		 *         passed into the constructor, Tone.Add will sum <code>input[0]</code>
-		 *         and <code>input[1]</code>. If a value is passed into the constructor, 
+		 *         and <code>input[1]</code>. If a value is passed into the constructor,
 		 *         the it will be added to the input.
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
 		 *  @param {number=} value If no value is provided, Tone.Add will sum the first
-		 *                         and second inputs. 
+		 *                         and second inputs.
 		 *  @example
 		 * var signal = new Tone.Signal(2);
 		 * var add = new Tone.Add(2);
@@ -3575,7 +3575,7 @@
 		 * var add = new Tone.Add();
 		 * var sig0 = new Tone.Signal(3).connect(add, 0, 0);
 		 * var sig1 = new Tone.Signal(4).connect(add, 0, 1);
-		 * //the output of add equals 7. 
+		 * //the output of add equals 7.
 		 */
 	    Tone.Add = function (value) {
 	        Tone.call(this, 2, 0);
@@ -3608,10 +3608,10 @@
 	    return Tone.Add;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Multiply two incoming signals. Or, if a number is given in the constructor, 
-		 *          multiplies the incoming signal by that value. 
+		 *  @class  Multiply two incoming signals. Or, if a number is given in the constructor,
+		 *          multiplies the incoming signal by that value.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
@@ -3627,14 +3627,14 @@
 		 *  @example
 		 * var mult = new Tone.Multiply(10);
 		 * var sig = new Tone.Signal(2).connect(mult);
-		 * //the output of mult is 20. 
+		 * //the output of mult is 20.
 		 */
 	    Tone.Multiply = function (value) {
 	        Tone.call(this, 2, 0);
 	        /**
 			 *  the input node is the same as the output node
 			 *  it is also the GainNode which handles the scaling of incoming signal
-			 *  
+			 *
 			 *  @type {GainNode}
 			 *  @private
 			 */
@@ -3662,7 +3662,7 @@
 	    return Tone.Multiply;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Negate the incoming signal. i.e. an input signal of 10 will output -10
 		 *
@@ -3671,7 +3671,7 @@
 		 *  @example
 		 * var neg = new Tone.Negate();
 		 * var sig = new Tone.Signal(-2).connect(neg);
-		 * //output of neg is positive 2. 
+		 * //output of neg is positive 2.
 		 */
 	    Tone.Negate = function () {
 	        /**
@@ -3695,10 +3695,10 @@
 	    return Tone.Negate;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Subtract the signal connected to <code>input[1]</code> from the signal connected 
-		 *         to <code>input[0]</code>. If an argument is provided in the constructor, the 
+		 *  @class Subtract the signal connected to <code>input[1]</code> from the signal connected
+		 *         to <code>input[0]</code>. If an argument is provided in the constructor, the
 		 *         signals <code>.value</code> will be subtracted from the incoming signal.
 		 *
 		 *  @extends {Tone.Signal}
@@ -3708,7 +3708,7 @@
 		 *  @example
 		 * var sub = new Tone.Subtract(1);
 		 * var sig = new Tone.Signal(4).connect(sub);
-		 * //the output of sub is 3. 
+		 * //the output of sub is 3.
 		 *  @example
 		 * var sub = new Tone.Subtract();
 		 * var sigA = new Tone.Signal(10);
@@ -3758,18 +3758,18 @@
 	    return Tone.Subtract;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  GreaterThanZero outputs 1 when the input is strictly greater than zero
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @example
 		 * var gt0 = new Tone.GreaterThanZero();
 		 * var sig = new Tone.Signal(0.01).connect(gt0);
-		 * //the output of gt0 is 1. 
+		 * //the output of gt0 is 1.
 		 * sig.value = 0;
-		 * //the output of gt0 is 0. 
+		 * //the output of gt0 is 0.
 		 */
 	    Tone.GreaterThanZero = function () {
 	        /**
@@ -3809,17 +3809,17 @@
 	    return Tone.GreaterThanZero;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  EqualZero outputs 1 when the input is equal to 
-		 *          0 and outputs 0 otherwise. 
-		 *  
+		 *  @class  EqualZero outputs 1 when the input is equal to
+		 *          0 and outputs 0 otherwise.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @example
 		 * var eq0 = new Tone.EqualZero();
 		 * var sig = new Tone.Signal(0).connect(eq0);
-		 * //the output of eq0 is 1. 
+		 * //the output of eq0 is 1.
 		 */
 	    Tone.EqualZero = function () {
 	        /**
@@ -3866,24 +3866,24 @@
 	    return Tone.EqualZero;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Output 1 if the signal is equal to the value, otherwise outputs 0. 
+		 *  @class  Output 1 if the signal is equal to the value, otherwise outputs 0.
 		 *          Can accept two signals if connected to inputs 0 and 1.
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @param {number=} value The number to compare the incoming signal to
 		 *  @example
 		 * var eq = new Tone.Equal(3);
 		 * var sig = new Tone.Signal(3).connect(eq);
-		 * //the output of eq is 1. 
+		 * //the output of eq is 1.
 		 */
 	    Tone.Equal = function (value) {
 	        Tone.call(this, 2, 0);
 	        /**
 			 *  subtract the value from the incoming signal
-			 *  
+			 *
 			 *  @type {Tone.Add}
 			 *  @private
 			 */
@@ -3926,9 +3926,9 @@
 	    return Tone.Equal;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Select between any number of inputs, sending the one 
+		 *  @class Select between any number of inputs, sending the one
 		 *         selected by the gate signal to the output
 		 *
 		 *  @constructor
@@ -3964,7 +3964,7 @@
 	    Tone.extend(Tone.Select, Tone.SignalBase);
 	    /**
 		 *  Open a specific input and close the others.
-		 *  @param {number} which The gate to open. 
+		 *  @param {number} which The gate to open.
 		 *  @param {Time} [time=now] The time when the switch will open
 		 *  @returns {Tone.Select} this
 		 *  @example
@@ -4030,12 +4030,12 @@
 	    return Tone.Select;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class IfThenElse has three inputs. When the first input (if) is true (i.e. === 1), 
-		 *         then it will pass the second input (then) through to the output, otherwise, 
-		 *         if it's not true (i.e. === 0) then it will pass the third input (else) 
-		 *         through to the output. 
+		 *  @class IfThenElse has three inputs. When the first input (if) is true (i.e. === 1),
+		 *         then it will pass the second input (then) through to the output, otherwise,
+		 *         if it's not true (i.e. === 0) then it will pass the third input (else)
+		 *         through to the output.
 		 *
 		 *  @extends {Tone.SignalBase}
 		 *  @constructor
@@ -4078,10 +4078,10 @@
 	    return Tone.IfThenElse;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class [OR](https://en.wikipedia.org/wiki/OR_gate)
-		 *         the inputs together. True if at least one of the inputs is true. 
+		 *         the inputs together. True if at least one of the inputs is true.
 		 *
 		 *  @extends {Tone.SignalBase}
 		 *  @constructor
@@ -4091,7 +4091,7 @@
 		 * var sigA = new Tone.Signal(0)connect(or, 0, 0);
 		 * var sigB = new Tone.Signal(1)connect(or, 0, 1);
 		 * //output of or is 1 because at least
-		 * //one of the inputs is equal to 1. 
+		 * //one of the inputs is equal to 1.
 		 */
 	    Tone.OR = function (inputCount) {
 	        inputCount = this.defaultArg(inputCount, 2);
@@ -4129,7 +4129,7 @@
 	    return Tone.OR;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class [AND](https://en.wikipedia.org/wiki/Logical_conjunction)
 		 *         returns 1 when all the inputs are equal to 1 and returns 0 otherwise.
@@ -4142,7 +4142,7 @@
 		 * var and = new Tone.AND(2);
 		 * var sigA = new Tone.Signal(0).connect(and, 0, 0);
 		 * var sigB = new Tone.Signal(1).connect(and, 0, 1);
-		 * //the output of and is 0. 
+		 * //the output of and is 0.
 		 */
 	    Tone.AND = function (inputCount) {
 	        inputCount = this.defaultArg(inputCount, 2);
@@ -4171,17 +4171,17 @@
 	    return Tone.AND;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Just an alias for Tone.EqualZero, but has the same effect as a NOT operator. 
-		 *          Outputs 1 when input equals 0. 
-		 *  
+		 *  @class  Just an alias for Tone.EqualZero, but has the same effect as a NOT operator.
+		 *          Outputs 1 when input equals 0.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @example
 		 * var not = new Tone.NOT();
 		 * var sig = new Tone.Signal(1).connect(not);
-		 * //output of not equals 0. 
+		 * //output of not equals 0.
 		 * sig.value = 0;
 		 * //output of not equals 1.
 		 */
@@ -4189,18 +4189,18 @@
 	    return Tone.NOT;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Output 1 if the signal is greater than the value, otherwise outputs 0.
-		 *          can compare two signals or a signal and a number. 
-		 *  
+		 *          can compare two signals or a signal and a number.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
 		 *  @param {number} [value=0] the value to compare to the incoming signal
 		 *  @example
 		 * var gt = new Tone.GreaterThan(2);
 		 * var sig = new Tone.Signal(4).connect(gt);
-		 * //output of gt is equal 1. 
+		 * //output of gt is equal 1.
 		 */
 	    Tone.GreaterThan = function (value) {
 	        Tone.call(this, 2, 0);
@@ -4236,15 +4236,15 @@
 	    return Tone.GreaterThan;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Output 1 if the signal is less than the value, otherwise outputs 0.
-		 *          Can compare two signals or a signal and a number. 
-		 *  
+		 *          Can compare two signals or a signal and a number.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
-		 *  @param {number=} value The value to compare to the incoming signal. 
-		 *                            If no value is provided, it will compare 
+		 *  @param {number=} value The value to compare to the incoming signal.
+		 *                            If no value is provided, it will compare
 		 *                            <code>input[0]</code> and <code>input[1]</code>
 		 *  @example
 		 * var lt = new Tone.LessThan(2);
@@ -4302,17 +4302,17 @@
 	    return Tone.LessThan;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Return the absolute value of an incoming signal. 
-		 *  
+		 *  @class Return the absolute value of an incoming signal.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @example
 		 * var signal = new Tone.Signal(-1);
 		 * var abs = new Tone.Abs();
 		 * signal.connect(abs);
-		 * //the output of abs is 1. 
+		 * //the output of abs is 1.
 		 */
 	    Tone.Abs = function () {
 	        Tone.call(this, 1, 0);
@@ -4356,15 +4356,15 @@
 	    return Tone.Abs;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 * 	@class  Outputs the greater of two signals. If a number is provided in the constructor
-		 * 	        it will use that instead of the signal. 
-		 * 	
+		 * 	        it will use that instead of the signal.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
 		 *  @param {number=} max Max value if provided. if not provided, it will use the
-		 *                       signal value from input 1. 
+		 *                       signal value from input 1.
 		 *  @example
 		 * var max = new Tone.Max(2);
 		 * var sig = new Tone.Signal(3).connect(max);
@@ -4422,11 +4422,11 @@
 	    return Tone.Max;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 * 	@class  Outputs the lesser of two signals. If a number is given 
-		 * 	        in the constructor, it will use a signal and a number. 
-		 * 	
+		 * 	@class  Outputs the lesser of two signals. If a number is given
+		 * 	        in the constructor, it will use a signal and a number.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Signal}
 		 *  @param {number} min The minimum to compare to the incoming signal
@@ -4487,10 +4487,10 @@
 	    return Tone.Min;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Signal-rate modulo operator. Only works in AudioRange [-1, 1] and for modulus
-		 *         values in the NormalRange. 
+		 *         values in the NormalRange.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
@@ -4503,7 +4503,7 @@
 	    Tone.Modulo = function (modulus) {
 	        Tone.call(this, 1, 1);
 	        /**
-			 *  A waveshaper gets the integer multiple of 
+			 *  A waveshaper gets the integer multiple of
 			 *  the input signal and the modulus.
 			 *  @private
 			 *  @type {Tone.WaveShaper}
@@ -4579,9 +4579,9 @@
 	    return Tone.Modulo;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class AudioToGain converts an input in AudioRange [-1,1] to NormalRange [0,1]. 
+		 *  @class AudioToGain converts an input in AudioRange [-1,1] to NormalRange [0,1].
 		 *         See Tone.GainToAudio.
 		 *
 		 *  @extends {Tone.SignalBase}
@@ -4612,7 +4612,7 @@
 	    return Tone.AudioToGain;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Evaluate an expression at audio rate. <br><br>
 		 *         Parsing code modified from https://code.google.com/p/tapdigit/
@@ -4635,7 +4635,7 @@
 			 */
 	        this._nodes = [];
 	        /**
-			 *  The inputs. The length is determined by the expression. 
+			 *  The inputs. The length is determined by the expression.
 			 *  @type {Array}
 			 */
 	        this.input = new Array(inputCount);
@@ -4681,9 +4681,9 @@
 	    /*
 		 *  the Expressions that Tone.Expr can parse.
 		 *
-		 *  each expression belongs to a group and contains a regexp 
+		 *  each expression belongs to a group and contains a regexp
 		 *  for selecting the operator as well as that operators method
-		 *  
+		 *
 		 *  @type {Object}
 		 *  @private
 		 */
@@ -4861,7 +4861,7 @@
 	    };
 	    /**
 		 *  tokenize the expression based on the Expressions object
-		 *  @param   {string} expr 
+		 *  @param   {string} expr
 		 *  @return  {Object}      returns two methods on the tokenized list, next and peek
 		 *  @private
 		 */
@@ -4903,8 +4903,8 @@
 	    };
 	    /**
 		 *  recursively parse the string expression into a syntax tree
-		 *  
-		 *  @param   {string} expr 
+		 *
+		 *  @param   {string} expr
 		 *  @return  {Object}
 		 *  @private
 		 */
@@ -5041,7 +5041,7 @@
 	    };
 	    /**
 		 *  recursively evaluate the expression tree
-		 *  @param   {Object} tree 
+		 *  @param   {Object} tree
 		 *  @return  {AudioNode}      the resulting audio node from the expression
 		 *  @private
 		 */
@@ -5079,7 +5079,7 @@
 	    return Tone.Expr;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Convert an incoming signal between 0, 1 to an equal power gain scale.
 		 *
@@ -5116,9 +5116,9 @@
 	    return Tone.EqualPowerGain;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 * @class  Tone.Crossfade provides equal power fading between two inputs. 
+		 * @class  Tone.Crossfade provides equal power fading between two inputs.
 		 *         More on crossfading technique [here](https://en.wikipedia.org/wiki/Fade_(audio_engineering)#Crossfading).
 		 *
 		 * @constructor
@@ -5137,24 +5137,24 @@
 		 * crossFade.fade.value = 1;
 		 * // ^ only effectB is output
 		 * crossFade.fade.value = 0.5;
-		 * // ^ the two signals are mixed equally. 
+		 * // ^ the two signals are mixed equally.
 		 */
 	    Tone.CrossFade = function (initialFade) {
 	        Tone.call(this, 2, 1);
 	        /**
-			 *  Alias for <code>input[0]</code>. 
+			 *  Alias for <code>input[0]</code>.
 			 *  @type {GainNode}
 			 */
 	        this.a = this.input[0] = this.context.createGain();
 	        /**
-			 *  Alias for <code>input[1]</code>. 
+			 *  Alias for <code>input[1]</code>.
 			 *  @type {GainNode}
 			 */
 	        this.b = this.input[1] = this.context.createGain();
 	        /**
 			 * 	The mix between the two inputs. A fade value of 0
-			 * 	will output 100% <code>input[0]</code> and 
-			 * 	a value of 1 will output 100% <code>input[1]</code>. 
+			 * 	will output 100% <code>input[0]</code> and
+			 * 	a value of 1 will output 100% <code>input[1]</code>.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -5209,12 +5209,12 @@
 	    return Tone.CrossFade;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Filter is a filter which allows for all of the same native methods
-		 *          as the [BiquadFilterNode](http://webaudio.github.io/web-audio-api/#the-biquadfilternode-interface). 
-		 *          Tone.Filter has the added ability to set the filter rolloff at -12 
-		 *          (default), -24 and -48. 
+		 *          as the [BiquadFilterNode](http://webaudio.github.io/web-audio-api/#the-biquadfilternode-interface).
+		 *          Tone.Filter has the added ability to set the filter rolloff at -12
+		 *          (default), -24 and -48.
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
@@ -5239,7 +5239,7 @@
 			 */
 	        this._filters = [];
 	        /**
-			 *  The cutoff frequency of the filter. 
+			 *  The cutoff frequency of the filter.
 			 *  @type {Frequency}
 			 *  @signal
 			 */
@@ -5301,8 +5301,8 @@
 	        'gain': 0
 	    };
 	    /**
-		 * The type of the filter. Types: "lowpass", "highpass", 
-		 * "bandpass", "lowshelf", "highshelf", "notch", "allpass", or "peaking". 
+		 * The type of the filter. Types: "lowpass", "highpass",
+		 * "bandpass", "lowshelf", "highshelf", "notch", "allpass", or "peaking".
 		 * @memberOf Tone.Filter#
 		 * @type {string}
 		 * @name type
@@ -5380,7 +5380,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @return {Tone.Filter} this
 		 */
 	    Tone.Filter.prototype.dispose = function () {
@@ -5409,10 +5409,10 @@
 	    return Tone.Filter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Split the incoming signal into three bands (low, mid, high)
-		 *         with two crossover frequency controls. 
+		 *         with two crossover frequency controls.
 		 *
 		 *  @extends {Tone}
 		 *  @constructor
@@ -5538,14 +5538,14 @@
 	    return Tone.MultibandSplit;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.EQ3 is a three band EQ with control over low, mid, and high gain as
 		 *         well as the low and high crossover frequencies.
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
-		 *  
+		 *
 		 *  @param {Decibels|Object} [lowLevel] The gain applied to the lows.
 		 *  @param {Decibels} [midLevel] The gain applied to the mid.
 		 *  @param {Decibels} [highLevel] The gain applied to the high.
@@ -5610,19 +5610,19 @@
 			 */
 	        this.high = this._highGain.gain;
 	        /**
-			 *  The Q value for all of the filters. 
+			 *  The Q value for all of the filters.
 			 *  @type {Positive}
 			 *  @signal
 			 */
 	        this.Q = this._multibandSplit.Q;
 	        /**
-			 *  The low/mid crossover frequency. 
+			 *  The low/mid crossover frequency.
 			 *  @type {Frequency}
 			 *  @signal
 			 */
 	        this.lowFrequency = this._multibandSplit.lowFrequency;
 	        /**
-			 *  The mid/high crossover frequency. 
+			 *  The mid/high crossover frequency.
 			 *  @type {Frequency}
 			 *  @signal
 			 */
@@ -5682,7 +5682,7 @@
 	    return Tone.EQ3;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Performs a linear scaling on an input signal.
 		 *          Scales a NormalRange input to between
@@ -5690,31 +5690,31 @@
 		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
-		 *  @param {number} [outputMin=0] The output value when the input is 0. 
-		 *  @param {number} [outputMax=1]	The output value when the input is 1. 
+		 *  @param {number} [outputMin=0] The output value when the input is 0.
+		 *  @param {number} [outputMax=1]	The output value when the input is 1.
 		 *  @example
 		 * var scale = new Tone.Scale(50, 100);
 		 * var signal = new Tone.Signal(0.5).connect(scale);
 		 * //the output of scale equals 75
 		 */
 	    Tone.Scale = function (outputMin, outputMax) {
-	        /** 
+	        /**
 			 *  @private
 			 *  @type {number}
 			 */
 	        this._outputMin = this.defaultArg(outputMin, 0);
-	        /** 
+	        /**
 			 *  @private
 			 *  @type {number}
 			 */
 	        this._outputMax = this.defaultArg(outputMax, 1);
-	        /** 
+	        /**
 			 *  @private
 			 *  @type {Tone.Multiply}
 			 *  @private
 			 */
 	        this._scale = this.input = new Tone.Multiply(1);
-	        /** 
+	        /**
 			 *  @private
 			 *  @type {Tone.Add}
 			 *  @private
@@ -5725,8 +5725,8 @@
 	    };
 	    Tone.extend(Tone.Scale, Tone.SignalBase);
 	    /**
-		 * The minimum output value. This number is output when 
-		 * the value input value is 0. 
+		 * The minimum output value. This number is output when
+		 * the value input value is 0.
 		 * @memberOf Tone.Scale#
 		 * @type {number}
 		 * @name min
@@ -5741,8 +5741,8 @@
 	        }
 	    });
 	    /**
-		 * The maximum output value. This number is output when 
-		 * the value input value is 1. 
+		 * The maximum output value. This number is output when
+		 * the value input value is 1.
 		 * @memberOf Tone.Scale#
 		 * @type {number}
 		 * @name max
@@ -5786,8 +5786,8 @@
 		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
-		 *  @param {number} [outputMin=0] The output value when the input is 0. 
-		 *  @param {number} [outputMax=1]	The output value when the input is 1. 
+		 *  @param {number} [outputMin=0] The output value when the input is 0.
+		 *  @param {number} [outputMax=1]	The output value when the input is 1.
 		 *  @param {number} [exponent=2] The exponent which scales the incoming signal.
 		 *  @example
 		 * var scaleExp = new Tone.ScaleExp(0, 100, 2);
@@ -5810,9 +5810,9 @@
 	    };
 	    Tone.extend(Tone.ScaleExp, Tone.SignalBase);
 	    /**
-		 * Instead of interpolating linearly between the <code>min</code> and 
+		 * Instead of interpolating linearly between the <code>min</code> and
 		 * <code>max</code> values, setting the exponent will interpolate between
-		 * the two values with an exponential curve. 
+		 * the two values with an exponential curve.
 		 * @memberOf Tone.ScaleExp#
 		 * @type {number}
 		 * @name exponent
@@ -5826,8 +5826,8 @@
 	        }
 	    });
 	    /**
-		 * The minimum output value. This number is output when 
-		 * the value input value is 0. 
+		 * The minimum output value. This number is output when
+		 * the value input value is 0.
 		 * @memberOf Tone.ScaleExp#
 		 * @type {number}
 		 * @name min
@@ -5841,8 +5841,8 @@
 	        }
 	    });
 	    /**
-		 * The maximum output value. This number is output when 
-		 * the value input value is 1. 
+		 * The maximum output value. This number is output when
+		 * the value input value is 1.
 		 * @memberOf Tone.ScaleExp#
 		 * @type {number}
 		 * @name max
@@ -5870,15 +5870,15 @@
 	    return Tone.ScaleExp;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Comb filters are basic building blocks for physical modeling. Read more
 		 *         about comb filters on [CCRMA's website](https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html).
 		 *
 		 *  @extends {Tone}
 		 *  @constructor
-		 *  @param {Time|Object} [delayTime] The delay time of the filter. 
-		 *  @param {NormalRange=} resonance The amount of feedback the filter has. 
+		 *  @param {Time|Object} [delayTime] The delay time of the filter.
+		 *  @param {NormalRange=} resonance The amount of feedback the filter has.
 		 */
 	    Tone.FeedbackCombFilter = function () {
 	        Tone.call(this);
@@ -5893,7 +5893,7 @@
 			 */
 	        this._delay = this.input = this.output = this.context.createDelay(1);
 	        /**
-			 *  The amount of delay of the comb filter. 
+			 *  The amount of delay of the comb filter.
 			 *  @type {Time}
 			 *  @signal
 			 */
@@ -5909,7 +5909,7 @@
 			 */
 	        this._feedback = this.context.createGain();
 	        /**
-			 *  The amount of feedback of the delayed signal. 
+			 *  The amount of feedback of the delayed signal.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -5958,19 +5958,19 @@
 	    return Tone.FeedbackCombFilter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.Follower is a  crude envelope follower which will follow 
-		 *          the amplitude of an incoming signal. 
-		 *          Take care with small (< 0.02) attack or decay values 
+		 *  @class  Tone.Follower is a  crude envelope follower which will follow
+		 *          the amplitude of an incoming signal.
+		 *          Take care with small (< 0.02) attack or decay values
 		 *          as follower has some ripple which is exaggerated
-		 *          at these values. Read more about envelope followers (also known 
+		 *          at these values. Read more about envelope followers (also known
 		 *          as envelope detectors) on [Wikipedia](https://en.wikipedia.org/wiki/Envelope_detector).
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone}
 		 *  @param {Time|Object} [attack] The rate at which the follower rises.
-		 *  @param {Time=} release The rate at which the folower falls. 
+		 *  @param {Time=} release The rate at which the folower falls.
 		 *  @example
 		 * var follower = new Tone.Follower(0.2, 0.4);
 		 */
@@ -6047,8 +6047,8 @@
 	    };
 	    /**
 		 *  sets the attack and release times in the wave shaper
-		 *  @param   {Time} attack  
-		 *  @param   {Time} release 
+		 *  @param   {Time} attack
+		 *  @param   {Time} release
 		 *  @private
 		 */
 	    Tone.Follower.prototype._setAttackRelease = function (attack, release) {
@@ -6125,12 +6125,12 @@
 	    return Tone.Follower;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.ScaledEnvelop is an envelope which can be scaled 
-		 *         to any range. It's useful for applying an envelope 
-		 *         to a frequency or any other non-NormalRange signal 
-		 *         parameter. 
+		 *  @class Tone.ScaledEnvelop is an envelope which can be scaled
+		 *         to any range. It's useful for applying an envelope
+		 *         to a frequency or any other non-NormalRange signal
+		 *         parameter.
 		 *
 		 *  @extends {Tone.Envelope}
 		 *  @constructor
@@ -6156,7 +6156,7 @@
 	        ], Tone.Envelope.defaults);
 	        Tone.Envelope.call(this, options);
 	        options = this.defaultArg(options, Tone.ScaledEnvelope.defaults);
-	        /** 
+	        /**
 			 *  scale the incoming signal by an exponent
 			 *  @type {Tone.Pow}
 			 *  @private
@@ -6182,7 +6182,7 @@
 	    };
 	    /**
 		 * The envelope's min output value. This is the value which it
-		 * starts at. 
+		 * starts at.
 		 * @memberOf Tone.ScaledEnvelope#
 		 * @type {number}
 		 * @name min
@@ -6197,7 +6197,7 @@
 	    });
 	    /**
 		 * The envelope's max output value. In other words, the value
-		 * at the peak of the attack portion of the envelope. 
+		 * at the peak of the attack portion of the envelope.
 		 * @memberOf Tone.ScaledEnvelope#
 		 * @type {number}
 		 * @name max
@@ -6211,7 +6211,7 @@
 	        }
 	    });
 	    /**
-		 * The envelope's exponent value. 
+		 * The envelope's exponent value.
 		 * @memberOf Tone.ScaledEnvelope#
 		 * @type {number}
 		 * @name exponent
@@ -6239,10 +6239,10 @@
 	    return Tone.ScaledEnvelope;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.FrequencyEnvelope is a Tone.ScaledEnvelope, but instead of `min` and `max`
-		 *         it's got a `baseFrequency` and `octaves` parameter. 
+		 *         it's got a `baseFrequency` and `octaves` parameter.
 		 *
 		 *  @extends {Tone.Envelope}
 		 *  @constructor
@@ -6289,7 +6289,7 @@
 	    };
 	    /**
 		 * The envelope's mininum output value. This is the value which it
-		 * starts at. 
+		 * starts at.
 		 * @memberOf Tone.FrequencyEnvelope#
 		 * @type {Frequency}
 		 * @name baseFrequency
@@ -6319,7 +6319,7 @@
 	        }
 	    });
 	    /**
-		 * The envelope's exponent value. 
+		 * The envelope's exponent value.
 		 * @memberOf Tone.FrequencyEnvelope#
 		 * @type {number}
 		 * @name exponent
@@ -6343,22 +6343,22 @@
 	    return Tone.FrequencyEnvelope;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.Gate only passes a signal through when the incoming 
-		 *          signal exceeds a specified threshold. To do this, Gate uses 
-		 *          a Tone.Follower to follow the amplitude of the incoming signal. 
+		 *  @class  Tone.Gate only passes a signal through when the incoming
+		 *          signal exceeds a specified threshold. To do this, Gate uses
+		 *          a Tone.Follower to follow the amplitude of the incoming signal.
 		 *          A common implementation of this class is a [Noise Gate](https://en.wikipedia.org/wiki/Noise_gate).
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone}
-		 *  @param {Decibels|Object} [threshold] The threshold above which the gate will open. 
+		 *  @param {Decibels|Object} [threshold] The threshold above which the gate will open.
 		 *  @param {Time=} attack The follower's attack time
 		 *  @param {Time=} release The follower's release time
 		 *  @example
 		 * var gate = new Tone.Gate(-30, 0.2, 0.3).toMaster();
 		 * var mic = new Tone.Microphone().connect(gate);
-		 * //the gate will only pass through the incoming 
+		 * //the gate will only pass through the incoming
 		 * //signal when it's louder than -30db
 		 */
 	    Tone.Gate = function () {
@@ -6437,7 +6437,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Gate} this
 		 */
 	    Tone.Gate.prototype.dispose = function () {
@@ -6451,13 +6451,13 @@
 	    return Tone.Gate;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  A Timeline State. Provides the methods: <code>setStateAtTime("state", time)</code>
 		 *          and <code>getStateAtTime(time)</code>.
 		 *
 		 *  @extends {Tone.Timeline}
-		 *  @param {String} initial The initial state of the TimelineState. 
+		 *  @param {String} initial The initial state of the TimelineState.
 		 *                          Defaults to <code>undefined</code>
 		 */
 	    Tone.TimelineState = function (initial) {
@@ -6499,9 +6499,9 @@
 	    return Tone.TimelineState;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  A sample accurate clock which provides a callback at the given rate. 
+		 *  @class  A sample accurate clock which provides a callback at the given rate.
 		 *          While the callback is not sample-accurate (it is still susceptible to
 		 *          loose JS timing), the time passed in as the argument to the callback
 		 *          is precise. For most applications, it is better to use Tone.Transport
@@ -6533,9 +6533,9 @@
 			 *  of the current time. Scheduling notes in advance improves
 			 *  performance and decreases the chance for clicks caused
 			 *  by scheduling events in the past. If set to "auto",
-			 *  this value will be automatically computed based on the 
+			 *  this value will be automatically computed based on the
 			 *  rate of requestAnimationFrame (0.016 seconds). Larger values
-			 *  will yeild better performance, but at the cost of latency. 
+			 *  will yeild better performance, but at the cost of latency.
 			 *  Values less than 0.016 are not recommended.
 			 *  @type {Number|String}
 			 */
@@ -6572,14 +6572,14 @@
 			 */
 	        this._loopID = -1;
 	        /**
-			 *  The rate the callback function should be invoked. 
+			 *  The rate the callback function should be invoked.
 			 *  @type  {BPM}
 			 *  @signal
 			 */
 	        this.frequency = new Tone.TimelineSignal(options.frequency, Tone.Type.Frequency);
 	        /**
 			 *  The number of times the callback was invoked. Starts counting at 0
-			 *  and increments after the callback was invoked. 
+			 *  and increments after the callback was invoked.
 			 *  @type {Ticks}
 			 *  @readOnly
 			 */
@@ -6629,9 +6629,9 @@
 		 *  of the current time. Scheduling notes in advance improves
 		 *  performance and decreases the chance for clicks caused
 		 *  by scheduling events in the past. If set to "auto",
-		 *  this value will be automatically computed based on the 
+		 *  this value will be automatically computed based on the
 		 *  rate of requestAnimationFrame (0.016 seconds). Larger values
-		 *  will yeild better performance, but at the cost of latency. 
+		 *  will yeild better performance, but at the cost of latency.
 		 *  Values less than 0.016 are not recommended.
 		 *  @type {Number|String}
 		 *  @memberOf Tone.Clock#
@@ -6777,13 +6777,13 @@
 	    return Tone.Clock;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Emitter gives classes which extend it
-		 *         the ability to listen for and trigger events. 
+		 *         the ability to listen for and trigger events.
 		 *         Inspiration and reference from Jerome Etienne's [MicroEvent](https://github.com/jeromeetienne/microevent.js).
 		 *         MIT (c) 2011 Jerome Etienne.
-		 *         
+		 *
 		 *  @extends {Tone}
 		 */
 	    Tone.Emitter = function () {
@@ -6817,7 +6817,7 @@
 	    /**
 		 *  Remove the event listener.
 		 *  @param  {String}    event     The event to stop listening to.
-		 *  @param  {Function=}  callback  The callback which was bound to 
+		 *  @param  {Function=}  callback  The callback which was bound to
 		 *                                the event with Tone.Emitter.on.
 		 *                                If no callback is given, all callbacks
 		 *                                events are removed.
@@ -6844,7 +6844,7 @@
 	    };
 	    /**
 		 *  Invoke all of the callbacks bound to the event
-		 *  with any arguments passed in. 
+		 *  with any arguments passed in.
 		 *  @param  {String}  event  The name of the event.
 		 *  @param {*...} args The arguments to pass to the functions listening.
 		 *  @return  {Tone.Emitter}  this
@@ -6890,10 +6890,10 @@
 	    return Tone.Emitter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Similar to Tone.Timeline, but all events represent
-		 *         intervals with both "time" and "duration" times. The 
+		 *         intervals with both "time" and "duration" times. The
 		 *         events are placed in a tree structure optimized
 		 *         for querying an intersection point with the timeline
 		 *         events. Internally uses an [Interval Tree](https://en.wikipedia.org/wiki/Interval_tree)
@@ -6916,7 +6916,7 @@
 	    };
 	    Tone.extend(Tone.IntervalTimeline);
 	    /**
-		 *  The event to add to the timeline. All events must 
+		 *  The event to add to the timeline. All events must
 		 *  have a time and duration value
 		 *  @param  {Object}  event  The event to add to the timeline
 		 *  @return  {Tone.IntervalTimeline}  this
@@ -6999,8 +6999,8 @@
 	    /**
 		 *  Replace the references to the node in the node's parent
 		 *  with the replacement node.
-		 *  @param  {IntervalNode}  node        
-		 *  @param  {IntervalNode}  replacement 
+		 *  @param  {IntervalNode}  node
+		 *  @param  {IntervalNode}  replacement
 		 *  @private
 		 */
 	    Tone.IntervalTimeline.prototype._replaceNodeInParent = function (node, replacement) {
@@ -7016,7 +7016,7 @@
 	        }
 	    };
 	    /**
-		 *  Remove the node from the tree and replace it with 
+		 *  Remove the node from the tree and replace it with
 		 *  a successor which follows the schema.
 		 *  @param  {IntervalNode}  node
 		 *  @private
@@ -7252,8 +7252,8 @@
 	    /**
 		 *  Represents a node in the binary search tree, with the addition
 		 *  of a "high" value which keeps track of the highest value of
-		 *  its children. 
-		 *  References: 
+		 *  its children.
+		 *  References:
 		 *  https://brooknovak.wordpress.com/2013/12/07/augmented-interval-tree-in-c/
 		 *  http://www.mif.vu.lt/~valdas/ALGORITMAI/LITERATURA/Cormen/Cormen.pdf
 		 *  @param {Number} low
@@ -7278,7 +7278,7 @@
 	        //the number of child nodes
 	        this.height = 0;
 	    };
-	    /** 
+	    /**
 		 *  Insert a node into the correct spot in the tree
 		 *  @param  {IntervalNode}  node
 		 */
@@ -7298,7 +7298,7 @@
 	        }
 	    };
 	    /**
-		 *  Search the tree for nodes which overlap 
+		 *  Search the tree for nodes which overlap
 		 *  with the given point
 		 *  @param  {Number}  point  The point to query
 		 *  @param  {Array}  results  The array to put the results
@@ -7328,7 +7328,7 @@
 	        }
 	    };
 	    /**
-		 *  Search the tree for nodes which are less 
+		 *  Search the tree for nodes which are less
 		 *  than the given point
 		 *  @param  {Number}  point  The point to query
 		 *  @param  {Array}  results  The array to put the results
@@ -7456,17 +7456,17 @@
 	    return Tone.IntervalTimeline;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Transport for timing musical events.
 		 *          Supports tempo curves and time changes. Unlike browser-based timing (setInterval, requestAnimationFrame)
 		 *          Tone.Transport timing events pass in the exact time of the scheduled event
 		 *          in the argument of the callback function. Pass that time value to the object
 		 *          you're scheduling. <br><br>
-		 *          A single transport is created for you when the library is initialized. 
+		 *          A single transport is created for you when the library is initialized.
 		 *          <br><br>
 		 *          The transport emits the events: "start", "stop", "pause", and "loop" which are
-		 *          called with the time of that event as the argument. 
+		 *          called with the time of that event as the argument.
 		 *
 		 *  @extends {Tone.Emitter}
 		 *  @singleton
@@ -7481,7 +7481,7 @@
 		 * 	//do something with the time
 		 * }, 1);
 		 *  @example
-		 * //event fixed to the Transports timeline. 
+		 * //event fixed to the Transports timeline.
 		 * Tone.Transport.setTimeline(function(time){
 		 * 	//do something with the time
 		 * }, "16:0:0");
@@ -7491,18 +7491,18 @@
 	        ///////////////////////////////////////////////////////////////////////
 	        //	LOOPING
 	        //////////////////////////////////////////////////////////////////////
-	        /** 
+	        /**
 			 * 	If the transport loops or not.
 			 *  @type {boolean}
 			 */
 	        this.loop = false;
-	        /** 
+	        /**
 			 * 	The loop start position in ticks
 			 *  @type {Ticks}
 			 *  @private
 			 */
 	        this._loopStart = 0;
-	        /** 
+	        /**
 			 * 	The loop end position in ticks
 			 *  @type {Ticks}
 			 *  @private
@@ -7528,7 +7528,7 @@
 	            'frequency': 0
 	        });
 	        /**
-			 *  The Beats Per Minute of the Transport. 
+			 *  The Beats Per Minute of the Transport.
 			 *  @type {BPM}
 			 *  @signal
 			 *  @example
@@ -7544,7 +7544,7 @@
 	        this._readOnly('bpm');
 	        /**
 			 *  The time signature, or more accurately the numerator
-			 *  of the time signature over a denominator of 4. 
+			 *  of the time signature over a denominator of 4.
 			 *  @type {Number}
 			 *  @private
 			 */
@@ -7582,9 +7582,9 @@
 			 *  @private
 			 */
 	        this._onceEvents = new Tone.Timeline();
-	        /** 
+	        /**
 			 *  All of the synced Signals
-			 *  @private 
+			 *  @private
 			 *  @type {Array}
 			 */
 	        this._syncedSignals = [];
@@ -7668,7 +7668,7 @@
 		 *  Schedule an event along the timeline.
 		 *  @param {Function} callback The callback to be invoked at the time.
 		 *  @param {Time}  time The time to invoke the callback at.
-		 *  @return {Number} The id of the event which can be used for canceling the event. 
+		 *  @return {Number} The id of the event which can be used for canceling the event.
 		 *  @example
 		 * //trigger the callback when the Transport reaches the desired time
 		 * Tone.Transport.schedule(function(time){
@@ -7691,15 +7691,15 @@
 	    /**
 		 *  Schedule a repeated event along the timeline. The event will fire
 		 *  at the `interval` starting at the `startTime` and for the specified
-		 *  `duration`. 
+		 *  `duration`.
 		 *  @param  {Function}  callback   The callback to invoke.
 		 *  @param  {Time}    interval   The duration between successive
 		 *                               callbacks.
 		 *  @param  {Time=}    startTime  When along the timeline the events should
 		 *                               start being invoked.
-		 *  @param {Time} [duration=Infinity] How long the event should repeat. 
+		 *  @param {Time} [duration=Infinity] How long the event should repeat.
 		 *  @return  {Number}    The ID of the scheduled event. Use this to cancel
-		 *                           the event. 
+		 *                           the event.
 		 *  @example
 		 * //a callback invoked every eighth note after the first measure
 		 * Tone.Transport.scheduleRepeat(callback, "8n", "1m");
@@ -7723,12 +7723,12 @@
 	        return id;
 	    };
 	    /**
-		 *  Schedule an event that will be removed after it is invoked. 
-		 *  Note that if the given time is less than the current transport time, 
-		 *  the event will be invoked immediately. 
+		 *  Schedule an event that will be removed after it is invoked.
+		 *  Note that if the given time is less than the current transport time,
+		 *  the event will be invoked immediately.
 		 *  @param {Function} callback The callback to invoke once.
 		 *  @param {Time} time The time the callback should be invoked.
-		 *  @returns {Number} The ID of the scheduled event. 
+		 *  @returns {Number} The ID of the scheduled event.
 		 */
 	    Tone.Transport.prototype.scheduleOnce = function (callback, time) {
 	        var event = {
@@ -7761,7 +7761,7 @@
 		 *  the given time. Repeated events will be removed
 		 *  if their startTime is after the given time
 		 *  @param {Time} [after=0] Clear all events after
-		 *                          this time. 
+		 *                          this time.
 		 *  @returns {Tone.Transport} this
 		 */
 	    Tone.Transport.prototype.cancel = function (after) {
@@ -7776,8 +7776,8 @@
 	    //	QUANTIZATION
 	    ///////////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  Returns the time closest time (equal to or after the given time) that aligns 
-		 *  to the subidivision. 
+		 *  Returns the time closest time (equal to or after the given time) that aligns
+		 *  to the subidivision.
 		 *  @param {Time} time The time value to quantize to the given subdivision
 		 *  @param  {String} [subdivision="4n"] The subdivision to quantize to.
 		 *  @return {Number} 	the time in seconds until the next subdivision.
@@ -7821,7 +7821,7 @@
 		 *  @param  {Time=} offset The timeline offset to start the transport.
 		 *  @returns {Tone.Transport} this
 		 *  @example
-		 * //start the transport in one second starting at beginning of the 5th measure. 
+		 * //start the transport in one second starting at beginning of the 5th measure.
 		 * Tone.Transport.start("+1", "4:0:0");
 		 */
 	    Tone.Transport.prototype.start = function (time, offset) {
@@ -7838,7 +7838,7 @@
 	    };
 	    /**
 		 *  Stop the transport and all sources synced to the transport.
-		 *  @param  {Time} [time=now] The time when the transport should stop. 
+		 *  @param  {Time} [time=now] The time when the transport should stop.
 		 *  @returns {Tone.Transport} this
 		 *  @example
 		 * Tone.Transport.stop();
@@ -7864,7 +7864,7 @@
 	    //	SETTERS/GETTERS
 	    ///////////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  The time signature as just the numerator over 4. 
+		 *  The time signature as just the numerator over 4.
 		 *  For example 4/4 would be just 4 and 6/8 would be 3.
 		 *  @memberOf Tone.Transport#
 		 *  @type {Number|Array}
@@ -7917,9 +7917,9 @@
 	        }
 	    });
 	    /**
-		 *  Set the loop start and stop at the same time. 
-		 *  @param {Time} startPosition 
-		 *  @param {Time} endPosition   
+		 *  Set the loop start and stop at the same time.
+		 *  @param {Time} startPosition
+		 *  @param {Time} endPosition
 		 *  @returns {Tone.Transport} this
 		 *  @example
 		 * //loop over the first measure
@@ -7932,7 +7932,7 @@
 	        return this;
 	    };
 	    /**
-		 *  The swing value. Between 0-1 where 1 equal to 
+		 *  The swing value. Between 0-1 where 1 equal to
 		 *  the note + half the subdivision.
 		 *  @memberOf Tone.Transport#
 		 *  @type {NormalRange}
@@ -7948,10 +7948,10 @@
 	        }
 	    });
 	    /**
-		 *  Set the subdivision which the swing will be applied to. 
-		 *  The default values is a 16th note. Value must be less 
+		 *  Set the subdivision which the swing will be applied to.
+		 *  The default values is a 16th note. Value must be less
 		 *  than a quarter note.
-		 *  
+		 *
 		 *  @memberOf Tone.Transport#
 		 *  @type {Time}
 		 *  @name swingSubdivision
@@ -7966,8 +7966,8 @@
 	    });
 	    /**
 		 *  The Transport's position in MEASURES:BEATS:SIXTEENTHS.
-		 *  Setting the value will jump to that position right away. 
-		 *  
+		 *  Setting the value will jump to that position right away.
+		 *
 		 *  @memberOf Tone.Transport#
 		 *  @type {TransportTime}
 		 *  @name position
@@ -7996,7 +7996,7 @@
 	    });
 	    /**
 		 *  The Transport's loop position as a normalized value. Always
-		 *  returns 0 if the transport if loop is not true. 
+		 *  returns 0 if the transport if loop is not true.
 		 *  @memberOf Tone.Transport#
 		 *  @name progress
 		 *  @type {NormalRange}
@@ -8012,7 +8012,7 @@
 	    });
 	    /**
 		 *  The transports current tick position.
-		 *  
+		 *
 		 *  @memberOf Tone.Transport#
 		 *  @type {Ticks}
 		 *  @name ticks
@@ -8028,9 +8028,9 @@
 	    /**
 		 *  Pulses Per Quarter note. This is the smallest resolution
 		 *  the Transport timing supports. This should be set once
-		 *  on initialization and not set again. Changing this value 
-		 *  after other objects have been created can cause problems. 
-		 *  
+		 *  on initialization and not set again. Changing this value
+		 *  after other objects have been created can cause problems.
+		 *
 		 *  @memberOf Tone.Transport#
 		 *  @type {Number}
 		 *  @name PPQ
@@ -8066,14 +8066,14 @@
 	    //	SYNCING
 	    ///////////////////////////////////////////////////////////////////////////////
 	    /**
-		 *  Attaches the signal to the tempo control signal so that 
+		 *  Attaches the signal to the tempo control signal so that
 		 *  any changes in the tempo will change the signal in the same
-		 *  ratio. 
-		 *  
-		 *  @param  {Tone.Signal} signal 
+		 *  ratio.
+		 *
+		 *  @param  {Tone.Signal} signal
 		 *  @param {number=} ratio Optionally pass in the ratio between
 		 *                         the two signals. Otherwise it will be computed
-		 *                         based on their current values. 
+		 *                         based on their current values.
 		 *  @returns {Tone.Transport} this
 		 */
 	    Tone.Transport.prototype.syncSignal = function (signal, ratio) {
@@ -8096,9 +8096,9 @@
 	        return this;
 	    };
 	    /**
-		 *  Unsyncs a previously synced signal from the transport's control. 
+		 *  Unsyncs a previously synced signal from the transport's control.
 		 *  See Tone.Transport.syncSignal.
-		 *  @param  {Tone.Signal} signal 
+		 *  @param  {Tone.Signal} signal
 		 *  @returns {Tone.Transport} this
 		 */
 	    Tone.Transport.prototype.unsyncSignal = function (signal) {
@@ -8113,7 +8113,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Transport} this
 		 *  @private
 		 */
@@ -8139,7 +8139,7 @@
 		 *  @deprecated Use Tone.scheduleRepeat instead.
 		 *  Set a callback for a recurring event.
 		 *  @param {function} callback
-		 *  @param {Time}   interval 
+		 *  @param {Time}   interval
 		 *  @return {number} the id of the interval
 		 *  @example
 		 *  //triggers a callback every 8th note with the exact time of the event
@@ -8166,11 +8166,11 @@
 	    };
 	    /**
 		 *  @deprecated Use Tone.Note instead.
-		 *  Set a timeout to occur after time from now. NB: the transport must be 
-		 *  running for this to be triggered. All timeout events are cleared when the 
-		 *  transport is stopped. 
+		 *  Set a timeout to occur after time from now. NB: the transport must be
+		 *  running for this to be triggered. All timeout events are cleared when the
+		 *  transport is stopped.
 		 *
-		 *  @param {function} callback 
+		 *  @param {function} callback
 		 *  @param {Time}   time    The time (from now) that the callback will be invoked.
 		 *  @return {number} The id of the timeout.
 		 *  @example
@@ -8199,11 +8199,11 @@
 	    /**
 		 *  @deprecated Use Tone.Note instead.
 		 *  Timeline events are synced to the timeline of the Tone.Transport.
-		 *  Unlike Timeout, Timeline events will restart after the 
-		 *  Tone.Transport has been stopped and restarted. 
+		 *  Unlike Timeout, Timeline events will restart after the
+		 *  Tone.Transport has been stopped and restarted.
 		 *
-		 *  @param {function} 	callback 	
-		 *  @param {Time}  time  
+		 *  @param {function} 	callback
+		 *  @param {Time}  time
 		 *  @return {number} 				the id for clearing the transportTimeline event
 		 *  @example
 		 *  //trigger the start of a part on the 16th measure
@@ -8219,7 +8219,7 @@
 	    /**
 		 *  @deprecated Use Tone.Note instead.
 		 *  Clear the timeline event.
-		 *  @param  {number} id 
+		 *  @param  {number} id
 		 *  @return {boolean} true if it was removed
 		 *  @private
 		 */
@@ -8251,9 +8251,9 @@
 	    return Tone.Transport;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Volume is a simple volume node, useful for creating a volume fader. 
+		 *  @class Tone.Volume is a simple volume node, useful for creating a volume fader.
 		 *
 		 *  @extends {Tone}
 		 *  @constructor
@@ -8271,7 +8271,7 @@
 			 */
 	        this.output = this.input = new Tone.Gain(options.volume, Tone.Type.Decibels);
 	        /**
-			 *  The volume control in decibels. 
+			 *  The volume control in decibels.
 			 *  @type {Decibels}
 			 *  @signal
 			 */
@@ -8301,18 +8301,18 @@
 	    return Tone.Volume;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Base class for sources. Sources have start/stop methods
-		 *          and the ability to be synced to the 
-		 *          start/stop of Tone.Transport. 
+		 *          and the ability to be synced to the
+		 *          start/stop of Tone.Transport.
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
 		 *  @example
 		 * //Multiple state change events can be chained together,
 		 * //but must be set in the correct order and with ascending times
-		 * 
+		 *
 		 * // OK
 		 * state.start().stop("+0.2");
 		 * // AND
@@ -8322,7 +8322,7 @@
 		 * state.stop("+0.2").start();
 		 * // OR
 		 * state.start("+0.3").stop("+0.2");
-		 * 
+		 *
 		 */
 	    Tone.Source = function (options) {
 	        //Sources only have an output and no input
@@ -8396,7 +8396,7 @@
 	        }
 	    });
 	    /**
-		 *  Start the source at the specified time. If no time is given, 
+		 *  Start the source at the specified time. If no time is given,
 		 *  start the source now.
 		 *  @param  {Time} [time=now] When the source should be started.
 		 *  @returns {Tone.Source} this
@@ -8414,9 +8414,9 @@
 	        return this;
 	    };
 	    /**
-		 *  Stop the source at the specified time. If no time is given, 
+		 *  Stop the source at the specified time. If no time is given,
 		 *  stop the source now.
-		 *  @param  {Time} [time=now] When the source should be stopped. 
+		 *  @param  {Time} [time=now] When the source should be stopped.
 		 *  @returns {Tone.Source} this
 		 *  @example
 		 * source.stop(); // stops the source immediately
@@ -8434,15 +8434,15 @@
 	    /**
 		 *  Sync the source to the Transport so that when the transport
 		 *  is started, this source is started and when the transport is stopped
-		 *  or paused, so is the source. 
+		 *  or paused, so is the source.
 		 *
 		 *  @param {Time} [delay=0] Delay time before starting the source after the
-		 *                               Transport has started. 
+		 *                               Transport has started.
 		 *  @returns {Tone.Source} this
 		 *  @example
 		 * //sync the source to start 1 measure after the transport starts
 		 * source.sync("1m");
-		 * //start the transport. the source will start 1 measure later. 
+		 * //start the transport. the source will start 1 measure later.
 		 * Tone.Transport.start();
 		 */
 	    Tone.Source.prototype.sync = function (delay) {
@@ -8481,10 +8481,10 @@
 	    return Tone.Source;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Oscillator supports a number of features including
-		 *         phase rotation, multiple oscillator types (see Tone.Oscillator.type), 
+		 *         phase rotation, multiple oscillator types (see Tone.Oscillator.type),
 		 *         and Transport syncing (see Tone.Oscillator.syncFrequency).
 		 *
 		 *  @constructor
@@ -8577,7 +8577,7 @@
 	    };
 	    /**
 		 *  start the oscillator
-		 *  @param  {Time} [time=now] 
+		 *  @param  {Time} [time=now]
 		 *  @private
 		 */
 	    Tone.Oscillator.prototype._start = function (time) {
@@ -8606,14 +8606,14 @@
 	    };
 	    /**
 		 *  Sync the signal to the Transport's bpm. Any changes to the transports bpm,
-		 *  will also affect the oscillators frequency. 
+		 *  will also affect the oscillators frequency.
 		 *  @returns {Tone.Oscillator} this
 		 *  @example
 		 * Tone.Transport.bpm.value = 120;
 		 * osc.frequency.value = 440;
 		 * //the ration between the bpm and the frequency will be maintained
 		 * osc.syncFrequency();
-		 * Tone.Transport.bpm.value = 240; 
+		 * Tone.Transport.bpm.value = 240;
 		 * // the frequency of the oscillator is doubled to 880
 		 */
 	    Tone.Oscillator.prototype.syncFrequency = function () {
@@ -8621,7 +8621,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Unsync the oscillator's frequency from the Transport. 
+		 *  Unsync the oscillator's frequency from the Transport.
 		 *  See Tone.Oscillator.syncFrequency
 		 *  @returns {Tone.Oscillator} this
 		 */
@@ -8634,11 +8634,11 @@
 		 * setting the first x number of partials of the oscillator. For example: "sine4" would
 		 * set be the first 4 partials of the sine wave and "triangle8" would set the first
 		 * 8 partials of the triangle wave.
-		 * <br><br> 
-		 * Uses PeriodicWave internally even for native types so that it can set the phase. 
-		 * PeriodicWave equations are from the 
+		 * <br><br>
+		 * Uses PeriodicWave internally even for native types so that it can set the phase.
+		 * PeriodicWave equations are from the
 		 * [Webkit Web Audio implementation](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/modules/webaudio/PeriodicWave.cpp&sq=package:chromium).
-		 *  
+		 *
 		 * @memberOf Tone.Oscillator#
 		 * @type {string}
 		 * @name type
@@ -8664,7 +8664,7 @@
 	        }
 	    });
 	    /**
-		 *  Returns the real and imaginary components based 
+		 *  Returns the real and imaginary components based
 		 *  on the oscillator type.
 		 *  @returns {Array} [real, imaginary]
 		 *  @private
@@ -8727,10 +8727,10 @@
 	        ];
 	    };
 	    /**
-		 *  Compute the inverse FFT for a given phase.	
+		 *  Compute the inverse FFT for a given phase.
 		 *  @param  {Float32Array}  real
-		 *  @param  {Float32Array}  imag 
-		 *  @param  {NormalRange}  phase 
+		 *  @param  {Float32Array}  imag
+		 *  @param  {NormalRange}  phase
 		 *  @return  {AudioRange}
 		 *  @private
 		 */
@@ -8760,12 +8760,12 @@
 	        return -this._inverseFFT(real, imag, this._phase) / maxValue;
 	    };
 	    /**
-		 * The partials of the waveform. A partial represents 
-		 * the amplitude at a harmonic. The first harmonic is the 
+		 * The partials of the waveform. A partial represents
+		 * the amplitude at a harmonic. The first harmonic is the
 		 * fundamental frequency, the second is the octave and so on
-		 * following the harmonic series. 
-		 * Setting this value will automatically set the type to "custom". 
-		 * The value is an empty array when the type is not "custom". 
+		 * following the harmonic series.
+		 * Setting this value will automatically set the type to "custom".
+		 * The value is an empty array when the type is not "custom".
 		 * @memberOf Tone.Oscillator#
 		 * @type {Array}
 		 * @name partials
@@ -8786,7 +8786,7 @@
 	        }
 	    });
 	    /**
-		 * The phase of the oscillator in degrees. 
+		 * The phase of the oscillator in degrees.
 		 * @memberOf Tone.Oscillator#
 		 * @type {Degrees}
 		 * @name phase
@@ -8828,19 +8828,19 @@
 	    return Tone.Oscillator;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  LFO stands for low frequency oscillator. Tone.LFO produces an output signal 
-		 *          which can be attached to an AudioParam or Tone.Signal 
-		 *          in order to modulate that parameter with an oscillator. The LFO can 
+		 *  @class  LFO stands for low frequency oscillator. Tone.LFO produces an output signal
+		 *          which can be attached to an AudioParam or Tone.Signal
+		 *          in order to modulate that parameter with an oscillator. The LFO can
 		 *          also be synced to the transport to start/stop and change when the tempo changes.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Oscillator}
 		 *  @param {Frequency|Object} [frequency] The frequency of the oscillation. Typically, LFOs will be
-		 *                               in the frequency range of 0.1 to 10 hertz. 
-		 *  @param {number=} min The minimum output value of the LFO. 
-		 *  @param {number=} max The maximum value of the LFO. 
+		 *                               in the frequency range of 0.1 to 10 hertz.
+		 *  @param {number=} min The minimum output value of the LFO.
+		 *  @param {number=} max The maximum value of the LFO.
 		 *  @example
 		 * var lfo = new Tone.LFO("4n", 400, 4000);
 		 * lfo.connect(filter.frequency);
@@ -8851,8 +8851,8 @@
 	            'min',
 	            'max'
 	        ], Tone.LFO.defaults);
-	        /** 
-			 *  The oscillator. 
+	        /**
+			 *  The oscillator.
 			 *  @type {Tone.Oscillator}
 			 *  @private
 			 */
@@ -8868,9 +8868,9 @@
 	        this.frequency = this._oscillator.frequency;
 	        /**
 			 * The amplitude of the LFO, which controls the output range between
-			 * the min and max output. For example if the min is -10 and the max 
+			 * the min and max output. For example if the min is -10 and the max
 			 * is 10, setting the amplitude to 0.5 would make the LFO modulate
-			 * between -5 and 5. 
+			 * between -5 and 5.
 			 * @type {Number}
 			 * @signal
 			 */
@@ -8890,18 +8890,18 @@
 			 */
 	        this._stoppedValue = 0;
 	        /**
-			 *  @type {Tone.AudioToGain} 
+			 *  @type {Tone.AudioToGain}
 			 *  @private
 			 */
 	        this._a2g = new Tone.AudioToGain();
 	        /**
-			 *  @type {Tone.Scale} 
+			 *  @type {Tone.Scale}
 			 *  @private
 			 */
 	        this._scaler = this.output = new Tone.Scale(options.min, options.max);
 	        /**
 			 *  the units of the LFO (used for converting)
-			 *  @type {Tone.Type} 
+			 *  @type {Tone.Type}
 			 *  @private
 			 */
 	        this._units = Tone.Type.Default;
@@ -8933,7 +8933,7 @@
 	        'units': Tone.Type.Default
 	    };
 	    /**
-		 *  Start the LFO. 
+		 *  Start the LFO.
 		 *  @param  {Time} [time=now] the time the LFO will start
 		 *  @returns {Tone.LFO} this
 		 */
@@ -8944,7 +8944,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Stop the LFO. 
+		 *  Stop the LFO.
 		 *  @param  {Time} [time=now] the time the LFO will stop
 		 *  @returns {Tone.LFO} this
 		 */
@@ -8955,7 +8955,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Sync the start/stop/pause to the transport 
+		 *  Sync the start/stop/pause to the transport
 		 *  and the frequency to the bpm of the transport
 		 *
 		 *  @param {Time} [delay=0] the time to delay the start of the
@@ -8964,7 +8964,7 @@
 		 *  @example
 		 *  lfo.frequency.value = "8n";
 		 *  lfo.sync();
-		 *  //the rate of the LFO will always be an eighth note, 
+		 *  //the rate of the LFO will always be an eighth note,
 		 *  //even as the tempo changes
 		 */
 	    Tone.LFO.prototype.sync = function (delay) {
@@ -9012,7 +9012,7 @@
 	        }
 	    });
 	    /**
-		 * The type of the oscillator: sine, square, sawtooth, triangle. 
+		 * The type of the oscillator: sine, square, sawtooth, triangle.
 		 * @memberOf Tone.LFO#
 		 * @type {string}
 		 * @name type
@@ -9075,10 +9075,10 @@
 	        }
 	    });
 	    /**
-		 *  Connect the output of the LFO to an AudioParam, AudioNode, or Tone Node. 
-		 *  Tone.LFO will automatically convert to the destination units of the 
+		 *  Connect the output of the LFO to an AudioParam, AudioNode, or Tone Node.
+		 *  Tone.LFO will automatically convert to the destination units of the
 		 *  will get the units from the connected node.
-		 *  @param  {Tone | AudioParam | AudioNode} node 
+		 *  @param  {Tone | AudioParam | AudioNode} node
 		 *  @param {number} [outputNum=0] optionally which output to connect from
 		 *  @param {number} [inputNum=0] optionally which input to connect to
 		 *  @returns {Tone.LFO} this
@@ -9093,14 +9093,14 @@
 	        return this;
 	    };
 	    /**
-		 *  private method borrowed from Param converts 
+		 *  private method borrowed from Param converts
 		 *  units from their destination value
 		 *  @function
 		 *  @private
 		 */
 	    Tone.LFO.prototype._fromUnits = Tone.Param.prototype._fromUnits;
 	    /**
-		 *  private method borrowed from Param converts 
+		 *  private method borrowed from Param converts
 		 *  units to their destination value
 		 *  @function
 		 *  @private
@@ -9131,18 +9131,18 @@
 	    return Tone.LFO;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Limiter will limit the loudness of an incoming signal. 
-		 *         It is composed of a Tone.Compressor with a fast attack 
-		 *         and release. Limiters are commonly used to safeguard against 
-		 *         signal clipping. Unlike a compressor, limiters do not provide 
-		 *         smooth gain reduction and almost completely prevent 
+		 *  @class Tone.Limiter will limit the loudness of an incoming signal.
+		 *         It is composed of a Tone.Compressor with a fast attack
+		 *         and release. Limiters are commonly used to safeguard against
+		 *         signal clipping. Unlike a compressor, limiters do not provide
+		 *         smooth gain reduction and almost completely prevent
 		 *         additional gain above the threshold.
 		 *
 		 *  @extends {Tone}
 		 *  @constructor
-		 *  @param {number} threshold The theshold above which the limiting is applied. 
+		 *  @param {number} threshold The theshold above which the limiting is applied.
 		 *  @example
 		 *  var limiter = new Tone.Limiter(-6);
 		 */
@@ -9189,9 +9189,9 @@
 	    return Tone.Limiter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Lowpass is a lowpass feedback comb filter. It is similar to 
+		 *  @class Tone.Lowpass is a lowpass feedback comb filter. It is similar to
 		 *         Tone.FeedbackCombFilter, but includes a lowpass filter.
 		 *
 		 *  @extends {Tone}
@@ -9199,7 +9199,7 @@
 		 *  @param {Time|Object} [delayTime] The delay time of the comb filter
 		 *  @param {NormalRange=} resonance The resonance (feedback) of the comb filter
 		 *  @param {Frequency=} dampening The cutoff of the lowpass filter dampens the
-		 *                                signal as it is fedback. 
+		 *                                signal as it is fedback.
 		 */
 	    Tone.LowpassCombFilter = function () {
 	        Tone.call(this);
@@ -9215,7 +9215,7 @@
 			 */
 	        this._delay = this.input = this.context.createDelay(1);
 	        /**
-			 *  The delayTime of the comb filter. 
+			 *  The delayTime of the comb filter.
 			 *  @type {Time}
 			 *  @signal
 			 */
@@ -9245,7 +9245,7 @@
 			 */
 	        this._feedback = this.context.createGain();
 	        /**
-			 *  The amount of feedback of the delayed signal. 
+			 *  The amount of feedback of the delayed signal.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -9276,7 +9276,7 @@
 	        'dampening': 3000
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.LowpassCombFilter} this
 		 */
 	    Tone.LowpassCombFilter.prototype.dispose = function () {
@@ -9303,9 +9303,9 @@
 	    return Tone.LowpassCombFilter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.Merge brings two signals into the left and right 
+		 *  @class  Tone.Merge brings two signals into the left and right
 		 *          channels of a single stereo channel.
 		 *
 		 *  @constructor
@@ -9366,12 +9366,12 @@
 	    return Tone.Merge;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Meter gets the [RMS](https://en.wikipedia.org/wiki/Root_mean_square)
-		 *          of an input signal with some averaging applied. 
-		 *          It can also get the raw value of the signal or the value in dB. For signal 
-		 *          processing, it's better to use Tone.Follower which will produce an audio-rate 
+		 *          of an input signal with some averaging applied.
+		 *          It can also get the raw value of the signal or the value in dB. For signal
+		 *          processing, it's better to use Tone.Follower which will produce an audio-rate
 		 *          envelope follower instead of needing to poll the Meter to get the output.
 		 *          <br><br>
 		 *          Meter was inspired by [Chris Wilsons Volume Meter](https://github.com/cwilso/volume-meter/blob/master/volume-meter.js).
@@ -9386,7 +9386,7 @@
 		 * var mic = new Tone.Microphone().start();
 		 * //connect mic to the meter
 		 * mic.connect(meter);
-		 * //use getLevel or getDb 
+		 * //use getLevel or getDb
 		 * //to access meter level
 		 * meter.getLevel();
 		 */
@@ -9397,7 +9397,7 @@
 	        ], Tone.Meter.defaults);
 	        //extends Unit
 	        Tone.call(this);
-	        /** 
+	        /**
 			 *  The channel count
 			 *  @type  {number}
 			 *  @private
@@ -9409,23 +9409,23 @@
 			 * @type {NormalRange}
 			 */
 	        this.smoothing = options.smoothing;
-	        /** 
-			 *  The amount of time a clip is remember for. 
+	        /**
+			 *  The amount of time a clip is remember for.
 			 *  @type  {Time}
 			 */
 	        this.clipMemory = options.clipMemory;
-	        /** 
+	        /**
 			 *  The value above which the signal is considered clipped.
 			 *  @type  {Number}
 			 */
 	        this.clipLevel = options.clipLevel;
-	        /** 
+	        /**
 			 *  the rms for each of the channels
 			 *  @private
 			 *  @type {Array}
 			 */
 	        this._volume = new Array(this._channels);
-	        /** 
+	        /**
 			 *  the raw values for each of the channels
 			 *  @private
 			 *  @type {Array}
@@ -9436,7 +9436,7 @@
 	            this._volume[i] = 0;
 	            this._values[i] = 0;
 	        }
-	        /** 
+	        /**
 			 *  last time the values clipped
 			 *  @private
 			 *  @type {Array}
@@ -9446,7 +9446,7 @@
 	        for (var j = 0; j < this._lastClip.length; j++) {
 	            this._lastClip[j] = 0;
 	        }
-	        /** 
+	        /**
 			 *  @private
 			 *  @type {ScriptProcessorNode}
 			 */
@@ -9475,7 +9475,7 @@
 	    /**
 		 *  called on each processing frame
 		 *  @private
-		 *  @param  {AudioProcessingEvent} event 
+		 *  @param  {AudioProcessingEvent} event
 		 */
 	    Tone.Meter.prototype._onprocess = function (event) {
 	        var bufferSize = this._jsNode.bufferSize;
@@ -9514,9 +9514,9 @@
 	        }
 	    };
 	    /**
-		 *  Get the raw value of the signal. 
-		 *  @param  {number=} channel 
-		 *  @return {number}         
+		 *  Get the raw value of the signal.
+		 *  @param  {number=} channel
+		 *  @return {number}
 		 */
 	    Tone.Meter.prototype.getValue = function (channel) {
 	        channel = this.defaultArg(channel, 0);
@@ -9524,15 +9524,15 @@
 	    };
 	    /**
 		 *  Get the volume of the signal in dB
-		 *  @param  {number=} channel 
-		 *  @return {Decibels}         
+		 *  @param  {number=} channel
+		 *  @return {Decibels}
 		 */
 	    Tone.Meter.prototype.getDb = function (channel) {
 	        return this.gainToDb(this.getLevel(channel));
 	    };
 	    /**
 		 * @returns {boolean} if the audio has clipped. The value resets
-		 *                       based on the clipMemory defined. 
+		 *                       based on the clipMemory defined.
 		 */
 	    Tone.Meter.prototype.isClipped = function (channel) {
 	        channel = this.defaultArg(channel, 0);
@@ -9555,10 +9555,10 @@
 	    return Tone.Meter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *	@class  Tone.Split splits an incoming signal into left and right channels.
-		 *	
+		 *
 		 *  @constructor
 		 *  @extends {Tone}
 		 *  @example
@@ -9567,13 +9567,13 @@
 		 */
 	    Tone.Split = function () {
 	        Tone.call(this, 0, 2);
-	        /** 
+	        /**
 			 *  @type {ChannelSplitterNode}
 			 *  @private
 			 */
 	        this._splitter = this.input = this.context.createChannelSplitter(2);
-	        /** 
-			 *  Left channel output. 
+	        /**
+			 *  Left channel output.
 			 *  Alias for <code>output[0]</code>
 			 *  @type {GainNode}
 			 */
@@ -9590,7 +9590,7 @@
 	    };
 	    Tone.extend(Tone.Split);
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Split} this
 		 */
 	    Tone.Split.prototype.dispose = function () {
@@ -9606,10 +9606,10 @@
 	    return Tone.Split;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Mid/Side processing separates the the 'mid' signal 
-		 *         (which comes out of both the left and the right channel) 
+		 *  @class Mid/Side processing separates the the 'mid' signal
+		 *         (which comes out of both the left and the right channel)
 		 *         and the 'side' (which only comes out of the the side channels). <br><br>
 		 *         <code>
 		 *         Mid = (Left+Right)/sqrt(2);   // obtain mid-signal from left and right<br>
@@ -9675,11 +9675,11 @@
 	    return Tone.MidSideSplit;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Mid/Side processing separates the the 'mid' signal 
-		 *         (which comes out of both the left and the right channel) 
-		 *         and the 'side' (which only comes out of the the side channels). 
+		 *  @class Mid/Side processing separates the the 'mid' signal
+		 *         (which comes out of both the left and the right channel)
+		 *         and the 'side' (which only comes out of the the side channels).
 		 *         MidSideMerge merges the mid and side signal after they've been seperated
 		 *         by Tone.MidSideSplit.<br><br>
 		 *         <code>
@@ -9764,14 +9764,14 @@
 	    return Tone.MidSideMerge;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.MidSideCompressor applies two different compressors to the mid
-		 *         and side signal components. See Tone.MidSideSplit. 
+		 *         and side signal components. See Tone.MidSideSplit.
 		 *
 		 *  @extends {Tone}
 		 *  @param {Object} options The options that are passed to the mid and side
-		 *                          compressors. 
+		 *                          compressors.
 		 *  @constructor
 		 */
 	    Tone.MidSideCompressor = function (options) {
@@ -9850,10 +9850,10 @@
 	    return Tone.MidSideCompressor;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Mono coerces the incoming mono or stereo signal into a mono signal
-		 *         where both left and right channels have the same value. This can be useful 
+		 *         where both left and right channels have the same value. This can be useful
 		 *         for [stereo imaging](https://en.wikipedia.org/wiki/Stereo_imaging).
 		 *
 		 *  @extends {Tone}
@@ -9885,7 +9885,7 @@
 	    return Tone.Mono;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class A compressor with seperate controls over low/mid/high dynamics
 		 *
@@ -9998,10 +9998,10 @@
 	    return Tone.MultibandCompressor;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Maps a NormalRange [0, 1] to an AudioRange [-1, 1]. 
-		 *         See also Tone.AudioToGain. 
+		 *  @class Maps a NormalRange [0, 1] to an AudioRange [-1, 1].
+		 *         See also Tone.AudioToGain.
 		 *
 		 *  @extends {Tone.SignalBase}
 		 *  @constructor
@@ -10031,16 +10031,16 @@
 	    return Tone.GainToAudio;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Panner is an equal power Left/Right Panner and does not
-		 *  support 3D. Panner uses the StereoPannerNode when available. 
-		 *  
+		 *  support 3D. Panner uses the StereoPannerNode when available.
+		 *
 		 *  @constructor
 		 *  @extends {Tone}
 		 *  @param {NormalRange} [initialPan=0.5] The initail panner value (defaults to 0.5 = center)
 		 *  @example
-		 *  //pan the input signal hard right. 
+		 *  //pan the input signal hard right.
 		 *  var panner = new Tone.Panner(1);
 		 */
 	    Tone.Panner = function (initialPan) {
@@ -10059,7 +10059,7 @@
 				 */
 	            this._panner = this.input = this.output = this.context.createStereoPanner();
 	            /**
-				 *  The pan control. 0 = hard left, 1 = hard right. 
+				 *  The pan control. 0 = hard left, 1 = hard right.
 				 *  @type {NormalRange}
 				 *  @signal
 				 */
@@ -10090,7 +10090,7 @@
 				 */
 	            this._splitter = this.input = new Tone.Split();
 	            /**
-				 *  The pan control. 0 = hard left, 1 = hard right. 
+				 *  The pan control. 0 = hard left, 1 = hard right.
 				 *  @type {NormalRange}
 				 *  @signal
 				 */
@@ -10136,14 +10136,14 @@
 	    return Tone.Panner;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.PanVol is a Tone.Panner and Tone.Volume in one.
 		 *
 		 *  @extends {Tone}
 		 *  @constructor
 		 *  @param {NormalRange} pan the initial pan
-		 *  @param {number} volume The output volume. 
+		 *  @param {number} volume The output volume.
 		 *  @example
 		 * //pan the incoming signal left and drop the volume
 		 * var panVol = new Tone.PanVol(0.25, -12);
@@ -10171,7 +10171,7 @@
 			 */
 	        this._volume = this.output = new Tone.Volume(options.volume);
 	        /**
-			 *  The volume control in decibels. 
+			 *  The volume control in decibels.
 			 *  @type {Decibels}
 			 *  @signal
 			 */
@@ -10215,13 +10215,13 @@
 	    return Tone.PanVol;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.CtrlInterpolate will interpolate between given values based
 		 *         on the "index" property. Passing in an array or object literal
 		 *         will interpolate each of the parameters. Note (i.e. "C3")
 		 *         and Time (i.e. "4n + 2") can be interpolated. All other values are
-		 *         assumed to be numbers. 
+		 *         assumed to be numbers.
 		 *  @example
 		 * var interp = new Tone.CtrlInterpolate([0, 2, 9, 4]);
 		 * interp.index = 0.75;
@@ -10249,12 +10249,12 @@
 	        /**
 			 *  The interpolated index between values. For example: a value of 1.5
 			 *  would interpolate equally between the value at index 1
-			 *  and the value at index 2. 
+			 *  and the value at index 2.
 			 *  @example
-			 * interp.index = 0; 
+			 * interp.index = 0;
 			 * interp.value; //returns the value at 0
 			 * interp.index = 0.5;
-			 * interp.value; //returns the value between indices 0 and 1. 
+			 * interp.value; //returns the value between indices 0 and 1.
 			 *  @type  {Positive}
 			 */
 	        this.index = options.index;
@@ -10289,8 +10289,8 @@
 	    /**
 		 *  Internal interpolation routine
 		 *  @param  {NormalRange}  index  The index between the lower and upper
-		 *  @param  {*}  lower 
-		 *  @param  {*}  upper 
+		 *  @param  {*}  lower
+		 *  @param  {*}  upper
 		 *  @return  {*}  The interpolated value
 		 *  @private
 		 */
@@ -10339,15 +10339,15 @@
 	    return Tone.CtrlInterpolate;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.CtrlMarkov represents a Markov Chain where each call
 		 *         to Tone.CtrlMarkov.next will move to the next state. If the next
 		 *         state choice is an array, the next state is chosen randomly with
 		 *         even probability for all of the choices. For a weighted probability
-		 *         of the next choices, pass in an object with "state" and "probability" attributes. 
+		 *         of the next choices, pass in an object with "state" and "probability" attributes.
 		 *         The probabilities will be normalized and then chosen. If no next options
-		 *         are given for the current state, the state will stay there. 
+		 *         are given for the current state, the state will stay there.
 		 *  @extends {Tone}
 		 *  @example
 		 * var chain = new Tone.CtrlMarkov({
@@ -10359,19 +10359,19 @@
 		 *
 		 *  @example
 		 * var chain = new Tone.CtrlMarkov({
-		 * 	"beginning" : [{"value" : "end", "probability" : 0.8}, 
+		 * 	"beginning" : [{"value" : "end", "probability" : 0.8},
 		 * 					{"value" : "middle", "probability" : 0.2}],
 		 * 	"middle" : "end"
 		 * });
 		 * chain.value = "beginning";
 		 * chain.next(); //returns "end" with 80% probability or "middle" with 20%.
 		 *  @param {Object} values An object with the state names as the keys
-		 *                         and the next state(s) as the values. 
+		 *                         and the next state(s) as the values.
 		 */
 	    Tone.CtrlMarkov = function (values, initial) {
 	        /**
 			 *  The Markov values with states as the keys
-			 *  and next state(s) as the values. 
+			 *  and next state(s) as the values.
 			 *  @type {Object}
 			 */
 	        this.values = this.defaultArg(values, {});
@@ -10385,7 +10385,7 @@
 	    };
 	    Tone.extend(Tone.CtrlMarkov);
 	    /**
-		 *  Returns the next state of the Markov values. 
+		 *  Returns the next state of the Markov values.
 		 *  @return  {String}
 		 */
 	    Tone.CtrlMarkov.prototype.next = function () {
@@ -10414,9 +10414,9 @@
 	        return this.value;
 	    };
 	    /**
-		 *  Choose randomly from an array weighted options in the form 
+		 *  Choose randomly from an array weighted options in the form
 		 *  {"state" : string, "probability" : number} or an array of values
-		 *  @param  {Array}  options 
+		 *  @param  {Array}  options
 		 *  @return  {Array}  The randomly selected choice
 		 *  @private
 		 */
@@ -10452,11 +10452,11 @@
 	    return Tone.CtrlMarkov;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Generate patterns from an array of values.
 		 *         Has a number of arpeggiation and randomized
-		 *         selection patterns. 
+		 *         selection patterns.
 		 *           <ul>
 		 *  	        <li>"up" - cycles upward</li>
 		 *  			<li>"down" - cycles downward</li>
@@ -10525,7 +10525,7 @@
 	        RandomOnce: 'randomOnce'
 	    };
 	    /**
-		 *  The default values. 
+		 *  The default values.
 		 *  @type  {Object}
 		 */
 	    Tone.CtrlPattern.defaults = {
@@ -10693,7 +10693,7 @@
 	    return Tone.CtrlPattern;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Choose a random value.
 		 *  @extends {Tone}
@@ -10741,7 +10741,7 @@
 	        'integer': false
 	    };
 	    /**
-		 *  Return a random value between min and max. 
+		 *  Return a random value between min and max.
 		 *  @readOnly
 		 *  @memberOf Tone.CtrlRandom#
 		 *  @type {*}
@@ -10762,22 +10762,22 @@
 	    return Tone.CtrlRandom;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Buffer loading and storage. Tone.Buffer is used internally by all 
+		 *  @class  Buffer loading and storage. Tone.Buffer is used internally by all
 		 *          classes that make requests for audio files such as Tone.Player,
 		 *          Tone.Sampler and Tone.Convolver.
 		 *          <br><br>
-		 *          Aside from load callbacks from individual buffers, Tone.Buffer 
-		 *  		provides static methods which keep track of the loading progress 
+		 *          Aside from load callbacks from individual buffers, Tone.Buffer
+		 *  		provides static methods which keep track of the loading progress
 		 *  		of all of the buffers. These methods are Tone.Buffer.onload, Tone.Buffer.onprogress,
-		 *  		and Tone.Buffer.onerror. 
+		 *  		and Tone.Buffer.onerror.
 		 *
-		 *  @constructor 
+		 *  @constructor
 		 *  @extends {Tone}
-		 *  @param {AudioBuffer|string} url The url to load, or the audio buffer to set. 
-		 *  @param {function=} onload A callback which is invoked after the buffer is loaded. 
-		 *                            It's recommended to use Tone.Buffer.onload instead 
+		 *  @param {AudioBuffer|string} url The url to load, or the audio buffer to set.
+		 *  @param {function=} onload A callback which is invoked after the buffer is loaded.
+		 *                            It's recommended to use Tone.Buffer.onload instead
 		 *                            since it will give you a callback when ALL buffers are loaded.
 		 *  @example
 		 * var buffer = new Tone.Buffer("path/to/sound.mp3", function(){
@@ -10803,20 +10803,20 @@
 			 */
 	        this._reversed = options.reverse;
 	        /**
-			 *  The url of the buffer. <code>undefined</code> if it was 
+			 *  The url of the buffer. <code>undefined</code> if it was
 			 *  constructed with a buffer
 			 *  @type {string}
 			 *  @readOnly
 			 */
 	        this.url = undefined;
 	        /**
-			 *  Indicates if the buffer is loaded or not. 
+			 *  Indicates if the buffer is loaded or not.
 			 *  @type {boolean}
 			 *  @readOnly
 			 */
 	        this.loaded = false;
 	        /**
-			 *  The callback to invoke when everything is loaded. 
+			 *  The callback to invoke when everything is loaded.
 			 *  @type {function}
 			 */
 	        this.onload = options.onload.bind(this, this);
@@ -10860,9 +10860,9 @@
 	        return this._buffer;
 	    };
 	    /**
-		 *  Load url into the buffer. 
+		 *  Load url into the buffer.
 		 *  @param {String} url The url to load
-		 *  @param {Function=} callback The callback to invoke on load. 
+		 *  @param {Function=} callback The callback to invoke on load.
 		 *                              don't need to set if `onload` is
 		 *                              already set.
 		 *  @returns {Tone.Buffer} this
@@ -10885,7 +10885,7 @@
 	        return this;
 	    };
 	    /**
-		 * The duration of the buffer. 
+		 * The duration of the buffer.
 		 * @memberOf Tone.Buffer#
 		 * @type {number}
 		 * @name duration
@@ -11061,7 +11061,7 @@
 		 *  @param {string} url The url of the buffer to load.
 		 *                      filetype support depends on the
 		 *                      browser.
-		 *  @param {function} callback The function to invoke when the url is loaded. 
+		 *  @param {function} callback The function to invoke when the url is loaded.
 		 *  @returns {XMLHttpRequest} returns the XHR
 		 */
 	    Tone.Buffer.load = function (url, callback) {
@@ -11105,7 +11105,7 @@
 	    return Tone.Buffer;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  buses are another way of routing audio
 		 *
@@ -11113,17 +11113,17 @@
 		 */
 	    /**
 		  *  All of the routes
-		  *  
+		  *
 		  *  @type {Object}
 		  *  @static
 		  *  @private
 		  */
 	    var Buses = {};
 	    /**
-		 *  Send this signal to the channel name. 
+		 *  Send this signal to the channel name.
 		 *  @param  {string} channelName A named channel to send the signal to.
-		 *  @param  {Decibels} amount The amount of the source to send to the bus. 
-		 *  @return {GainNode} The gain node which connects this node to the desired channel. 
+		 *  @param  {Decibels} amount The amount of the source to send to the bus.
+		 *  @return {GainNode} The gain node which connects this node to the desired channel.
 		 *                     Can be used to adjust the levels of the send.
 		 *  @example
 		 * source.send("reverb", -12);
@@ -11143,7 +11143,7 @@
 		 *  @param  {string} channelName A named channel to send the signal to.
 		 *  @param {AudioNode} [input] If no input is selected, the
 		 *                                         input of the current node is
-		 *                                         chosen. 
+		 *                                         chosen.
 		 *  @returns {Tone} this
 		 *  @example
 		 * reverbEffect.receive("reverb");
@@ -11161,12 +11161,12 @@
 	    return Tone;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Wrapper around Web Audio's native [DelayNode](http://webaudio.github.io/web-audio-api/#the-delaynode-interface). 
+		 *  @class Wrapper around Web Audio's native [DelayNode](http://webaudio.github.io/web-audio-api/#the-delaynode-interface).
 		 *  @extends {Tone}
 		 *  @param {Time=} delayTime The delay applied to the incoming signal.
-		 *  @param {Time=} maxDelay The maximum delay time. 
+		 *  @param {Time=} maxDelay The maximum delay time.
 		 */
 	    Tone.Delay = function () {
 	        var options = this.optionsObject(arguments, [
@@ -11181,7 +11181,7 @@
 	        this._delayNode = this.input = this.output = this.context.createDelay(this.toSeconds(options.maxDelay));
 	        /**
 			 *  The amount of time the incoming signal is
-			 *  delayed. 
+			 *  delayed.
 			 *  @type {Tone.Param}
 			 *  @signal
 			 */
@@ -11217,13 +11217,13 @@
 	    return Tone.Delay;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  A single master output which is connected to the
-		 *          AudioDestinationNode (aka your speakers). 
-		 *          It provides useful conveniences such as the ability 
-		 *          to set the volume and mute the entire application. 
-		 *          It also gives you the ability to apply master effects to your application. 
+		 *          AudioDestinationNode (aka your speakers).
+		 *          It provides useful conveniences such as the ability
+		 *          to set the volume and mute the entire application.
+		 *          It also gives you the ability to apply master effects to your application.
 		 *          <br><br>
 		 *          Like Tone.Transport, A single Tone.Master is created
 		 *          on initialization and you do not need to explicitly construct one.
@@ -11278,7 +11278,7 @@
 	        'mute': false
 	    };
 	    /**
-		 * Mute the output. 
+		 * Mute the output.
 		 * @memberOf Tone.Master#
 		 * @type {boolean}
 		 * @name mute
@@ -11302,8 +11302,8 @@
 	        }
 	    });
 	    /**
-		 *  Add a master effects chain. NOTE: this will disconnect any nodes which were previously 
-		 *  chained in the master effects chain. 
+		 *  Add a master effects chain. NOTE: this will disconnect any nodes which were previously
+		 *  chained in the master effects chain.
 		 *  @param {AudioNode|Tone...} args All arguments will be connected in a row
 		 *                                  and the Master will be routed through it.
 		 *  @return  {Tone.Master}  this
@@ -11317,7 +11317,7 @@
 		 * });
 		 * //give a little boost to the lows
 		 * var lowBump = new Tone.Filter(200, "lowshelf");
-		 * //route everything through the filter 
+		 * //route everything through the filter
 		 * //and compressor before going to the speakers
 		 * Tone.Master.chain(lowBump, masterCompressor);
 		 */
@@ -11376,11 +11376,11 @@
 	    return Tone.Master;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  A timed note. Creating a note will register a callback 
+		 *  @class  A timed note. Creating a note will register a callback
 		 *          which will be invoked on the channel at the time with
-		 *          whatever value was specified. 
+		 *          whatever value was specified.
 		 *
 		 *  @constructor
 		 *  @param {number|string} channel the channel name of the note
@@ -11391,21 +11391,21 @@
 	        /**
 			 *  the value of the note. This value is returned
 			 *  when the channel callback is invoked.
-			 *  
+			 *
 			 *  @type {string|number|Object}
 			 */
 	        this.value = value;
 	        /**
 			 *  the channel name or number
-			 *  
+			 *
 			 *  @type {string|number}
 			 *  @private
 			 */
 	        this._channel = channel;
 	        /**
 			 *  an internal reference to the id of the timeline
-			 *  callback which is set. 
-			 *  
+			 *  callback which is set.
+			 *
 			 *  @type {number}
 			 *  @private
 			 */
@@ -11467,7 +11467,7 @@
 	        }
 	    };
 	    /**
-		 *  Remove a previously routed callback from a channel. 
+		 *  Remove a previously routed callback from a channel.
 		 *  @static
 		 *  @param {string|number} channel The channel to unroute note events from
 		 *  @param {function(*)} callback Callback which was registered to the channel.
@@ -11482,11 +11482,11 @@
 	        }
 	    };
 	    /**
-		 *  Parses a score and registers all of the notes along the timeline. 
+		 *  Parses a score and registers all of the notes along the timeline.
 		 *  <br><br>
 		 *  Scores are a JSON object with instruments at the top level
-		 *  and an array of time and values. The value of a note can be 0 or more 
-		 *  parameters. 
+		 *  and an array of time and values. The value of a note can be 0 or more
+		 *  parameters.
 		 *  <br><br>
 		 *  The only requirement for the score format is that the time is the first (or only)
 		 *  value in the array. All other values are optional and will be passed into the callback
@@ -11496,7 +11496,7 @@
 		 *
 		 *  @example
 		 * //an example JSON score which sets up events on channels
-		 * var score = { 
+		 * var score = {
 		 * 	"synth"  : [["0", "C3"], ["0:1", "D3"], ["0:2", "E3"], ... ],
 		 * 	"bass"  : [["0", "C2"], ["1:0", "A2"], ["2:0", "C2"], ["3:0", "A2"], ... ],
 		 * 	"kick"  : ["0", "0:2", "1:0", "1:2", "2:0", ... ],
@@ -11544,7 +11544,7 @@
 	    return Tone.Note;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 * 	@class  Tone.Effect is the base class for effects. Connect the effect between
 		 * 	        the effectSend and effectReturn GainNodes, then control the amount of
@@ -11552,7 +11552,7 @@
 		 *
 		 *  @constructor
 		 *  @extends {Tone}
-		 *  @param {NormalRange|Object} [wet] The starting wet value. 
+		 *  @param {NormalRange|Object} [wet] The starting wet value.
 		 */
 	    Tone.Effect = function () {
 	        Tone.call(this);
@@ -11567,7 +11567,7 @@
 	        /**
 			 *  The wet control is how much of the effected
 			 *  will pass through to the output. 1 = 100% effected
-			 *  signal, 0 = 100% dry signal. 
+			 *  signal, 0 = 100% dry signal.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -11608,7 +11608,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Effect} this
 		 */
 	    Tone.Effect.prototype.dispose = function () {
@@ -11626,10 +11626,10 @@
 	    return Tone.Effect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.AutoFilter is a Tone.Filter with a Tone.LFO connected to the filter cutoff frequency.
-		 *         Setting the LFO rate and depth allows for control over the filter modulation rate 
+		 *         Setting the LFO rate and depth allows for control over the filter modulation rate
 		 *         and depth.
 		 *
 		 *  @constructor
@@ -11660,14 +11660,14 @@
 	            'amplitude': options.depth
 	        });
 	        /**
-			 * The range of the filter modulating between the min and max frequency. 
+			 * The range of the filter modulating between the min and max frequency.
 			 * 0 = no modulation. 1 = full modulation.
 			 * @type {NormalRange}
 			 * @signal
 			 */
 	        this.depth = this._lfo.amplitude;
 	        /**
-			 * How fast the filter modulates between min and max. 
+			 * How fast the filter modulates between min and max.
 			 * @type {Frequency}
 			 * @signal
 			 */
@@ -11715,7 +11715,7 @@
 	    };
 	    /**
 		 * Start the effect.
-		 * @param {Time} [time=now] When the LFO will start. 
+		 * @param {Time} [time=now] When the LFO will start.
 		 * @returns {Tone.AutoFilter} this
 		 */
 	    Tone.AutoFilter.prototype.start = function (time) {
@@ -11724,7 +11724,7 @@
 	    };
 	    /**
 		 * Stop the effect.
-		 * @param {Time} [time=now] When the LFO will stop. 
+		 * @param {Time} [time=now] When the LFO will stop.
 		 * @returns {Tone.AutoFilter} this
 		 */
 	    Tone.AutoFilter.prototype.stop = function (time) {
@@ -11734,7 +11734,7 @@
 	    /**
 		 * Sync the filter to the transport.
 		 * @param {Time} [delay=0] Delay time before starting the effect after the
-		 *                               Transport has started. 
+		 *                               Transport has started.
 		 * @returns {Tone.AutoFilter} this
 		 */
 	    Tone.AutoFilter.prototype.sync = function (delay) {
@@ -11750,7 +11750,7 @@
 	        return this;
 	    };
 	    /**
-		 * Type of oscillator attached to the AutoFilter. 
+		 * Type of oscillator attached to the AutoFilter.
 		 * Possible values: "sine", "square", "triangle", "sawtooth".
 		 * @memberOf Tone.AutoFilter#
 		 * @type {string}
@@ -11779,7 +11779,7 @@
 	        }
 	    });
 	    /**
-		 * The maximum value of the filter's cutoff frequency. 
+		 * The maximum value of the filter's cutoff frequency.
 		 * @memberOf Tone.AutoFilter#
 		 * @type {Positive}
 		 * @name octaves
@@ -11794,7 +11794,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.AutoFilter} this
 		 */
 	    Tone.AutoFilter.prototype.dispose = function () {
@@ -11814,14 +11814,14 @@
 	    return Tone.AutoFilter;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.AutoPanner is a Tone.Panner with an LFO connected to the pan amount. 
+		 *  @class Tone.AutoPanner is a Tone.Panner with an LFO connected to the pan amount.
 		 *         More on using autopanners [here](https://www.ableton.com/en/blog/autopan-chopper-effect-and-more-liveschool/).
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Effect}
-		 *  @param {Frequency|Object} [frequency] Rate of left-right oscillation. 
+		 *  @param {Frequency|Object} [frequency] Rate of left-right oscillation.
 		 *  @example
 		 * //create an autopanner and start it's LFO
 		 * var autoPanner = new Tone.AutoPanner("4n").toMaster().start();
@@ -11843,8 +11843,8 @@
 	            'max': 1
 	        });
 	        /**
-			 * The amount of panning between left and right. 
-			 * 0 = always center. 1 = full range between left and right. 
+			 * The amount of panning between left and right.
+			 * 0 = always center. 1 = full range between left and right.
 			 * @type {NormalRange}
 			 * @signal
 			 */
@@ -11856,7 +11856,7 @@
 			 */
 	        this._panner = new Tone.Panner();
 	        /**
-			 * How fast the panner modulates between left and right. 
+			 * How fast the panner modulates between left and right.
 			 * @type {Frequency}
 			 * @signal
 			 */
@@ -11884,7 +11884,7 @@
 	    };
 	    /**
 		 * Start the effect.
-		 * @param {Time} [time=now] When the LFO will start. 
+		 * @param {Time} [time=now] When the LFO will start.
 		 * @returns {Tone.AutoPanner} this
 		 */
 	    Tone.AutoPanner.prototype.start = function (time) {
@@ -11893,7 +11893,7 @@
 	    };
 	    /**
 		 * Stop the effect.
-		 * @param {Time} [time=now] When the LFO will stop. 
+		 * @param {Time} [time=now] When the LFO will stop.
 		 * @returns {Tone.AutoPanner} this
 		 */
 	    Tone.AutoPanner.prototype.stop = function (time) {
@@ -11903,7 +11903,7 @@
 	    /**
 		 * Sync the panner to the transport.
 		 * @param {Time} [delay=0] Delay time before starting the effect after the
-		 *                               Transport has started. 
+		 *                               Transport has started.
 		 * @returns {Tone.AutoPanner} this
 		 */
 	    Tone.AutoPanner.prototype.sync = function (delay) {
@@ -11919,7 +11919,7 @@
 	        return this;
 	    };
 	    /**
-		 * Type of oscillator attached to the AutoFilter. 
+		 * Type of oscillator attached to the AutoFilter.
 		 * Possible values: "sine", "square", "triangle", "sawtooth".
 		 * @memberOf Tone.AutoFilter#
 		 * @type {string}
@@ -11954,20 +11954,20 @@
 	    return Tone.AutoPanner;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.AutoWah connects a Tone.Follower to a bandpass filter (Tone.Filter).
-		 *          The frequency of the filter is adjusted proportionally to the 
+		 *          The frequency of the filter is adjusted proportionally to the
 		 *          incoming signal's amplitude. Inspiration from [Tuna.js](https://github.com/Dinahmoe/tuna).
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Effect}
-		 *  @param {Frequency|Object} [baseFrequency] The frequency the filter is set 
+		 *  @param {Frequency|Object} [baseFrequency] The frequency the filter is set
 		 *                                            to at the low point of the wah
 		 *  @param {Positive} [octaves] The number of octaves above the baseFrequency
 		 *                                the filter will sweep to when fully open
-		 *  @param {Decibels} [sensitivity] The decibel threshold sensitivity for 
-		 *                                   the incoming signal. Normal range of -40 to 0. 
+		 *  @param {Decibels} [sensitivity] The decibel threshold sensitivity for
+		 *                                   the incoming signal. Normal range of -40 to 0.
 		 *  @example
 		 * var autoWah = new Tone.AutoWah(50, 6, -30).toMaster();
 		 * //initialize the synth and connect to autowah
@@ -11986,7 +11986,7 @@
 	        Tone.Effect.call(this, options);
 	        /**
 			 *  The envelope follower. Set the attack/release
-			 *  timing to adjust how the envelope is followed. 
+			 *  timing to adjust how the envelope is followed.
 			 *  @type {Tone.Follower}
 			 *  @private
 			 */
@@ -12071,8 +12071,8 @@
 	        }
 	    };
 	    /**
-		 * The number of octaves that the filter will sweep above the 
-		 * baseFrequency. 
+		 * The number of octaves that the filter will sweep above the
+		 * baseFrequency.
 		 * @memberOf Tone.AutoWah#
 		 * @type {Number}
 		 * @name octaves
@@ -12102,7 +12102,7 @@
 	        }
 	    });
 	    /**
-		 * The sensitivity to control how responsive to the input signal the filter is. 
+		 * The sensitivity to control how responsive to the input signal the filter is.
 		 * @memberOf Tone.AutoWah#
 		 * @type {Decibels}
 		 * @name sensitivity
@@ -12150,16 +12150,16 @@
 	    return Tone.AutoWah;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Bitcrusher downsamples the incoming signal to a different bitdepth. 
+		 *  @class Tone.Bitcrusher downsamples the incoming signal to a different bitdepth.
 		 *         Lowering the bitdepth of the signal creates distortion. Read more about Bitcrushing
 		 *         on [Wikipedia](https://en.wikipedia.org/wiki/Bitcrusher).
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Effect}
 		 *  @param {Number} bits The number of bits to downsample the signal. Nominal range
-		 *                       of 1 to 8. 
+		 *                       of 1 to 8.
 		 *  @example
 		 * //initialize crusher and route a synth through it
 		 * var crusher = new Tone.BitCrusher(4).toMaster();
@@ -12200,7 +12200,7 @@
 		 */
 	    Tone.BitCrusher.defaults = { 'bits': 4 };
 	    /**
-		 * The bit depth of the effect. Nominal range of 1-8. 
+		 * The bit depth of the effect. Nominal range of 1-8.
 		 * @memberOf Tone.BitCrusher#
 		 * @type {number}
 		 * @name bits
@@ -12216,7 +12216,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.BitCrusher} this
 		 */
 	    Tone.BitCrusher.prototype.dispose = function () {
@@ -12230,17 +12230,17 @@
 	    return Tone.BitCrusher;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.ChebyShev is a Chebyshev waveshaper, an effect which is good 
+		 *  @class Tone.ChebyShev is a Chebyshev waveshaper, an effect which is good
 		 *         for making different types of distortion sounds.
-		 *         Note that odd orders sound very different from even ones, 
-		 *         and order = 1 is no change. 
+		 *         Note that odd orders sound very different from even ones,
+		 *         and order = 1 is no change.
 		 *         Read more at [music.columbia.edu](http://music.columbia.edu/cmc/musicandcomputers/chapter4/04_06.php).
 		 *
 		 *  @extends {Tone.Effect}
 		 *  @constructor
-		 *  @param {Positive|Object} [order] The order of the chebyshev polynomial. Normal range between 1-100. 
+		 *  @param {Positive|Object} [order] The order of the chebyshev polynomial. Normal range between 1-100.
 		 *  @example
 		 * //create a new cheby
 		 * var cheby = new Tone.Chebyshev(50);
@@ -12278,10 +12278,10 @@
 	    /**
 		 *  get the coefficient for that degree
 		 *  @param {number} x the x value
-		 *  @param   {number} degree 
-		 *  @param {Object} memo memoize the computed value. 
-		 *                       this speeds up computation greatly. 
-		 *  @return  {number}       the coefficient 
+		 *  @param   {number} degree
+		 *  @param {Object} memo memoize the computed value.
+		 *                       this speeds up computation greatly.
+		 *  @return  {number}       the coefficient
 		 *  @private
 		 */
 	    Tone.Chebyshev.prototype._getCoefficient = function (x, degree, memo) {
@@ -12298,7 +12298,7 @@
 	    };
 	    /**
 		 * The order of the Chebyshev polynomial which creates
-		 * the equation which is applied to the incoming 
+		 * the equation which is applied to the incoming
 		 * signal through a Tone.WaveShaper. The equations
 		 * are in the form:<br>
 		 * order 2: 2x^2 + 1<br>
@@ -12342,7 +12342,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Chebyshev} this
 		 */
 	    Tone.Chebyshev.prototype.dispose = function () {
@@ -12354,9 +12354,9 @@
 	    return Tone.Chebyshev;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Base class for Stereo effects. Provides effectSendL/R and effectReturnL/R. 
+		 *  @class Base class for Stereo effects. Provides effectSendL/R and effectReturnL/R.
 		 *
 		 *	@constructor
 		 *	@extends {Tone.Effect}
@@ -12373,7 +12373,7 @@
 	        this._dryWet = new Tone.CrossFade(options.wet);
 	        /**
 			 *  The wet control, i.e. how much of the effected
-			 *  will pass through to the output. 
+			 *  will pass through to the output.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -12424,7 +12424,7 @@
 	    };
 	    Tone.extend(Tone.StereoEffect, Tone.Effect);
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.StereoEffect} this
 		 */
 	    Tone.StereoEffect.prototype.dispose = function () {
@@ -12446,11 +12446,11 @@
 	    return Tone.StereoEffect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 * 	@class  Tone.FeedbackEffect provides a loop between an 
+		 * 	@class  Tone.FeedbackEffect provides a loop between an
 		 * 	        audio source and its own output. This is a base-class
-		 * 	        for feedback effects. 
+		 * 	        for feedback effects.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Effect}
@@ -12461,7 +12461,7 @@
 	        options = this.defaultArg(options, Tone.FeedbackEffect.defaults);
 	        Tone.Effect.call(this, options);
 	        /**
-			 *  The amount of signal which is fed back into the effect input. 
+			 *  The amount of signal which is fed back into the effect input.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -12484,7 +12484,7 @@
 		 */
 	    Tone.FeedbackEffect.defaults = { 'feedback': 0.125 };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.FeedbackEffect} this
 		 */
 	    Tone.FeedbackEffect.prototype.dispose = function () {
@@ -12499,7 +12499,7 @@
 	    return Tone.FeedbackEffect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Just like a stereo feedback effect, but the feedback is routed from left to right
 		 *         and right to left instead of on the same channel.
@@ -12555,17 +12555,17 @@
 	    return Tone.StereoXFeedbackEffect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.Chorus is a stereo chorus effect with feedback composed of 
-		 *         a left and right delay with a Tone.LFO applied to the delayTime of each channel. 
+		 *  @class Tone.Chorus is a stereo chorus effect with feedback composed of
+		 *         a left and right delay with a Tone.LFO applied to the delayTime of each channel.
 		 *         Inspiration from [Tuna.js](https://github.com/Dinahmoe/tuna/blob/master/tuna.js).
 		 *         Read more on the chorus effect on [SoundOnSound](http://www.soundonsound.com/sos/jun04/articles/synthsecrets.htm).
 		 *
 		 *	@constructor
 		 *	@extends {Tone.StereoXFeedbackEffect}
 		 *	@param {Frequency|Object} [frequency] The frequency of the LFO.
-		 *	@param {Milliseconds} [delayTime] The delay of the chorus effect in ms. 
+		 *	@param {Milliseconds} [delayTime] The delay of the chorus effect in ms.
 		 *	@param {NormalRange} [depth] The depth of the chorus.
 		 *	@example
 		 * var chorus = new Tone.Chorus(4, 2.5, 0.5);
@@ -12625,7 +12625,7 @@
 			 */
 	        this._delayNodeR = this.context.createDelay();
 	        /**
-			 * The frequency of the LFO which modulates the delayTime. 
+			 * The frequency of the LFO which modulates the delayTime.
 			 * @type {Frequency}
 			 * @signal
 			 */
@@ -12666,7 +12666,7 @@
 	    };
 	    /**
 		 * The depth of the effect. A depth of 1 makes the delayTime
-		 * modulate between 0 and 2*delayTime (centered around the delayTime). 
+		 * modulate between 0 and 2*delayTime (centered around the delayTime).
 		 * @memberOf Tone.Chorus#
 		 * @type {NormalRange}
 		 * @name depth
@@ -12687,7 +12687,7 @@
 	    /**
 		 * The delayTime in milliseconds of the chorus. A larger delayTime
 		 * will give a more pronounced effect. Nominal range a delayTime
-		 * is between 2 and 20ms. 
+		 * is between 2 and 20ms.
 		 * @memberOf Tone.Chorus#
 		 * @type {Milliseconds}
 		 * @name delayTime
@@ -12702,7 +12702,7 @@
 	        }
 	    });
 	    /**
-		 * The oscillator type of the LFO. 
+		 * The oscillator type of the LFO.
 		 * @memberOf Tone.Chorus#
 		 * @type {string}
 		 * @name type
@@ -12716,7 +12716,7 @@
 	            this._lfoR.type = type;
 	        }
 	    });
-	    /** 
+	    /**
 		 * Amount of stereo spread. When set to 0, both LFO's will be panned centrally.
 		 * When set to 180, LFO's will be panned hard left and right respectively.
 		 * @memberOf Tone.Chorus#
@@ -12733,7 +12733,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Chorus} this
 		 */
 	    Tone.Chorus.prototype.dispose = function () {
@@ -12753,17 +12753,17 @@
 	    return Tone.Chorus;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.Convolver is a wrapper around the Native Web Audio 
+		 *  @class  Tone.Convolver is a wrapper around the Native Web Audio
 		 *          [ConvolverNode](http://webaudio.github.io/web-audio-api/#the-convolvernode-interface).
 		 *          Convolution is useful for reverb and filter emulation. Read more about convolution reverb on
 		 *          [Wikipedia](https://en.wikipedia.org/wiki/Convolution_reverb).
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Effect}
 		 *  @param {string|Tone.Buffer|Object} [url] The URL of the impulse response or the Tone.Buffer
-		 *                                           contianing the impulse response. 
+		 *                                           contianing the impulse response.
 		 *  @example
 		 * //initializing the convolver with an impulse response
 		 * var convolver = new Tone.Convolver("./path/to/ir.wav");
@@ -12840,7 +12840,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Convolver} this
 		 */
 	    Tone.Convolver.prototype.dispose = function () {
@@ -12854,7 +12854,7 @@
 	    return Tone.Convolver;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Distortion is a simple distortion effect using Tone.WaveShaper.
 		 *         Algorithm from [a stackoverflow answer](http://stackoverflow.com/a/22313408).
@@ -12935,7 +12935,7 @@
 	        }
 	    });
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Distortion} this
 		 */
 	    Tone.Distortion.prototype.dispose = function () {
@@ -12947,15 +12947,15 @@
 	    return Tone.Distortion;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.FeedbackDelay is a DelayNode in which part of output
-		 *          signal is fed back into the delay. 
+		 *          signal is fed back into the delay.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.FeedbackEffect}
-		 *  @param {Time|Object} [delayTime] The delay applied to the incoming signal. 
-		 *  @param {NormalRange=} feedback The amount of the effected signal which 
+		 *  @param {Time|Object} [delayTime] The delay applied to the incoming signal.
+		 *  @param {NormalRange=} feedback The amount of the effected signal which
 		 *                            is fed back through the delay.
 		 *  @example
 		 * var feedbackDelay = new Tone.FeedbackDelay("8n", 0.5).toMaster();
@@ -12972,7 +12972,7 @@
 	        ], Tone.FeedbackDelay.defaults);
 	        Tone.FeedbackEffect.call(this, options);
 	        /**
-			 *  The delayTime of the DelayNode. 
+			 *  The delayTime of the DelayNode.
 			 *  @type {Time}
 			 *  @signal
 			 */
@@ -12990,7 +12990,7 @@
 	    };
 	    Tone.extend(Tone.FeedbackDelay, Tone.FeedbackEffect);
 	    /**
-		 *  The default values. 
+		 *  The default values.
 		 *  @const
 		 *  @static
 		 *  @type {Object}
@@ -13012,7 +13012,7 @@
 	    return Tone.FeedbackDelay;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  an array of comb filter delay values from Freeverb implementation
 		 *  @static
@@ -13047,9 +13047,9 @@
 		 *
 		 *  @extends {Tone.Effect}
 		 *  @constructor
-		 *  @param {NormalRange|Object} [roomSize] Correlated to the decay time. 
-		 *  @param {Frequency} [dampening] The cutoff frequency of a lowpass filter as part 
-		 *                                 of the reverb. 
+		 *  @param {NormalRange|Object} [roomSize] Correlated to the decay time.
+		 *  @param {Frequency} [dampening] The cutoff frequency of a lowpass filter as part
+		 *                                 of the reverb.
 		 *  @example
 		 * var freeverb = new Tone.Freeverb().toMaster();
 		 * freeverb.dampening.value = 1000;
@@ -13064,13 +13064,13 @@
 	        Tone.StereoEffect.call(this, options);
 	        /**
 			 *  The roomSize value between. A larger roomSize
-			 *  will result in a longer decay. 
+			 *  will result in a longer decay.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
 	        this.roomSize = new Tone.Signal(options.roomSize, Tone.Type.NormalRange);
 	        /**
-			 *  The amount of dampening of the reverberant signal. 
+			 *  The amount of dampening of the reverberant signal.
 			 *  @type {Frequency}
 			 *  @signal
 			 */
@@ -13139,7 +13139,7 @@
 	        'dampening': 3000
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.Freeverb} this
 		 */
 	    Tone.Freeverb.prototype.dispose = function () {
@@ -13172,7 +13172,7 @@
 	    return Tone.Freeverb;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  an array of the comb filter delay time values
 		 *  @private
@@ -13211,15 +13211,15 @@
 	    /**
 		 *  @class Tone.JCReverb is a simple [Schroeder Reverberator](https://ccrma.stanford.edu/~jos/pasp/Schroeder_Reverberators.html)
 		 *         tuned by John Chowning in 1970.
-		 *         It is made up of three allpass filters and four Tone.FeedbackCombFilter. 
-		 *         
+		 *         It is made up of three allpass filters and four Tone.FeedbackCombFilter.
+		 *
 		 *
 		 *  @extends {Tone.Effect}
 		 *  @constructor
 		 *  @param {NormalRange|Object} [roomSize] Coorelates to the decay time.
 		 *  @example
 		 * var reverb = new Tone.JCReverb(0.4).connect(Tone.Master);
-		 * var delay = new Tone.FeedbackDelay(0.5); 
+		 * var delay = new Tone.FeedbackDelay(0.5);
 		 * //connecting the synth to reverb through delay
 		 * var synth = new Tone.DuoSynth().chain(delay, reverb);
 		 * synth.triggerAttackRelease("A4","8n");
@@ -13287,7 +13287,7 @@
 		 */
 	    Tone.JCReverb.defaults = { 'roomSize': 0.5 };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.JCReverb} this
 		 */
 	    Tone.JCReverb.prototype.dispose = function () {
@@ -13312,16 +13312,16 @@
 	    return Tone.JCReverb;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Mid/Side processing separates the the 'mid' signal 
-		 *         (which comes out of both the left and the right channel) 
-		 *         and the 'side' (which only comes out of the the side channels) 
+		 *  @class Mid/Side processing separates the the 'mid' signal
+		 *         (which comes out of both the left and the right channel)
+		 *         and the 'side' (which only comes out of the the side channels)
 		 *         and effects them separately before being recombined.
 		 *         Applies a Mid/Side seperation and recombination.
 		 *         Algorithm found in [kvraudio forums](http://www.kvraudio.com/forum/viewtopic.php?t=212587).
 		 *         <br><br>
-		 *         This is a base-class for Mid/Side Effects. 
+		 *         This is a base-class for Mid/Side Effects.
 		 *
 		 *  @extends {Tone.Effect}
 		 *  @constructor
@@ -13370,7 +13370,7 @@
 	    };
 	    Tone.extend(Tone.MidSideEffect, Tone.Effect);
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.MidSideEffect} this
 		 */
 	    Tone.MidSideEffect.prototype.dispose = function () {
@@ -13388,22 +13388,22 @@
 	    return Tone.MidSideEffect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Phaser is a phaser effect. Phasers work by changing the phase
-		 *         of different frequency components of an incoming signal. Read more on 
-		 *         [Wikipedia](https://en.wikipedia.org/wiki/Phaser_(effect)). 
+		 *         of different frequency components of an incoming signal. Read more on
+		 *         [Wikipedia](https://en.wikipedia.org/wiki/Phaser_(effect)).
 		 *         Inspiration for this phaser comes from [Tuna.js](https://github.com/Dinahmoe/tuna/).
 		 *
 		 *	@extends {Tone.StereoEffect}
 		 *	@constructor
-		 *	@param {Frequency|Object} [frequency] The speed of the phasing. 
-		 *	@param {number} [octaves] The octaves of the effect. 
-		 *	@param {Frequency} [baseFrequency] The base frequency of the filters. 
+		 *	@param {Frequency|Object} [frequency] The speed of the phasing.
+		 *	@param {number} [octaves] The octaves of the effect.
+		 *	@param {Frequency} [baseFrequency] The base frequency of the filters.
 		 *	@example
 		 * var phaser = new Tone.Phaser({
-		 * 	"frequency" : 15, 
-		 * 	"octaves" : 5, 
+		 * 	"frequency" : 15,
+		 * 	"octaves" : 5,
 		 * 	"baseFrequency" : 1000
 		 * }).toMaster();
 		 * var synth = new Tone.FMSynth().connect(phaser);
@@ -13534,7 +13534,7 @@
 	        }
 	    });
 	    /**
-		 * The the base frequency of the filters. 
+		 * The the base frequency of the filters.
 		 * @memberOf Tone.Phaser#
 		 * @type {number}
 		 * @name baseFrequency
@@ -13582,20 +13582,20 @@
 	    return Tone.Phaser;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.PingPongDelay is a feedback delay effect where the echo is heard
 		 *          first in one channel and next in the opposite channel. In a stereo
 		 *          system these are the right and left channels.
-		 *          PingPongDelay in more simplified terms is two Tone.FeedbackDelays 
+		 *          PingPongDelay in more simplified terms is two Tone.FeedbackDelays
 		 *          with independent delay values. Each delay is routed to one channel
-		 *          (left or right), and the channel triggered second will always 
+		 *          (left or right), and the channel triggered second will always
 		 *          trigger at the same interval after the first.
 		 *
 		 * 	@constructor
 		 * 	@extends {Tone.StereoXFeedbackEffect}
 		 *  @param {Time|Object} [delayTime] The delayTime between consecutive echos.
-		 *  @param {NormalRange=} feedback The amount of the effected signal which 
+		 *  @param {NormalRange=} feedback The amount of the effected signal which
 		 *                                 is fed back through the delay.
 		 *  @example
 		 * var pingPong = new Tone.PingPongDelay("4n", 0.2).toMaster();
@@ -13651,7 +13651,7 @@
 	        'maxDelayTime': 1
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.PingPongDelay} this
 		 */
 	    Tone.PingPongDelay.prototype.dispose = function () {
@@ -13670,16 +13670,16 @@
 	    return Tone.PingPongDelay;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.PitchShift does near-realtime pitch shifting to the incoming signal. 
+		 *  @class Tone.PitchShift does near-realtime pitch shifting to the incoming signal.
 		 *         The effect is achieved by speeding up or slowing down the delayTime
-		 *         of a DelayNode using a sawtooth wave. 
+		 *         of a DelayNode using a sawtooth wave.
 		 *         Algorithm found in [this pdf](http://dsp-book.narod.ru/soundproc.pdf).
 		 *         Additional reference by [Miller Pucket](http://msp.ucsd.edu/techniques/v0.11/book-html/node115.html).
-		 *         
+		 *
 		 *  @extends {Tone.FeedbackEffect}
-		 *  @param {Interval=} pitch The interval to transpose the incoming signal by. 
+		 *  @param {Interval=} pitch The interval to transpose the incoming signal by.
 		 */
 	    Tone.PitchShift = function () {
 	        var options = this.optionsObject(arguments, ['pitch'], Tone.PitchShift.defaults);
@@ -13692,7 +13692,7 @@
 	        this._frequency = new Tone.Signal(0);
 	        /**
 			 *  Uses two DelayNodes to cover up the jump in
-			 *  the sawtooth wave. 
+			 *  the sawtooth wave.
 			 *  @type  {DelayNode}
 			 *  @private
 			 */
@@ -13734,7 +13734,7 @@
 	        /**
 			 *  LFO which alternates between the two
 			 *  delay lines to cover up the disparity in the
-			 *  sawtooth wave. 
+			 *  sawtooth wave.
 			 *  @type  {Tone.LFO}
 			 *  @private
 			 */
@@ -13800,7 +13800,7 @@
 	    };
 	    /**
 		 * Repitch the incoming signal by some interval (measured
-		 * in semi-tones). 
+		 * in semi-tones).
 		 * @memberOf Tone.PitchShift#
 		 * @type {Interval}
 		 * @name pitch
@@ -13832,10 +13832,10 @@
 	        }
 	    });
 	    /**
-		 * The window size corresponds roughly to the sample length in a looping sampler. 
+		 * The window size corresponds roughly to the sample length in a looping sampler.
 		 * Smaller values are desirable for a less noticeable delay time of the pitch shifted
-		 * signal, but larger values will result in smoother pitch shifting for larger intervals. 
-		 * A nominal range of 0.03 to 0.1 is recommended. 
+		 * signal, but larger values will result in smoother pitch shifting for larger intervals.
+		 * A nominal range of 0.03 to 0.1 is recommended.
 		 * @memberOf Tone.PitchShift#
 		 * @type {Time}
 		 * @name windowSize
@@ -13880,10 +13880,10 @@
 	    return Tone.PitchShift;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Base class for stereo feedback effects where the effectReturn
-		 *         is fed back into the same channel. 
+		 *         is fed back into the same channel.
 		 *
 		 *	@constructor
 		 *	@extends {Tone.FeedbackEffect}
@@ -13934,9 +13934,9 @@
 	    return Tone.StereoFeedbackEffect;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Applies a width factor to the mid/side seperation. 
+		 *  @class Applies a width factor to the mid/side seperation.
 		 *         0 is all mid and 1 is all side.
 		 *         Algorithm found in [kvraudio forums](http://www.kvraudio.com/forum/viewtopic.php?t=212587).
 		 *         <br><br>
@@ -13953,7 +13953,7 @@
 	        var options = this.optionsObject(arguments, ['width'], Tone.StereoWidener.defaults);
 	        Tone.MidSideEffect.call(this, options);
 	        /**
-			 *  The width control. 0 = 100% mid. 1 = 100% side. 0.5 = no change. 
+			 *  The width control. 0 = 100% mid. 1 = 100% side. 0.5 = no change.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -13995,7 +13995,7 @@
 		 */
 	    Tone.StereoWidener.defaults = { 'width': 0.5 };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.StereoWidener} this
 		 */
 	    Tone.StereoWidener.prototype.dispose = function () {
@@ -14014,7 +14014,7 @@
 	    return Tone.StereoWidener;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Tremolo modulates the amplitude of an incoming signal using a Tone.LFO.
 		 *         The type, frequency, and depth of the LFO is controllable.
@@ -14161,7 +14161,7 @@
 	            this._lfoR.type = type;
 	        }
 	    });
-	    /** 
+	    /**
 		 * Amount of stereo spread. When set to 0, both LFO's will be panned centrally.
 		 * When set to 180, LFO's will be panned hard left and right respectively.
 		 * @memberOf Tone.Tremolo#
@@ -14202,11 +14202,11 @@
 	    return Tone.Tremolo;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class A Vibrato effect composed of a Tone.Delay and a Tone.LFO. The LFO
 		 *         modulates the delayTime of the delay, causing the pitch to rise
-		 *         and fall. 
+		 *         and fall.
 		 *  @extends {Tone.Effect}
 		 *  @param {Frequency} frequency The frequency of the vibrato.
 		 *  @param {NormalRange} depth The amount the pitch is modulated.
@@ -14242,7 +14242,7 @@
 			 */
 	        this.frequency = this._lfo.frequency;
 	        /**
-			 *  The depth of the vibrato. 
+			 *  The depth of the vibrato.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -14300,15 +14300,15 @@
 	    return Tone.Vibrato;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Event abstracts away Tone.Transport.schedule and provides a schedulable
-		 *          callback for a single or repeatable events along the timeline. 
+		 *          callback for a single or repeatable events along the timeline.
 		 *
 		 *  @extends {Tone}
-		 *  @param {function} callback The callback to invoke at the time. 
+		 *  @param {function} callback The callback to invoke at the time.
 		 *  @param {*} value The value or values which should be passed to
-		 *                      the callback function on invocation.  
+		 *                      the callback function on invocation.
 		 *  @example
 		 * var chord = new Tone.Event(function(time, chord){
 		 * 	//the chord as well as the exact time of the event
@@ -14332,7 +14332,7 @@
 			 */
 	        this._loop = options.loop;
 	        /**
-			 *  The callback to invoke. 
+			 *  The callback to invoke.
 			 *  @type  {Function}
 			 */
 	        this.callback = options.callback;
@@ -14363,7 +14363,7 @@
 	        this._state = new Tone.TimelineState(Tone.State.Stopped);
 	        /**
 			 *  The playback speed of the note. A speed of 1
-			 *  is no change. 
+			 *  is no change.
 			 *  @private
 			 *  @type {Positive}
 			 */
@@ -14376,7 +14376,7 @@
 	        this._startOffset = 0;
 	        /**
 			 *  The probability that the callback will be invoked
-			 *  at the scheduled time. 
+			 *  at the scheduled time.
 			 *  @type {NormalRange}
 			 *  @example
 			 * //the callback will be invoked 50% of the time
@@ -14485,7 +14485,7 @@
 	        }
 	    });
 	    /**
-		 *  Start the note at the given time. 
+		 *  Start the note at the given time.
 		 *  @param  {Time}  time  When the note should start.
 		 *  @return  {Tone.Event}  this
 		 */
@@ -14535,7 +14535,7 @@
 	        return this;
 	    };
 	    /**
-		 *  The callback function invoker. Also 
+		 *  The callback function invoker. Also
 		 *  checks if the Event is done playing
 		 *  @param  {Number}  time  The time of the event in seconds
 		 *  @private
@@ -14565,7 +14565,7 @@
 	    };
 	    /**
 		 *  If the note should loop or not
-		 *  between Tone.Event.loopStart and 
+		 *  between Tone.Event.loopStart and
 		 *  Tone.Event.loopEnd. An integer
 		 *  value corresponds to the number of
 		 *  loops the Event does after it starts.
@@ -14602,7 +14602,7 @@
 	        }
 	    });
 	    /**
-		 *  The loopEnd point is the time the event will loop. 
+		 *  The loopEnd point is the time the event will loop.
 		 *  Note: only loops if Tone.Event.loop is true.
 		 *  @memberOf Tone.Event#
 		 *  @type {Boolean|Positive}
@@ -14620,7 +14620,7 @@
 	        }
 	    });
 	    /**
-		 *  The time when the loop should start. 
+		 *  The time when the loop should start.
 		 *  @memberOf Tone.Event#
 		 *  @type {Boolean|Positive}
 		 *  @name loopStart
@@ -14677,13 +14677,13 @@
 	});
 	Module(function (Tone) {
 	    /**
-		 *  @class Tone.Loop creates a looped callback at the 
-		 *         specified interval. The callback can be 
+		 *  @class Tone.Loop creates a looped callback at the
+		 *         specified interval. The callback can be
 		 *         started, stopped and scheduled along
-		 *         the Transport's timeline. 
+		 *         the Transport's timeline.
 		 *  @example
 		 * var loop = new Tone.Loop(function(time){
-		 * 	//triggered every eighth note. 
+		 * 	//triggered every eighth note.
 		 * 	console.log(time);
 		 * }, "8n").start(0);
 		 * Tone.Transport.start();
@@ -14779,7 +14779,7 @@
 	    });
 	    /**
 		 *  The progress of the loop as a value between 0-1. 0, when
-		 *  the loop is stopped or done iterating. 
+		 *  the loop is stopped or done iterating.
 		 *  @memberOf Tone.Loop#
 		 *  @type {NormalRange}
 		 *  @name progress
@@ -14791,7 +14791,7 @@
 	        }
 	    });
 	    /**
-		 *  The time between successive callbacks. 
+		 *  The time between successive callbacks.
 		 *  @example
 		 * loop.interval = "8n"; //loop every 8n
 		 *  @memberOf Tone.Loop#
@@ -14807,8 +14807,8 @@
 	        }
 	    });
 	    /**
-		 *  The playback rate of the loop. The normal playback rate is 1 (no change). 
-		 *  A `playbackRate` of 2 would be twice as fast. 
+		 *  The playback rate of the loop. The normal playback rate is 1 (no change).
+		 *  A `playbackRate` of 2 would be twice as fast.
 		 *  @memberOf Tone.Loop#
 		 *  @type {Time}
 		 *  @name playbackRate
@@ -14822,7 +14822,7 @@
 	        }
 	    });
 	    /**
-		 *  Random variation +/-0.01s to the scheduled time. 
+		 *  Random variation +/-0.01s to the scheduled time.
 		 *  Or give it a time value which it will randomize by.
 		 *  @type {Boolean|Time}
 		 *  @memberOf Tone.Loop#
@@ -14900,7 +14900,7 @@
 	    return Tone.Loop;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.Part is a collection Tone.Events which can be
 		 *         started/stoped and looped as a single unit.
@@ -14919,7 +14919,7 @@
 		 * var part = new Tone.Part(function(time, value){
 		 * 	//the value is an object which contains both the note and the velocity
 		 * 	synth.triggerAttackRelease(value.note, "8n", time, value.velocity);
-		 * }, [{"time" : 0, "note" : "C3", "velocity": 0.9}, 
+		 * }, [{"time" : 0, "note" : "C3", "velocity": 0.9},
 		 * 	   {"time" : "0:2", "note" : "C4", "velocity": 0.5}
 		 * ]).start(0);
 		 */
@@ -14960,7 +14960,7 @@
 	        this._probability = options.probability;
 	        /**
 			 *  the amount of variation from the
-			 *  given time. 
+			 *  given time.
 			 *  @type {Boolean|Time}
 			 *  @private
 			 */
@@ -14978,7 +14978,7 @@
 			 */
 	        this._state = new Tone.TimelineState(Tone.State.Stopped);
 	        /**
-			 *  An array of Objects. 
+			 *  An array of Objects.
 			 *  @type  {Array}
 			 *  @private
 			 */
@@ -15023,7 +15023,7 @@
 	        'mute': false
 	    };
 	    /**
-		 *  Start the part at the given time. 
+		 *  Start the part at the given time.
 		 *  @param  {Time}  time    When to start the part.
 		 *  @param  {Time=}  offset  The offset from the start of the part
 		 *                           to begin playing at.
@@ -15048,7 +15048,7 @@
 	    /**
 		 *  Start the event in the given event at the correct time given
 		 *  the ticks and offset and looping.
-		 *  @param  {Tone.Event}  event 
+		 *  @param  {Tone.Event}  event
 		 *  @param  {Ticks}  ticks
 		 *  @param  {Ticks}  offset
 		 *  @private
@@ -15103,15 +15103,15 @@
 	        return this;
 	    };
 	    /**
-		 *  Get/Set an Event's value at the given time. 
+		 *  Get/Set an Event's value at the given time.
 		 *  If a value is passed in and no event exists at
-		 *  the given time, one will be created with that value. 
+		 *  the given time, one will be created with that value.
 		 *  If two events are at the same time, the first one will
 		 *  be returned.
 		 *  @example
 		 * part.at("1m"); //returns the part at the first measure
 		 *
-		 * part.at("2m", "C2"); //set the value at "2m" to C2. 
+		 * part.at("2m", "C2"); //set the value at "2m" to C2.
 		 * //if an event didn't exist at that time, it will be created.
 		 *  @param {Time} time the time of the event to get or set
 		 *  @param {*=} value If a value is passed in, the value of the
@@ -15140,12 +15140,12 @@
 	        }
 	    };
 	    /**
-		 *  Add a an event to the part. 
+		 *  Add a an event to the part.
 		 *  @param {Time} time The time the note should start.
 		 *                            If an object is passed in, it should
 		 *                            have a 'time' attribute and the rest
 		 *                            of the object will be used as the 'value'.
-		 *  @param  {Tone.Event|*}  value 
+		 *  @param  {Tone.Event|*}  value
 		 *  @returns {Tone.Part} this
 		 *  @example
 		 * part.add("1m", "C#+11");
@@ -15186,7 +15186,7 @@
 	    };
 	    /**
 		 *  Restart the given event
-		 *  @param  {Tone.Event}  event 
+		 *  @param  {Tone.Event}  event
 		 *  @private
 		 */
 	    Tone.Part.prototype._restartEvent = function (event) {
@@ -15224,7 +15224,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Remove all of the notes from the group. 
+		 *  Remove all of the notes from the group.
 		 *  @return  {Tone.Part}  this
 		 */
 	    Tone.Part.prototype.removeAll = function () {
@@ -15336,7 +15336,7 @@
 	    });
 	    /**
 		 *  If the part should loop or not
-		 *  between Tone.Part.loopStart and 
+		 *  between Tone.Part.loopStart and
 		 *  Tone.Part.loopEnd. An integer
 		 *  value corresponds to the number of
 		 *  loops the Part does after it starts.
@@ -15362,7 +15362,7 @@
 	        }
 	    });
 	    /**
-		 *  The loopEnd point determines when it will 
+		 *  The loopEnd point determines when it will
 		 *  loop if Tone.Part.loop is true.
 		 *  @memberOf Tone.Part#
 		 *  @type {Boolean|Positive}
@@ -15383,7 +15383,7 @@
 	        }
 	    });
 	    /**
-		 *  The loopStart point determines when it will 
+		 *  The loopStart point determines when it will
 		 *  loop if Tone.Part.loop is true.
 		 *  @memberOf Tone.Part#
 		 *  @type {Boolean|Positive}
@@ -15419,7 +15419,7 @@
 	        }
 	    });
 	    /**
-		 * 	The number of scheduled notes in the part. 
+		 * 	The number of scheduled notes in the part.
 		 *  @memberOf Tone.Part#
 		 *  @type {Positive}
 		 *  @name length
@@ -15561,17 +15561,17 @@
 	    return Tone.Pattern;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class A sequence is an alternate notation of a part. Instead
 		 *         of passing in an array of [time, event] pairs, pass
 		 *         in an array of events which will be spaced at the
 		 *         given subdivision. Sub-arrays will subdivide that beat
-		 *         by the number of items are in the array. 
+		 *         by the number of items are in the array.
 		 *         Sequence notation inspiration from [Tidal](http://yaxu.org/tidal/)
 		 *  @param  {Function}  callback  The callback to invoke with every note
 		 *  @param  {Array}    events  The sequence
-		 *  @param  {Time} subdivision  The subdivision between which events are placed. 
+		 *  @param  {Time} subdivision  The subdivision between which events are placed.
 		 *  @extends {Tone.Part}
 		 *  @example
 		 * var seq = new Tone.Sequence(function(time, note){
@@ -15620,9 +15620,9 @@
 		 */
 	    Tone.Sequence.defaults = { 'subdivision': '4n' };
 	    /**
-		 *  The subdivision of the sequence. This can only be 
-		 *  set in the constructor. The subdivision is the 
-		 *  interval between successive steps. 
+		 *  The subdivision of the sequence. This can only be
+		 *  set in the constructor. The subdivision is the
+		 *  interval between successive steps.
 		 *  @type {Time}
 		 *  @memberOf Tone.Sequence#
 		 *  @name subdivision
@@ -15634,8 +15634,8 @@
 	        }
 	    });
 	    /**
-		 *  Get/Set an index of the sequence. If the index contains a subarray, 
-		 *  a Tone.Sequence representing that sub-array will be returned. 
+		 *  Get/Set an index of the sequence. If the index contains a subarray,
+		 *  a Tone.Sequence representing that sub-array will be returned.
 		 *  @example
 		 * var sequence = new Tone.Sequence(playNote, ["E4", "C4", "F#4", ["A4", "Bb3"]])
 		 * sequence.at(0)// => returns "E4"
@@ -15647,7 +15647,7 @@
 		 * @param {*} value Optionally pass in the value to set at the given index.
 		 */
 	    Tone.Sequence.prototype.at = function (index, value) {
-	        //if the value is an array, 
+	        //if the value is an array,
 	        if (this.isArray(value)) {
 	            //remove the current event at that index
 	            this.remove(index);
@@ -15657,7 +15657,7 @@
 	    };
 	    /**
 		 *  Add an event at an index, if there's already something
-		 *  at that index, overwrite it. If `value` is an array, 
+		 *  at that index, overwrite it. If `value` is an array,
 		 *  it will be parsed as a subsequence.
 		 *  @param {Number} index The index to add the event to
 		 *  @param {*} value The value to add at that index
@@ -15686,7 +15686,7 @@
 	    };
 	    /**
 		 *  Get the time of the index given the Sequence's subdivision
-		 *  @param  {Number}  index 
+		 *  @param  {Number}  index
 		 *  @return  {Time}  The time of that index
 		 *  @private
 		 */
@@ -15708,12 +15708,12 @@
 	    return Tone.Sequence;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.PulseOscillator is a pulse oscillator with control over pulse width,
-		 *         also known as the duty cycle. At 50% duty cycle (width = 0.5) the wave is 
-		 *         a square and only odd-numbered harmonics are present. At all other widths 
-		 *         even-numbered harmonics are present. Read more 
+		 *         also known as the duty cycle. At 50% duty cycle (width = 0.5) the wave is
+		 *         a square and only odd-numbered harmonics are present. At all other widths
+		 *         even-numbered harmonics are present. Read more
 		 *         [here](https://wigglewave.wordpress.com/2014/08/16/pulse-waveforms-and-harmonics/).
 		 *
 		 *  @constructor
@@ -15730,7 +15730,7 @@
 	        ], Tone.Oscillator.defaults);
 	        Tone.Source.call(this, options);
 	        /**
-			 *  The width of the pulse. 
+			 *  The width of the pulse.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -15759,7 +15759,7 @@
 			 */
 	        this.frequency = this._sawtooth.frequency;
 	        /**
-			 *  The detune in cents. 
+			 *  The detune in cents.
 			 *  @type {Cents}
 			 *  @signal
 			 */
@@ -15800,7 +15800,7 @@
 	    };
 	    /**
 		 *  start the oscillator
-		 *  @param  {Time} time 
+		 *  @param  {Time} time
 		 *  @private
 		 */
 	    Tone.PulseOscillator.prototype._start = function (time) {
@@ -15810,13 +15810,13 @@
 	    };
 	    /**
 		 *  stop the oscillator
-		 *  @param  {Time} time 
+		 *  @param  {Time} time
 		 *  @private
 		 */
 	    Tone.PulseOscillator.prototype._stop = function (time) {
 	        time = this.toSeconds(time);
 	        this._sawtooth.stop(time);
-	        //the width is still connected to the output. 
+	        //the width is still connected to the output.
 	        //that needs to be stopped also
 	        this._widthGate.gain.setValueAtTime(0, time);
 	    };
@@ -15885,17 +15885,17 @@
 	    return Tone.PulseOscillator;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Tone.PWMOscillator modulates the width of a Tone.PulseOscillator 
+		 *  @class Tone.PWMOscillator modulates the width of a Tone.PulseOscillator
 		 *         at the modulationFrequency. This has the effect of continuously
-		 *         changing the timbre of the oscillator by altering the harmonics 
+		 *         changing the timbre of the oscillator by altering the harmonics
 		 *         generated.
 		 *
 		 *  @extends {Tone.Oscillator}
 		 *  @constructor
-		 *  @param {Frequency} frequency The starting frequency of the oscillator. 
-		 *  @param {Frequency} modulationFrequency The modulation frequency of the width of the pulse. 
+		 *  @param {Frequency} frequency The starting frequency of the oscillator.
+		 *  @param {Frequency} modulationFrequency The modulation frequency of the width of the pulse.
 		 *  @example
 		 *  var pwm = new Tone.PWMOscillator("Ab3", 0.3).toMaster().start();
 		 */
@@ -15924,7 +15924,7 @@
 	            'phase': options.phase
 	        });
 	        /**
-			 *  Scale the oscillator so it doesn't go silent 
+			 *  Scale the oscillator so it doesn't go silent
 			 *  at the extreme values.
 			 *  @type {Tone.Multiply}
 			 *  @private
@@ -15943,7 +15943,7 @@
 			 */
 	        this.detune = this._modulator.detune;
 	        /**
-			 *  The modulation rate of the oscillator. 
+			 *  The modulation rate of the oscillator.
 			 *  @type {Frequency}
 			 *  @signal
 			 */
@@ -16053,15 +16053,15 @@
 	    return Tone.PWMOscillator;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Tone.OmniOscillator aggregates Tone.Oscillator, Tone.PulseOscillator,
-		 *         and Tone.PWMOscillator into one class, allowing it to have the 
+		 *         and Tone.PWMOscillator into one class, allowing it to have the
 		 *         types: sine, square, triangle, sawtooth, pulse or pwm. Additionally,
-		 *         OmniOscillator is capable of setting the first x number of partials 
-		 *         of the oscillator. For example: "sine4" would set be the first 4 
-		 *         partials of the sine wave and "triangle8" would set the first 
-		 *         8 partials of the triangle wave. 
+		 *         OmniOscillator is capable of setting the first x number of partials
+		 *         of the oscillator. For example: "sine4" would set be the first 4
+		 *         partials of the sine wave and "triangle8" would set the first
+		 *         8 partials of the triangle wave.
 		 *
 		 *  @extends {Tone.Oscillator}
 		 *  @constructor
@@ -16153,7 +16153,7 @@
 	        this._oscillator.stop(time);
 	    };
 	    /**
-		 * The type of the oscillator. sine, square, triangle, sawtooth, pwm, or pulse. 
+		 * The type of the oscillator. sine, square, triangle, sawtooth, pwm, or pulse.
 		 * @memberOf Tone.OmniOscillator#
 		 * @type {string}
 		 * @name type
@@ -16185,12 +16185,12 @@
 	        }
 	    });
 	    /**
-		 * The partials of the waveform. A partial represents 
-		 * the amplitude at a harmonic. The first harmonic is the 
+		 * The partials of the waveform. A partial represents
+		 * the amplitude at a harmonic. The first harmonic is the
 		 * fundamental frequency, the second is the octave and so on
-		 * following the harmonic series. 
-		 * Setting this value will automatically set the type to "custom". 
-		 * The value is an empty array when the type is not "custom". 
+		 * following the harmonic series.
+		 * Setting this value will automatically set the type to "custom".
+		 * The value is an empty array when the type is not "custom".
 		 * @memberOf Tone.OmniOscillator#
 		 * @type {Array}
 		 * @name partials
@@ -16233,7 +16233,7 @@
 	        }
 	    };
 	    /**
-		 * The phase of the oscillator in degrees. 
+		 * The phase of the oscillator in degrees.
 		 * @memberOf Tone.OmniOscillator#
 		 * @type {Degrees}
 		 * @name phase
@@ -16255,7 +16255,7 @@
 		 * @example
 		 * var omniOsc = new Tone.OmniOscillator(440, "pulse");
 		 * //can access the width attribute only if type === "pulse"
-		 * omniOsc.width.value = 0.2; 
+		 * omniOsc.width.value = 0.2;
 		 */
 	    Object.defineProperty(Tone.OmniOscillator.prototype, 'width', {
 	        get: function () {
@@ -16265,7 +16265,7 @@
 	        }
 	    });
 	    /**
-		 * The modulationFrequency Signal of the oscillator 
+		 * The modulationFrequency Signal of the oscillator
 		 * (only if the oscillator type is set to pwm).
 		 * @memberOf Tone.OmniOscillator#
 		 * @type {Frequency}
@@ -16274,7 +16274,7 @@
 		 * @example
 		 * var omniOsc = new Tone.OmniOscillator(440, "pwm");
 		 * //can access the modulationFrequency attribute only if type === "pwm"
-		 * omniOsc.modulationFrequency.value = 0.2; 
+		 * omniOsc.modulationFrequency.value = 0.2;
 		 */
 	    Object.defineProperty(Tone.OmniOscillator.prototype, 'modulationFrequency', {
 	        get: function () {
@@ -16305,10 +16305,10 @@
 	    return Tone.OmniOscillator;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Base-class for all instruments
-		 *  
+		 *
 		 *  @constructor
 		 *  @extends {Tone}
 		 */
@@ -16353,7 +16353,7 @@
 		 */
 	    Tone.Instrument.prototype.triggerRelease = Tone.noOp;
 	    /**
-		 *  Trigger the attack and then the release after the duration. 
+		 *  Trigger the attack and then the release after the duration.
 		 *  @param  {Frequency} note     The note to trigger.
 		 *  @param  {Time} duration How long the note should be held for before
 		 *                          triggering the release.
@@ -16386,9 +16386,9 @@
 	    return Tone.Instrument;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  This is an abstract base class for other monophonic instruments to 
+		 *  @class  This is an abstract base class for other monophonic instruments to
 		 *          extend. IMPORTANT: It does not make any sound on its own and
 		 *          shouldn't be directly instantiated.
 		 *
@@ -16401,7 +16401,7 @@
 	        options = this.defaultArg(options, Tone.Monophonic.defaults);
 	        Tone.Instrument.call(this, options);
 	        /**
-			 *  The glide time between notes. 
+			 *  The glide time between notes.
 			 *  @type {Time}
 			 */
 	        this.portamento = options.portamento;
@@ -16414,13 +16414,13 @@
 		 */
 	    Tone.Monophonic.defaults = { 'portamento': 0 };
 	    /**
-		 *  Trigger the attack of the note optionally with a given velocity. 
-		 *  
-		 *  
+		 *  Trigger the attack of the note optionally with a given velocity.
+		 *
+		 *
 		 *  @param  {Frequency} note     The note to trigger.
 		 *  @param  {Time} [time=now]     When the note should start.
-		 *  @param  {number} [velocity=1] velocity The velocity scaler 
-		 *                                determines how "loud" the note 
+		 *  @param  {number} [velocity=1] velocity The velocity scaler
+		 *                                determines how "loud" the note
 		 *                                will be triggered.
 		 *  @returns {Tone.Monophonic} this
 		 *  @example
@@ -16462,9 +16462,9 @@
 	    };
 	    /**
 		 *  Set the note at the given time. If no time is given, the note
-		 *  will set immediately. 
+		 *  will set immediately.
 		 *  @param {Frequency} note The note to change to.
-		 *  @param  {Time} [time=now] The time when the note should be set. 
+		 *  @param  {Time} [time=now] The time when the note should be set.
 		 *  @returns {Tone.Monophonic} this
 		 * @example
 		 * //change to F#6 in one quarter note from now.
@@ -16488,16 +16488,16 @@
 	    return Tone.Monophonic;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.MonoSynth is composed of one oscillator, one filter, and two envelopes.
-		 *          The amplitude of the Tone.Oscillator and the cutoff frequency of the 
-		 *          Tone.Filter are controlled by Tone.Envelopes. 
+		 *          The amplitude of the Tone.Oscillator and the cutoff frequency of the
+		 *          Tone.Filter are controlled by Tone.Envelopes.
 		 *          <img src="https://docs.google.com/drawings/d/1gaY1DF9_Hzkodqf8JI1Cg2VZfwSElpFQfI94IQwad38/pub?w=924&h=240">
-		 *          
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var synth = new Tone.MonoSynth({
@@ -16645,18 +16645,18 @@
 	    return Tone.MonoSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  AMSynth uses the output of one Tone.MonoSynth to modulate the
 		 *          amplitude of another Tone.MonoSynth. The harmonicity (the ratio between
 		 *          the two signals) affects the timbre of the output signal the most.
-		 *          Read more about Amplitude Modulation Synthesis on 
+		 *          Read more about Amplitude Modulation Synthesis on
 		 *          [SoundOnSound](http://www.soundonsound.com/sos/mar00/articles/synthsecrets.htm).
 		 *          <img src="https://docs.google.com/drawings/d/1TQu8Ed4iFr1YTLKpB3U1_hur-UwBrh5gdBXc8BxfGKw/pub?w=1009&h=457">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                            see defaults below
 		 *  @example
 		 * var synth = new Tone.AMSynth().toMaster();
@@ -16666,13 +16666,13 @@
 	        options = this.defaultArg(options, Tone.AMSynth.defaults);
 	        Tone.Monophonic.call(this, options);
 	        /**
-			 *  The carrier voice. 
+			 *  The carrier voice.
 			 *  @type {Tone.MonoSynth}
 			 */
 	        this.carrier = new Tone.MonoSynth(options.carrier);
 	        this.carrier.volume.value = -10;
 	        /**
-			 *  The modulator voice. 
+			 *  The modulator voice.
 			 *  @type {Tone.MonoSynth}
 			 */
 	        this.modulator = new Tone.MonoSynth(options.modulator);
@@ -16685,7 +16685,7 @@
 	        this.frequency = new Tone.Signal(440, Tone.Type.Frequency);
 	        /**
 			 *  Harmonicity is the ratio between the two voices. A harmonicity of
-			 *  1 is no change. Harmonicity = 2 means a change of an octave. 
+			 *  1 is no change. Harmonicity = 2 means a change of an octave.
 			 *  @type {Positive}
 			 *  @signal
 			 *  @example
@@ -16774,7 +16774,7 @@
 	    };
 	    /**
 		 *  trigger the attack portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will occur
 		 *  @param {NormalRange} [velocity=1] the velocity of the note
 		 *  @private
@@ -16792,7 +16792,7 @@
 	    };
 	    /**
 		 *  trigger the release portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will release
 		 *  @private
 		 *  @returns {Tone.AMSynth} this
@@ -16831,19 +16831,19 @@
 	    return Tone.AMSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.DrumSynth makes kick and tom sounds using a single oscillator
 		 *          with an amplitude envelope and frequency ramp. A Tone.Oscillator
 		 *          is routed through a Tone.AmplitudeEnvelope to the output. The drum
 		 *          quality of the sound comes from the frequency envelope applied
 		 *          during during Tone.DrumSynth.triggerAttack(note). The frequency
-		 *          envelope starts at <code>note * .octaves</code> and ramps to 
-		 *          <code>note</code> over the duration of <code>.pitchDecay</code>. 
+		 *          envelope starts at <code>note * .octaves</code> and ramps to
+		 *          <code>note</code> over the duration of <code>.pitchDecay</code>.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Instrument}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var synth = new Tone.DrumSynth().toMaster();
@@ -16868,7 +16868,7 @@
 			 */
 	        this.octaves = options.octaves;
 	        /**
-			 *  The amount of time the frequency envelope takes. 
+			 *  The amount of time the frequency envelope takes.
 			 *  @type {Time}
 			 */
 	        this.pitchDecay = options.pitchDecay;
@@ -16896,8 +16896,8 @@
 	        }
 	    };
 	    /**
-		 *  Trigger the note at the given time with the given velocity. 
-		 *  
+		 *  Trigger the note at the given time with the given velocity.
+		 *
 		 *  @param  {Frequency} note     the note
 		 *  @param  {Time} [time=now]     the time, if not given is now
 		 *  @param  {number} [velocity=1] velocity defaults to 1
@@ -16916,7 +16916,7 @@
 	    };
 	    /**
 		 *  Trigger the release portion of the note.
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will release
 		 *  @returns {Tone.DrumSynth} this
 		 */
@@ -16943,16 +16943,16 @@
 	    return Tone.DrumSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.DuoSynth is a monophonic synth composed of two 
-		 *          MonoSynths run in parallel with control over the 
+		 *  @class  Tone.DuoSynth is a monophonic synth composed of two
+		 *          MonoSynths run in parallel with control over the
 		 *          frequency ratio between the two voices and vibrato effect.
 		 *          <img src="https://docs.google.com/drawings/d/1bL4GXvfRMMlqS7XyBm9CjL9KJPSUKbcdBNpqOlkFLxk/pub?w=1012&h=448">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var duoSynth = new Tone.DuoSynth().toMaster();
@@ -16974,7 +16974,7 @@
 	        this.voice1 = new Tone.MonoSynth(options.voice1);
 	        this.voice1.volume.value = -10;
 	        /**
-			 *  The vibrato LFO. 
+			 *  The vibrato LFO.
 			 *  @type {Tone.LFO}
 			 *  @private
 			 */
@@ -17016,7 +17016,7 @@
 	        this.frequency = new Tone.Signal(440, Tone.Type.Frequency);
 	        /**
 			 *  Harmonicity is the ratio between the two voices. A harmonicity of
-			 *  1 is no change. Harmonicity = 2 means a change of an octave. 
+			 *  1 is no change. Harmonicity = 2 means a change of an octave.
 			 *  @type {Positive}
 			 *  @signal
 			 *  @example
@@ -17087,7 +17087,7 @@
 	    };
 	    /**
 		 *  start the attack portion of the envelopes
-		 *  
+		 *
 		 *  @param {Time} [time=now] the time the attack should start
 		 *  @param {NormalRange} [velocity=1] the velocity of the note (0-1)
 		 *  @returns {Tone.DuoSynth} this
@@ -17103,7 +17103,7 @@
 	    };
 	    /**
 		 *  start the release portion of the envelopes
-		 *  
+		 *
 		 *  @param {Time} [time=now] the time the release should start
 		 *  @returns {Tone.DuoSynth} this
 		 *  @private
@@ -17146,17 +17146,17 @@
 	    return Tone.DuoSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  FMSynth is composed of two Tone.MonoSynths where one Tone.MonoSynth modulates
-		 *          the frequency of a second Tone.MonoSynth. A lot of spectral content 
+		 *          the frequency of a second Tone.MonoSynth. A lot of spectral content
 		 *          can be explored using the modulationIndex parameter. Read more about
 		 *          frequency modulation synthesis on [SoundOnSound](http://www.soundonsound.com/sos/apr00/articles/synthsecrets.htm).
 		 *          <img src="https://docs.google.com/drawings/d/1h0PUDZXPgi4Ikx6bVT6oncrYPLluFKy7lj53puxj-DM/pub?w=902&h=462">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var fmSynth = new Tone.FMSynth().toMaster();
@@ -17185,7 +17185,7 @@
 	        this.frequency = new Tone.Signal(440, Tone.Type.Frequency);
 	        /**
 			 *  Harmonicity is the ratio between the two voices. A harmonicity of
-			 *  1 is no change. Harmonicity = 2 means a change of an octave. 
+			 *  1 is no change. Harmonicity = 2 means a change of an octave.
 			 *  @type {Positive}
 			 *  @signal
 			 *  @example
@@ -17195,9 +17195,9 @@
 	        this.harmonicity = new Tone.Multiply(options.harmonicity);
 	        this.harmonicity.units = Tone.Type.Positive;
 	        /**
-			 *  The modulation index which essentially the depth or amount of the modulation. It is the 
-			 *  ratio of the frequency of the modulating signal (mf) to the amplitude of the 
-			 *  modulating signal (ma) -- as in ma/mf. 
+			 *  The modulation index which essentially the depth or amount of the modulation. It is the
+			 *  ratio of the frequency of the modulating signal (mf) to the amplitude of the
+			 *  modulating signal (ma) -- as in ma/mf.
 			 *	@type {Positive}
 			 *	@signal
 			 */
@@ -17274,7 +17274,7 @@
 	    };
 	    /**
 		 * 	trigger the attack portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will occur
 		 *  @param {number} [velocity=1] the velocity of the note
 		 *  @returns {Tone.FMSynth} this
@@ -17292,7 +17292,7 @@
 	    };
 	    /**
 		 *  trigger the release portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will release
 		 *  @returns {Tone.FMSynth} this
 		 *  @private
@@ -17332,7 +17332,7 @@
 	    return Tone.FMSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Noise is a noise generator. It uses looped noise buffers to save on performance.
 		 *          Tone.Noise supports the noise types: "pink", "white", and "brown". Read more about
@@ -17344,14 +17344,14 @@
 		 *  @example
 		 * //initialize the noise and start
 		 * var noise = new Tone.Noise("pink").start();
-		 * 
+		 *
 		 * //make an autofilter to shape the noise
 		 * var autoFilter = new Tone.AutoFilter({
-		 * 	"frequency" : "8m", 
-		 * 	"min" : 800, 
+		 * 	"frequency" : "8m",
+		 * 	"min" : 800,
 		 * 	"max" : 15000
 		 * }).connect(Tone.Master);
-		 * 
+		 *
 		 * //connect the noise
 		 * noise.connect(autoFilter);
 		 * //start the autofilter LFO
@@ -17393,7 +17393,7 @@
 	        'playbackRate': 1
 	    };
 	    /**
-		 * The type of the noise. Can be "white", "brown", or "pink". 
+		 * The type of the noise. Can be "white", "brown", or "pink".
 		 * @memberOf Tone.Noise#
 		 * @type {string}
 		 * @name type
@@ -17557,16 +17557,16 @@
 	    return Tone.Noise;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  Tone.NoiseSynth is composed of a noise generator (Tone.Noise), one filter (Tone.Filter), 
+		 *  @class  Tone.NoiseSynth is composed of a noise generator (Tone.Noise), one filter (Tone.Filter),
 		 *          and two envelopes (Tone.Envelop). One envelope controls the amplitude
-		 *          of the noise and the other is controls the cutoff frequency of the filter. 
+		 *          of the noise and the other is controls the cutoff frequency of the filter.
 		 *          <img src="https://docs.google.com/drawings/d/1rqzuX9rBlhT50MRvD2TKml9bnZhcZmzXF1rf_o7vdnE/pub?w=918&h=242">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Instrument}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 * @example
 		 * var noiseSynth = new Tone.NoiseSynth().toMaster();
@@ -17584,17 +17584,17 @@
 			 */
 	        this.noise = new Tone.Noise();
 	        /**
-			 *  The filter. 
+			 *  The filter.
 			 *  @type {Tone.Filter}
 			 */
 	        this.filter = new Tone.Filter(options.filter);
 	        /**
-			 *  The filter envelope. 
+			 *  The filter envelope.
 			 *  @type {Tone.FrequencyEnvelope}
 			 */
 	        this.filterEnvelope = new Tone.FrequencyEnvelope(options.filterEnvelope);
 	        /**
-			 *  The amplitude envelope. 
+			 *  The amplitude envelope.
 			 *  @type {Tone.AmplitudeEnvelope}
 			 */
 	        this.envelope = new Tone.AmplitudeEnvelope(options.envelope);
@@ -17639,8 +17639,8 @@
 	        }
 	    };
 	    /**
-		 *  Start the attack portion of the envelopes. Unlike other 
-		 *  instruments, Tone.NoiseSynth doesn't have a note. 
+		 *  Start the attack portion of the envelopes. Unlike other
+		 *  instruments, Tone.NoiseSynth doesn't have a note.
 		 *  @param {Time} [time=now] the time the attack should start
 		 *  @param {number} [velocity=1] the velocity of the note (0-1)
 		 *  @returns {Tone.NoiseSynth} this
@@ -17664,7 +17664,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Trigger the attack and then the release. 
+		 *  Trigger the attack and then the release.
 		 *  @param  {Time} duration the duration of the note
 		 *  @param  {Time} [time=now]     the time of the attack
 		 *  @param  {number} [velocity=1] the velocity
@@ -17678,7 +17678,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.NoiseSynth} this
 		 */
 	    Tone.NoiseSynth.prototype.dispose = function () {
@@ -17702,12 +17702,12 @@
 	    return Tone.NoiseSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Karplus-String string synthesis. Often out of tune. 
+		 *  @class Karplus-String string synthesis. Often out of tune.
 		 *         Will change when the AudioWorkerNode is available across
-		 *         browsers. 
-		 *  
+		 *         browsers.
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Instrument}
 		 *  @param {Object} [options] see the defaults
@@ -17724,7 +17724,7 @@
 			 */
 	        this._noise = new Tone.Noise('pink');
 	        /**
-			 *  The amount of noise at the attack. 
+			 *  The amount of noise at the attack.
 			 *  Nominal range of [0.1, 20]
 			 *  @type {number}
 			 */
@@ -17739,7 +17739,7 @@
 	            'dampening': options.dampening
 	        });
 	        /**
-			 *  The resonance control. 
+			 *  The resonance control.
 			 *  @type {NormalRange}
 			 *  @signal
 			 */
@@ -17770,7 +17770,7 @@
 	        'resonance': 0.9
 	    };
 	    /**
-		 *  Trigger the note. 
+		 *  Trigger the note.
 		 *  @param {Frequency} note The note to trigger.
 		 *  @param {Time} [time=now] When the note should be triggered.
 		 *  @returns {Tone.PluckSynth} this
@@ -17785,7 +17785,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Clean up. 
+		 *  Clean up.
 		 *  @returns {Tone.PluckSynth} this
 		 */
 	    Tone.PluckSynth.prototype.dispose = function () {
@@ -17805,19 +17805,19 @@
 	    return Tone.PluckSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.PolySynth handles voice creation and allocation for any
-		 *          instruments passed in as the second paramter. PolySynth is 
-		 *          not a synthesizer by itself, it merely manages voices of 
-		 *          one of the other types of synths, allowing any of the 
-		 *          monophonic synthesizers to be polyphonic. 
+		 *          instruments passed in as the second paramter. PolySynth is
+		 *          not a synthesizer by itself, it merely manages voices of
+		 *          one of the other types of synths, allowing any of the
+		 *          monophonic synthesizers to be polyphonic.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Instrument}
 		 *  @param {number|Object} [polyphony=4] The number of voices to create
 		 *  @param {function} [voice=Tone.MonoSynth] The constructor of the voices
-		 *                                            uses Tone.MonoSynth by default. 
+		 *                                            uses Tone.MonoSynth by default.
 		 *  @example
 		 * //a polysynth composed of 6 Voices of MonoSynth
 		 * var synth = new Tone.PolySynth(6, Tone.MonoSynth).toMaster();
@@ -17901,7 +17901,7 @@
 	                voice.triggerAttack(val, time, velocity);
 	                this._activeVoices[stringified] = voice;
 	            } else if (this.stealVoices) {
-	                //steal a voice				
+	                //steal a voice
 	                //take the first voice
 	                for (var voiceName in this._activeVoices) {
 	                    this._activeVoices[voiceName].triggerAttack(val, time, velocity);
@@ -17913,7 +17913,7 @@
 	    };
 	    /**
 		 *  Trigger the attack and release after the specified duration
-		 *  
+		 *
 		 *  @param  {Frequency|Array} notes The notes to play. Accepts a single
 		 *                                  Frequency or an array of frequencies.
 		 *  @param  {Time} duration the duration of the note
@@ -17921,7 +17921,7 @@
 		 *  @param  {number} [velocity=1] the velocity of the attack (0-1)
 		 *  @returns {Tone.PolySynth} this
 		 *  @example
-		 * //trigger a chord for a duration of a half note 
+		 * //trigger a chord for a duration of a half note
 		 * poly.triggerAttackRelease(["Eb3", "G4", "C5"], "2n");
 		 */
 	    Tone.PolySynth.prototype.triggerAttackRelease = function (notes, duration, time, velocity) {
@@ -17931,11 +17931,11 @@
 	        return this;
 	    };
 	    /**
-		 *  Trigger the release of the note. Unlike monophonic instruments, 
+		 *  Trigger the release of the note. Unlike monophonic instruments,
 		 *  a note (or array of notes) needs to be passed in as the first argument.
 		 *  @param  {Frequency|Array} notes The notes to play. Accepts a single
 		 *                                  Frequency or an array of frequencies.
-		 *  @param  {Time} [time=now]  When the release will be triggered. 
+		 *  @param  {Time} [time=now]  When the release will be triggered.
 		 *  @returns {Tone.PolySynth} this
 		 *  @example
 		 * poly.triggerRelease(["Ab3", "C4", "F5"], "+2n");
@@ -17958,7 +17958,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Set a member/attribute of the voices. 
+		 *  Set a member/attribute of the voices.
 		 *  @param {Object|string} params
 		 *  @param {number=} value
 		 *  @param {Time=} rampTime
@@ -17985,7 +17985,7 @@
 		 *  values. Pass in a single attribute to retrieve or an array
 		 *  of attributes. The attribute strings can also include a "."
 		 *  to access deeper properties.
-		 *  @param {Array=} params the parameters to get, otherwise will return 
+		 *  @param {Array=} params the parameters to get, otherwise will return
 		 *  					   all available.
 		 */
 	    Tone.PolySynth.prototype.get = function (params) {
@@ -18020,15 +18020,15 @@
 	    return Tone.PolySynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.Player is an audio file player with start, loop, and stop functions.
-		 *  
+		 *
 		 *  @constructor
-		 *  @extends {Tone.Source} 
+		 *  @extends {Tone.Source}
 		 *  @param {string|AudioBuffer} url Either the AudioBuffer or the url from
 		 *                                  which to load the AudioBuffer
-		 *  @param {function=} onload The function to invoke when the buffer is loaded. 
+		 *  @param {function=} onload The function to invoke when the buffer is loaded.
 		 *                            Recommended to use Tone.Buffer.onload instead.
 		 *  @example
 		 * var player = new Tone.Player("./path/to/sample.mp3").toMaster();
@@ -18055,7 +18055,7 @@
 	        this._source = null;
 	        /**
 			 *  If the file should play as soon
-			 *  as the buffer is loaded. 
+			 *  as the buffer is loaded.
 			 *  @type {boolean}
 			 *  @example
 			 * //will play as soon as it's loaded
@@ -18104,9 +18104,9 @@
 	        this._playbackRate = options.playbackRate;
 	        /**
 			 *  Enabling retrigger will allow a player to be restarted
-			 *  before the the previous 'start' is done playing. Otherwise, 
+			 *  before the the previous 'start' is done playing. Otherwise,
 			 *  successive calls to Tone.Player.start will only start
-			 *  the sample if it had played all the way through. 
+			 *  the sample if it had played all the way through.
 			 *  @type {boolean}
 			 */
 	        this.retrigger = options.retrigger;
@@ -18131,10 +18131,10 @@
 	    /**
 		 *  Load the audio file as an audio buffer.
 		 *  Decodes the audio asynchronously and invokes
-		 *  the callback once the audio buffer loads. 
+		 *  the callback once the audio buffer loads.
 		 *  Note: this does not need to be called if a url
 		 *  was passed in to the constructor. Only use this
-		 *  if you want to manually load a new url. 
+		 *  if you want to manually load a new url.
 		 * @param {string} url The url of the buffer to load.
 		 *                     Filetype support depends on the
 		 *                     browser.
@@ -18158,13 +18158,13 @@
 	    };
 	    /**
 		 *  play the buffer between the desired positions
-		 *  
+		 *
 		 *  @private
 		 *  @param  {Time} [startTime=now] when the player should start.
 		 *  @param  {Time} [offset=0] the offset from the beginning of the sample
-		 *                                 to start at. 
+		 *                                 to start at.
 		 *  @param  {Time=} duration how long the sample should play. If no duration
-		 *                                is given, it will default to the full length 
+		 *                                is given, it will default to the full length
 		 *                                of the sample (minus any offset)
 		 *  @returns {Tone.Player} this
 		 */
@@ -18222,13 +18222,13 @@
 	        return this;
 	    };
 	    /**
-		 *  Set the loop start and end. Will only loop if loop is 
-		 *  set to true. 
+		 *  Set the loop start and end. Will only loop if loop is
+		 *  set to true.
 		 *  @param {Time} loopStart The loop end time
 		 *  @param {Time} loopEnd The loop end time
 		 *  @returns {Tone.Player} this
 		 *  @example
-		 * //loop 0.1 seconds of the file. 
+		 * //loop 0.1 seconds of the file.
 		 * player.setLoopPoints(0.2, 0.3);
 		 * player.loop = true;
 		 */
@@ -18238,7 +18238,7 @@
 	        return this;
 	    };
 	    /**
-		 * If loop is true, the loop will start at this position. 
+		 * If loop is true, the loop will start at this position.
 		 * @memberOf Tone.Player#
 		 * @type {Time}
 		 * @name loopStart
@@ -18272,7 +18272,7 @@
 	        }
 	    });
 	    /**
-		 * The audio buffer belonging to the player. 
+		 * The audio buffer belonging to the player.
 		 * @memberOf Tone.Player#
 		 * @type {Tone.Buffer}
 		 * @name buffer
@@ -18286,7 +18286,7 @@
 	        }
 	    });
 	    /**
-		 * If the buffer should loop once it's over. 
+		 * If the buffer should loop once it's over.
 		 * @memberOf Tone.Player#
 		 * @type {boolean}
 		 * @name loop
@@ -18351,11 +18351,11 @@
 	    return Tone.Player;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class A sampler instrument which plays an audio buffer 
+		 *  @class A sampler instrument which plays an audio buffer
 		 *         through an amplitude envelope and a filter envelope. The sampler takes
-		 *         an Object in the constructor which maps a sample name to the URL 
+		 *         an Object in the constructor which maps a sample name to the URL
 		 *         of the sample. Nested Objects will be flattened and can be accessed using
 		 *         a dot notation (see the example).
 		 *         <img src="https://docs.google.com/drawings/d/1UK-gi_hxzKDz9Dh4ByyOptuagMOQxv52WxN12HwvtW8/pub?w=931&h=241">
@@ -18372,7 +18372,7 @@
 		 * 	},
 		 * 	"B.1" : "./audio/casio/B1.mp3",
 		 * }).toMaster();
-		 * 
+		 *
 		 * //listen for when all the samples have loaded
 		 * Tone.Buffer.onload = function(){
 		 * 	sampler.triggerAttack("A.1", time, velocity);
@@ -18394,17 +18394,17 @@
 			 */
 	        this._buffers = {};
 	        /**
-			 *  The amplitude envelope. 
+			 *  The amplitude envelope.
 			 *  @type {Tone.AmplitudeEnvelope}
 			 */
 	        this.envelope = new Tone.AmplitudeEnvelope(options.envelope);
 	        /**
-			 *  The filter envelope. 
+			 *  The filter envelope.
 			 *  @type {Tone.FrequencyEnvelope}
 			 */
 	        this.filterEnvelope = new Tone.FrequencyEnvelope(options.filterEnvelope);
 	        /**
-			 *  The name of the current sample. 
+			 *  The name of the current sample.
 			 *  @type {string}
 			 *  @private
 			 */
@@ -18477,10 +18477,10 @@
 	        }
 	    };
 	    /**
-		 *  Flatten an object into a single depth object. 
+		 *  Flatten an object into a single depth object.
 		 *  thanks to https://gist.github.com/penguinboy/762197
-		 *  @param   {Object} ob 	
-		 *  @return  {Object}    
+		 *  @param   {Object} ob
+		 *  @return  {Object}
 		 *  @private
 		 */
 	    Tone.Sampler.prototype._flattenUrls = function (ob) {
@@ -18502,29 +18502,36 @@
 	        return toReturn;
 	    };
 	    /**
-		 *  Start the sample and simultaneously trigger the envelopes. 
+		 *  Start the sample and simultaneously trigger the envelopes.
 		 *  @param {string=} sample The name of the sample to trigger, defaults to
-		 *                          the last sample used. 
+		 *                          the last sample used.
 		 *  @param {Time} [time=now] The time when the sample should start
 		 *  @param {number} [velocity=1] The velocity of the note
+		 *  @param {range} [] Define start and end points within the sample player, if you don't want to play it entirely
 		 *  @returns {Tone.Sampler} this
 		 *  @example
 		 * sampler.triggerAttack("B.1");
 		 */
-	    Tone.Sampler.prototype.triggerAttack = function (name, time, velocity) {
+	    Tone.Sampler.prototype.triggerAttack = function (name, time, velocity, range) {
 	        time = this.toSeconds(time);
 	        if (name) {
 	            this.sample = name;
 	        }
-	        this.player.start(time);
+					if( (range||{}).hasOwnProperty("start")&&(range||{}).hasOwnProperty("end") ){
+						this.player.start(0,range.start,range.end);
+					}else{
+						console.log("no range");
+						this.player.start(time);
+					}
+
 	        this.envelope.triggerAttack(time, velocity);
 	        this.filterEnvelope.triggerAttack(time);
 	        return this;
 	    };
 	    /**
-		 *  Start the release portion of the sample. Will stop the sample once the 
-		 *  envelope has fully released. 
-		 *  
+		 *  Start the release portion of the sample. Will stop the sample once the
+		 *  envelope has fully released.
+		 *
 		 *  @param {Time} [time=now] The time when the note should release
 		 *  @returns {Tone.Sampler} this
 		 *  @example
@@ -18579,7 +18586,7 @@
 	    });
 	    /**
 		 * Repitch the sampled note by some interval (measured
-		 * in semi-tones). 
+		 * in semi-tones).
 		 * @memberOf Tone.Sampler#
 		 * @type {Interval}
 		 * @name pitch
@@ -18626,15 +18633,15 @@
 	    return Tone.Sampler;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Tone.SimpleSynth is composed simply of a Tone.OmniOscillator
-		 *          routed through a Tone.AmplitudeEnvelope. 
+		 *          routed through a Tone.AmplitudeEnvelope.
 		 *          <img src="https://docs.google.com/drawings/d/1-1_0YW2Z1J2EPI36P8fNCMcZG7N1w1GZluPs4og4evo/pub?w=1163&h=231">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var synth = new Tone.SimpleSynth().toMaster();
@@ -18737,7 +18744,7 @@
 	    return Tone.SimpleSynth;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class   AMSynth uses the output of one Tone.SimpleSynth to modulate the
 		 *          amplitude of another Tone.SimpleSynth. The harmonicity (the ratio between
@@ -18747,7 +18754,7 @@
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var synth = new Tone.SimpleAM().toMaster();
@@ -18757,12 +18764,12 @@
 	        options = this.defaultArg(options, Tone.SimpleAM.defaults);
 	        Tone.Monophonic.call(this, options);
 	        /**
-			 *  The carrier voice. 
+			 *  The carrier voice.
 			 *  @type {Tone.SimpleSynth}
 			 */
 	        this.carrier = new Tone.SimpleSynth(options.carrier);
 	        /**
-			 *  The modulator voice. 
+			 *  The modulator voice.
 			 *  @type {Tone.SimpleSynth}
 			 */
 	        this.modulator = new Tone.SimpleSynth(options.modulator);
@@ -18840,7 +18847,7 @@
 	    };
 	    /**
 		 *  trigger the attack portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will occur
 		 *  @param {number} [velocity=1] the velocity of the note
 		 *  @returns {Tone.SimpleAM} this
@@ -18856,7 +18863,7 @@
 	    };
 	    /**
 		 *  trigger the release portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will release
 		 *  @returns {Tone.SimpleAM} this
 		 *  @private
@@ -18895,17 +18902,17 @@
 	    return Tone.SimpleAM;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  SimpleFM is composed of two Tone.SimpleSynths where one Tone.SimpleSynth modulates
-		 *          the frequency of a second Tone.SimpleSynth. A lot of spectral content 
+		 *          the frequency of a second Tone.SimpleSynth. A lot of spectral content
 		 *          can be explored using the Tone.FMSynth.modulationIndex parameter. Read more about
 		 *          frequency modulation synthesis on [SoundOnSound](http://www.soundonsound.com/sos/apr00/articles/synthsecrets.htm).
 		 *          <img src="https://docs.google.com/drawings/d/1hSU25lLjDk_WJ59DSitQm6iCRpcMWVEAYqBjwmqtRVw/pub?w=902&h=462">
 		 *
 		 *  @constructor
 		 *  @extends {Tone.Monophonic}
-		 *  @param {Object} [options] the options available for the synth 
+		 *  @param {Object} [options] the options available for the synth
 		 *                          see defaults below
 		 *  @example
 		 * var fmSynth = new Tone.SimpleFM().toMaster();
@@ -18915,13 +18922,13 @@
 	        options = this.defaultArg(options, Tone.SimpleFM.defaults);
 	        Tone.Monophonic.call(this, options);
 	        /**
-			 *  The carrier voice. 
+			 *  The carrier voice.
 			 *  @type {Tone.SimpleSynth}
 			 */
 	        this.carrier = new Tone.SimpleSynth(options.carrier);
 	        this.carrier.volume.value = -10;
 	        /**
-			 *  The modulator voice. 
+			 *  The modulator voice.
 			 *  @type {Tone.SimpleSynth}
 			 */
 	        this.modulator = new Tone.SimpleSynth(options.modulator);
@@ -18934,7 +18941,7 @@
 	        this.frequency = new Tone.Signal(440, Tone.Type.Frequency);
 	        /**
 			 *  Harmonicity is the ratio between the two voices. A harmonicity of
-			 *  1 is no change. Harmonicity = 2 means a change of an octave. 
+			 *  1 is no change. Harmonicity = 2 means a change of an octave.
 			 *  @type {Positive}
 			 *  @signal
 			 *  @example
@@ -18944,9 +18951,9 @@
 	        this.harmonicity = new Tone.Multiply(options.harmonicity);
 	        this.harmonicity.units = Tone.Type.Positive;
 	        /**
-			 *  The modulation index which is in essence the depth or amount of the modulation. In other terms it is the 
-			 *  ratio of the frequency of the modulating signal (mf) to the amplitude of the 
-			 *  modulating signal (ma) -- as in ma/mf. 
+			 *  The modulation index which is in essence the depth or amount of the modulation. In other terms it is the
+			 *  ratio of the frequency of the modulating signal (mf) to the amplitude of the
+			 *  modulating signal (ma) -- as in ma/mf.
 			 *	@type {Positive}
 			 *	@signal
 			 */
@@ -19008,7 +19015,7 @@
 	    };
 	    /**
 		 *  trigger the attack portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will occur
 		 *  @param {number} [velocity=1] the velocity of the note
 		 *  @returns {Tone.SimpleFM} this
@@ -19024,7 +19031,7 @@
 	    };
 	    /**
 		 *  trigger the release portion of the note
-		 *  
+		 *
 		 *  @param  {Time} [time=now] the time the note will release
 		 *  @returns {Tone.SimpleFM} this
 		 *  @private
@@ -19064,27 +19071,27 @@
 	    return Tone.SimpleFM;
 	});
 	Module(function (Tone) {
-	    
+
 	    //polyfill for getUserMedia
 	    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 	    /**
-		 *  @class  Tone.ExternalInput is a WebRTC Audio Input. Check 
+		 *  @class  Tone.ExternalInput is a WebRTC Audio Input. Check
 		 *          [Media Stream API Support](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_API)
 		 *          to see which browsers are supported. As of
-		 *          writing this, Chrome, Firefox, and Opera 
-		 *          support Media Stream. Chrome allows enumeration 
-		 *          of the sources, and access to device name over a 
-		 *          secure (HTTPS) connection. See [https://simpl.info](https://simpl.info/getusermedia/sources/index.html) 
-		 *          vs [http://simple.info](https://simpl.info/getusermedia/sources/index.html) 
+		 *          writing this, Chrome, Firefox, and Opera
+		 *          support Media Stream. Chrome allows enumeration
+		 *          of the sources, and access to device name over a
+		 *          secure (HTTPS) connection. See [https://simpl.info](https://simpl.info/getusermedia/sources/index.html)
+		 *          vs [http://simple.info](https://simpl.info/getusermedia/sources/index.html)
 		 *          on a Chrome browser for the difference.
-		 *         
+		 *
 		 *  @constructor
 		 *  @extends {Tone.Source}
 		 *  @param {number} [inputNum=0] If multiple inputs are present, select the input number. Chrome only.
 		 *  @example
 		 * //select the third input
 		 * var motu = new Tone.ExternalInput(3);
-		 * 
+		 *
 		 * //opening the input asks the user to activate their mic
 		 * motu.open(function(){
 		 * 	//opening is activates the microphone
@@ -19096,7 +19103,7 @@
 	        var options = this.optionsObject(arguments, ['inputNum'], Tone.ExternalInput.defaults);
 	        Tone.Source.call(this, options);
 	        /**
-			 *  The MediaStreamNode 
+			 *  The MediaStreamNode
 			 *  @type {MediaStreamAudioSourceNode}
 			 *  @private
 			 */
@@ -19114,14 +19121,14 @@
 			 */
 	        this._constraints = { 'audio': true };
 	        /**
-			 *  The input source position in Tone.ExternalInput.sources. 
+			 *  The input source position in Tone.ExternalInput.sources.
 			 *  Set before ExternalInput.open().
 			 *  @type {Number}
 			 *  @private
 			 */
 	        this._inputNum = options.inputNum;
 	        /**
-			 *  Gates the input signal for start/stop. 
+			 *  Gates the input signal for start/stop.
 			 *  Initially closed.
 			 *  @type {GainNode}
 			 *  @private
@@ -19172,8 +19179,8 @@
 	        }
 	    };
 	    /**
-		 *  Open the media stream 
-		 *  @param  {function=} callback The callback function to 
+		 *  Open the media stream
+		 *  @param  {function=} callback The callback function to
 		 *                       execute when the stream is open
 		 *  @return {Tone.ExternalInput} this
 		 */
@@ -19261,9 +19268,9 @@
 	        }
 	    });
 	    /**
-		 *  Populates the source list. Invokes the callback with an array of 
+		 *  Populates the source list. Invokes the callback with an array of
 		 *  possible audio sources.
-		 *  @param  {function=} callback Callback to be executed after populating list 
+		 *  @param  {function=} callback Callback to be executed after populating list
 		 *  @return {Tone.ExternalInput} this
 		 *  @static
 		 *  @example
@@ -19300,7 +19307,7 @@
 	    return Tone.ExternalInput;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class  Opens up the default source (typically the microphone).
 		 *
@@ -19336,10 +19343,10 @@
 	    return Tone.Microphone;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 * 	@class  Clip the incoming signal so that the output is always between min and max.
-		 * 	
+		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
 		 *  @param {number} min the minimum value of the outgoing signal
@@ -19390,7 +19397,7 @@
 	    return Tone.Clip;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
 		 *  @class Normalize takes an input min and max and maps it linearly to NormalRange [0,1]
 		 *
@@ -19401,7 +19408,7 @@
 		 *  @example
 		 * var norm = new Tone.Normalize(2, 4);
 		 * var sig = new Tone.Signal(3).connect(norm);
-		 * //output of norm is 0.5. 
+		 * //output of norm is 0.5.
 		 */
 	    Tone.Normalize = function (inputMin, inputMax) {
 	        /**
@@ -19485,9 +19492,9 @@
 	    return Tone.Normalize;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class Route a single input to the specified output. 
+		 *  @class Route a single input to the specified output.
 		 *
 		 *  @constructor
 		 *  @extends {Tone.SignalBase}
@@ -19584,9 +19591,9 @@
 	    return Tone.Route;
 	});
 	Module(function (Tone) {
-	    
+
 	    /**
-		 *  @class  When the gate is set to 0, the input signal does not pass through to the output. 
+		 *  @class  When the gate is set to 0, the input signal does not pass through to the output.
 		 *          If the gate is set to 1, the input signal passes through.
 		 *          the gate is initially closed.
 		 *
@@ -19599,7 +19606,7 @@
 		 * //initially no output from sigSwitch
 		 * sigSwitch.gate.value = 1;
 		 * //open the switch and allow the signal through
-		 * //the output of sigSwitch is now 2. 
+		 * //the output of sigSwitch is now 2.
 		 */
 	    Tone.Switch = function (open) {
 	        open = this.defaultArg(open, false);
@@ -19608,7 +19615,7 @@
 			 *  The control signal for the switch.
 			 *  When this value is 0, the input signal will NOT pass through,
 			 *  when it is high (1), the input signal will pass through.
-			 *  
+			 *
 			 *  @type {Number}
 			 *  @signal
 			 */
@@ -19629,9 +19636,9 @@
 	    };
 	    Tone.extend(Tone.Switch, Tone.SignalBase);
 	    /**
-		 *  Open the switch at a specific time. 
+		 *  Open the switch at a specific time.
 		 *
-		 *  @param {Time} [time=now] The time when the switch will be open. 
+		 *  @param {Time} [time=now] The time when the switch will be open.
 		 *  @returns {Tone.Switch} this
 		 *  @example
 		 *  //open the switch to let the signal through
@@ -19642,7 +19649,7 @@
 	        return this;
 	    };
 	    /**
-		 *  Close the switch at a specific time. 
+		 *  Close the switch at a specific time.
 		 *
 		 *  @param {Time} [time=now] The time when the switch will be closed.
 		 *  @returns {Tone.Switch} this

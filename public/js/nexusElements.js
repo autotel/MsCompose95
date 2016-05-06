@@ -36,10 +36,10 @@ nx.onload = function() {
     nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
     delay=new Tone.JCReverb(0.3);
     delay.wet=0.2;
-    channels[chan].engine=new Tone.Player({
-      url:channels[chan].source,
+    channels[chan].sampler=new Tone.Sampler(channels[chan].source,{
       retrigger:true
     }).connect(delay);
+    channels[chan].engine=channels[chan].sampler.player;
     delay.toMaster();
   }
   // stepFunction=function(data){
@@ -64,7 +64,10 @@ nx.onload = function() {
         var thisChan=chan;
         nx.widgets["trigger"+thisChan].on("*",function(data){
           if(data.press==1){
-            channels[thisChan].engine.start(0,channels[thisChan].startOffset,channels[thisChan].endTime);
+            var loopStart=channels[thisChan].startOffset;
+            var loopEnd=channels[thisChan].endTime;
+            channels[thisChan].sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
+            //
             // console.log(thisChan);
           }
         });

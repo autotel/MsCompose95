@@ -86,7 +86,11 @@ Sequencer=function(n){
         // this.onStepTrigger(data);
         // stepFunction(data);
         if(this.data[this.pos].eval()==1){
-          this.channel.engine.start(0,this.channel.startOffset,this.channel.endTime);
+          // this.channel.engine.start(0,this.channel.startOffset,this.channel.endTime);
+          //so, this is called elsewhere aswelll.... the channel should have a trigger function
+          var loopStart=this.channel.startOffset;
+          var loopEnd=this.channel.endTime;
+          this.channel.sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
         }
         this.pos=(this.pos+1)%this.len;
       }else{
