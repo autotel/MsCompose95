@@ -3,7 +3,8 @@ var sMaster={};
 var sClients={};
 var dataTracker={seqs:[]};
 var express = require('express');
-
+var masterport=8080;
+var clientport=80;
 sMaster.app=express();
 sClients.app=express();
 sMaster.http = require('http').Server(sMaster.app);
@@ -19,12 +20,12 @@ sClients.app.get('/', function(req, res){
   sClients.app.use(express.static('public'));
   res.sendFile(__dirname + '/public/user.html');
 });
-sMaster.http.listen(3000, function(){
-  console.log('listening on *:3000');
+sMaster.http.listen(masterport, function(){
+  console.log('listening on *:'+masterport);
 });
 
-sClients.http.listen(80, function(){
-  console.log('listening on *:80');
+sClients.http.listen(clientport, function(){
+  console.log('listening on *:'+clientport);
 });
 
 sMaster.io.on('connection', function(socket){
