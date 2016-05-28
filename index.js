@@ -35,7 +35,7 @@ sMaster.io.on('connection', function(socket){
   //maybe the socket server is the one that rules the sequencer ids...
   //or rather not...
   socket.emit('helloMaster',"nothing");
-  ipname="http://ec2-54-187-226-19.us-west-2.compute.amazonaws.com";
+  ipname={address:"http://ec2-54-187-226-19.us-west-2.compute.amazonaws.com"};
   socket.emit('ipAddress',ipname);
 
 
