@@ -46,7 +46,7 @@ Slider=function(n,parent,css){
     }
   });
 
-  this.jq.on("mousemove touchenter",function(){
+  this.jq.on("mousemove touchenter",function(event){
     if(mouse.buttonDown){
       event.preventDefault();
       if(me.vertical){

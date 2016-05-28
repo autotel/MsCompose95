@@ -18501,33 +18501,33 @@
 	        }
 	        return toReturn;
 	    };
-	    /**
-		 *  Start the sample and simultaneously trigger the envelopes.
-		 *  @param {string=} sample The name of the sample to trigger, defaults to
-		 *                          the last sample used.
-		 *  @param {Time} [time=now] The time when the sample should start
-		 *  @param {number} [velocity=1] The velocity of the note
-		 *  @param {range} [] Define start and end points within the sample player, if you don't want to play it entirely
-		 *  @returns {Tone.Sampler} this
-		 *  @example
-		 * sampler.triggerAttack("B.1");
-		 */
-	    Tone.Sampler.prototype.triggerAttack = function (name, time, velocity, range) {
-	        time = this.toSeconds(time);
-	        if (name) {
-	            this.sample = name;
-	        }
-					if( (range||{}).hasOwnProperty("start")&&(range||{}).hasOwnProperty("end") ){
-						this.player.start(0,range.start,range.end);
-					}else{
-						console.log("no range");
-						this.player.start(time);
-					}
+  /**
+ *  Start the sample and simultaneously trigger the envelopes.
+ *  @param {string=} sample The name of the sample to trigger, defaults to
+ *                          the last sample used.
+ *  @param {Time} [time=now] The time when the sample should start
+ *  @param {number} [velocity=1] The velocity of the note
+ *  @param {range} [] Define start and end points within the sample player, if you don't want to play it entirely
+ *  @returns {Tone.Sampler} this
+ *  @example
+ * sampler.triggerAttack("B.1");
+ */
+  Tone.Sampler.prototype.triggerAttack = function (name, time, velocity, range) {
+      time = this.toSeconds(time);
+      if (name) {
+          this.sample = name;
+      }
+			if( (range||{}).hasOwnProperty("start")&&(range||{}).hasOwnProperty("end") ){
+				this.player.start(0,range.start,range.end);
+			}else{
+				console.log("no range");
+				this.player.start(time);
+			}
 
-	        this.envelope.triggerAttack(time, velocity);
-	        this.filterEnvelope.triggerAttack(time);
-	        return this;
-	    };
+      this.envelope.triggerAttack(time, velocity);
+      this.filterEnvelope.triggerAttack(time);
+      return this;
+  };
 	    /**
 		 *  Start the release portion of the sample. Will stop the sample once the
 		 *  envelope has fully released.

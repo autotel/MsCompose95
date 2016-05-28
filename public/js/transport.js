@@ -6,6 +6,8 @@ transportStart=function(){
       seqs[n].step();
     }
   }, "32n");
+
+
   Tone.Transport.start();
   Tone.Transport.bpm.value = 45;
 
