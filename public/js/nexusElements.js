@@ -19,6 +19,7 @@ nx.onload = function() {
   // });
 
   for(chan in channels){
+    var channel=channels[chan];
     thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="editorPanel_'+chan+'"></div>');
     editorContainer=$('<div class="color_'+chan+' editorPanel"></div>');
     (function(){
@@ -33,14 +34,23 @@ nx.onload = function() {
     // nx.add( "slider" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
     mixerSliders[chan]=new Slider(chan,thiscontainer);
     $("#trigger"+chan).css({width:"30px",height:"30px",display:"block"});
-    nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
-    delay=new Tone.JCReverb(0.3);
-    delay.wet=0.2;
-    channels[chan].sampler=new Tone.Sampler(channels[chan].source,{
-      retrigger:true
-    }).connect(delay);
-    channels[chan].engine=channels[chan].sampler.player;
-    delay.toMaster();
+    if(channel.type=="melodic"){
+      // nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
+      delay=new Tone.JCReverb(0.3);
+      delay.wet=0.1;
+      channels[chan].synth=new Tone.SimpleFM (channels[chan].options).connect(delay);
+      channels[chan].engine=channels[chan].synth;
+      delay.toMaster();
+    }else{
+      nx.add( "waveform" ,{name:"cuep"+chan, parent:editorContainer,width:200,height:30});
+      delay=new Tone.JCReverb(0.3);
+      delay.wet=0.2;
+      channels[chan].sampler=new Tone.Sampler(channels[chan].source,{
+        retrigger:true
+      }).connect(delay);
+      channels[chan].engine=channels[chan].sampler.player;
+      delay.toMaster();
+    }
   }
   // stepFunction=function(data){
   //   if(data.stepVal==1){
@@ -59,9 +69,8 @@ nx.onload = function() {
     // player.start();
     // console.log("tone buffer ready");
     for(chan in channels){
-
       function a(){
-        var thisChan=chan;
+        var thisChan=chan;9
         nx.widgets["trigger"+thisChan].on("*",function(data){
           if(data.press==1){
             var loopStart=channels[thisChan].startOffset;
@@ -100,6 +109,7 @@ nx.onload = function() {
         });
 
       };
+      if(channels[chan].type=="sampler")
       a();
     }
   });

@@ -80,6 +80,7 @@ Sequencer=function(n){
   this.step=function(){
     this.alive=this.aliveChild>0;
     if(this.alive){
+      //each sequencer has a different speed rates. while some plays one step per click, others will have one step per several clock ticks.
       if(this.subpos%this.evry==0){
         // console.log("sq"+this.pos);
         // data={sequencer:this.id,pos:this.pos,stepVal:this.data[this.pos].eval()};
