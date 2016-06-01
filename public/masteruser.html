@@ -14,11 +14,11 @@
   </head>
 	<style>
 	#pane{
-	  width: 512px;
-	  height: 348px;
+	  width: 540px;
+	  height: 700px;
 	}
 	#sequencers{
-	  width:384px;
+	  width:896px;
 	}
 	#metro1{
 	  display:block;
@@ -101,6 +101,7 @@
 </body>
 <script type="text/javascript" src="js/soundchannels.js"></script>
 <script type="text/javascript" src="js/sequencerClass.js"></script>
+<script type="text/javascript" src="js/sequencer.melodic.js"></script>
 <script type="text/javascript" src="js/nexusElements.js"></script>
 <script type="text/javascript" src="js/transport.js"></script>
 <script type="text/javascript" src="js/mouseObject.js"></script>
@@ -109,13 +110,13 @@
 
 
 <script type="text/javascript">
-
+//pendant: Damn! this need a lot of tyding.
 var sw="switch";
 var seqs=[];
 
-for(a=0; a<4;a++){
-  seqs[a]={};
-}
+// for(a=0; a<4;a++){
+//   seqs[a]={};
+// }
 
 stepFunction=function(data){};
 
@@ -126,9 +127,9 @@ focusChannel=function(id){
 }
 
 $(document).ready(function(){
-  for(n in seqs){
-    seqs[n]=new Sequencer(n);
-  }
+
+		addMoreSequencers(4);
+
 })
 
 function giveUserASequencer(){
@@ -140,7 +141,11 @@ function giveUserASequencer(){
 function addMoreSequencers(count){
   newLength=seqs.length+count;
   for(a=seqs.length;a<newLength;a++){
-    seqs.push(new Sequencer(a));
+		if(channels[a%channels.length].type=="melodic"){
+			seqs.push(new MelodicSequencer(a));
+		}else{
+			seqs.push(new Sequencer(a));
+		}
   }
 }
 

@@ -1,7 +1,12 @@
-Slider=function(n,parent,css){
+Slider=function(n,parent,css,label){
   this.jq=$('<div class="slider-container" style="position:relative"></div>');
   this.sjq=$('<div class="slider-inner" style="pointer-events:none; position:absolute"></div>');
+  this.label=label||"";
+  this.labeljq=$('<p class="sliderlabel"></p>');
   this.jq.append(this.sjq);
+  this.jq.append(this.labeljq);
+  if(css)
+    this.jq.css(css);
   this.onChangeCallback=function(){};
   if(typeof (parent.append||false)=="function"){
     parent.append(this.jq);
@@ -12,6 +17,7 @@ Slider=function(n,parent,css){
   }
   var me=this;
   this.onChange=function(callback){
+
     me.onChangeCallback=function(){callback(me.data)};
   }
   // this.jq.css(css);
@@ -36,7 +42,6 @@ Slider=function(n,parent,css){
   }
   this.vertical=true;
   this.addClass("vertical");
-
   this.jq.on("mousedown tap touchstart",function(event){
     event.preventDefault();
     if(me.vertical){
@@ -70,6 +75,7 @@ Slider=function(n,parent,css){
     if(this.vertical){
       this.sjq.css({bottom:0,width:"100%",height:this.data.value*this.jq.height()});
     }else{
+      this.labeljq.html(this.label);
       this.sjq.css({bottom:0,width:this.data.value*this.jq.width(),height:"100%"});
     }
   }

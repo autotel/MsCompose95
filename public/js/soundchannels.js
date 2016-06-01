@@ -13,6 +13,17 @@ channels = [{
   "startOffset": 0.021,
   "endTime": 0.019,
   "id": "1"
+// }, {
+//   "type": "melodic",
+//   "name": "melodic0",
+//   "carrierAttack":0.001,
+//   "carrierDecay":0.04,
+//   "filterfq":0.1,
+//   "filterq":2,
+//   "filtergain":0.1,
+//   "harmonicity":0.758,
+//   "modulationIndex":0.5,
+//   "id": "0"
 
 }, {
   "type": "sampler",
