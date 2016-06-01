@@ -5,40 +5,6 @@ channels = [{
   "startOffset": 0.016,
   "endTime": 0.008,
   "id": "0"
-}, {
-  "type": "melodic",
-  "name": "melodic0",
-  "options": {
-    harmonicity: 3,
-    modulationIndex: 10,
-    carrier: {
-      volume: "-8",
-      portamento: 0,
-      oscillator: {
-        type: "sine"
-      },
-      envelope: {
-        attack: 0.01,
-        decay: 0,
-        sustain: 1,
-        release: 0.5
-      }
-    },
-    modulator: {
-      volume: "-8",
-      portamento: 0,
-      oscillator: {
-        type: "triangle"
-      },
-      envelope: {
-        attack: 0.01,
-        decay: 0,
-        sustain: 1,
-        release: 0.5
-      }
-    }
-  },
-  "id": "0"
 
 }, {
   "type": "sampler",
@@ -47,6 +13,17 @@ channels = [{
   "startOffset": 0.021,
   "endTime": 0.019,
   "id": "1"
+// }, {
+//   "type": "melodic",
+//   "name": "melodic0",
+//   "carrierAttack":0.001,
+//   "carrierDecay":0.04,
+//   "filterfq":0.1,
+//   "filterq":2,
+//   "filtergain":0.1,
+//   "harmonicity":0.758,
+//   "modulationIndex":0.5,
+//   "id": "0"
 
 }, {
   "type": "sampler",

@@ -9,7 +9,7 @@ transportStart=function(){
 
 
   Tone.Transport.start();
-  Tone.Transport.bpm.value = 45;
+  Tone.Transport.bpm.value = 58;
 
   nx.widgets["number1"].set({value:Tone.Transport.bpm.value});
   nx.widgets["number1"].sendsTo(function(data){

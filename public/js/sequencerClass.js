@@ -57,7 +57,7 @@ SequencerButton=function(n,parent){
 //maybe in a funture by styling table
 var seqProg=0;
 Sequencer=function(n){
-  $("#sequencers").append('<div class="sequencer" id="seq_'+n+'"><p style="position:absolute">'+n+'</p></div>');
+  $("#sequencers").append('<div class="sequencer" id="seq_'+n+'"><p style="position:absolute"></p></div>');
   this.alive=false;
   this.jq=$('#seq_'+n);
   this.pos=0;

@@ -10,62 +10,66 @@ body{
   display:none;
 }
 .color_0{
-  background-color: rgb(247, 216, 77);
+  background-color: rgb(247, 216, 77)!important;
 }
 .color_1{
-  background-color: rgb(150, 187, 28);
+  background-color: rgb(86, 2, 152)!important;
 }
 .color_2{
-  background-color: rgb(86, 2, 152);
+  background-color: rgb(150, 187, 28)!important;
+
 }
 .color_3{
-  background-color: rgb(20, 116, 210);
+  background-color: rgb(20, 116, 210)!important;
 }
 .color_4{
-  background-color: rgb(218, 197, 66);
+  background-color: rgb(218, 197, 66)!important;
 }
 .color_5{
-  background-color: rgb(244, 245, 43);
+  background-color: rgb(244, 245, 43)!important;
 }
 .color_6{
-  background-color: rgb(172, 173, 6);
+  background-color: rgb(172, 173, 6)!important;
 }
 .color_7{
-  background-color: rgb(36, 9, 152);
+  background-color: rgb(36, 9, 152)!important;
 }
 .color_8{
-  background-color: rgb(20,50,210);
+  background-color: rgb(20,50,210)!important;
 }
 .color_9{
-  background-color: rgb(27, 28, 35);
+  background-color: rgb(27, 28, 35)!important;
 }
 .color_10{
-  background-color: rgb(160, 52, 52);
+  background-color: rgb(160, 52, 52)!important;
 }
 .color_11{
-  background-color: rgb(214, 14, 14);
+  background-color: rgb(214, 14, 14)!important;
 }
 .color_12{
-  background-color: rgb(159, 169, 183);
+  background-color: rgb(159, 169, 183)!important;
 }
 .color_13 {
-    background-color: rgb(200, 232, 4);
+    background-color: rgb(200, 232, 4)!important;
 }
 .color_14 {
-    background-color: rgb(132, 161, 177);
+    background-color: rgb(132, 161, 177)!important;
 }
 .color_15 {
-    background-color: rgb(77, 112, 132);
+    background-color: rgb(77, 112, 132)!important;
 }
 .color_16 {
-  background-color: rgb(143, 177, 195);
+  background-color: rgb(143, 177, 195)!important;
+}
+.color_17 {
+  background-color: rgb(150, 187, 28)!important;
 }
 
 .editorPanel{
   padding-top:3px;
   box-shadow: 3px black;
   position:absolute;
-  bottom:-0px;
+  bottom:150px;
   left:0;
   opacity:0;
   /*width:200px;*/
@@ -86,10 +90,13 @@ body{
 .mixerPanel .slider-container {
     left: 2px;
     background-color: rgba(0,0,0,0.2);
-    height: 87px!important;
+    height: 87px;
 }
 .nx{
   /*display:inline-block;*/
+}
+.melodicButton{
+  /*opacity:1;*/
 }
 .seqbutton{
   background-color: #FFF;
@@ -100,10 +107,10 @@ body{
   opacity:0.1;
   transition:0.04s;
 }
-.seqbutton:hover{
+/*.seqbutton:hover{
   opacity:0.3;
   transition:0.2s;
-}
+}*/
 .seqbutton.on{
   opacity:0.4;
   transition:0.2s;
@@ -131,9 +138,17 @@ body{
 }
 .contentContainer{
   display:block;
-  
-}
 
+}
+.slider-container .sliderlabel{
+    position: absolute;
+    z-index: 8;
+    top: -15px;
+    color: white;
+    pointer-events: none;
+    left: 5px;
+
+}
 .slider-container.vertical{
   width:25px;
   height:100px;
