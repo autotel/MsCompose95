@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Autotel.Collaborative MsCompose95</title>
+		<script type="text/javascript" src="js/nexusUI.js"></script>
+		<script type="text/javascript" src="js/Tone.js"></script>
+    <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script type="text/javascript" src="js/sliderClass.js"></script>
+		<script type="text/javascript" src="js/qrcode.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.js"></script>
+		<link rel="stylesheet" href="style/custom.css"></style>
+  </head>
+	<style>
+	#pane{
+	  width: 540px;
+	  height: 700px;
+	}
+	#sequencers{
+	  width:772px;
+	}
+	#metro1{
+	  display:block;
+	}
+	#adderButton{
+	  transition:0.2s;
+	  cursor: pointer;
+	}
+	#adderButton:hover{
+	  background-color: rgba(255,255,255,0.2);
+	  transition:1;
+	}
+	.panel{
+		width:490px;
+	}
+	.contentContainer{
+		width:100%;
+	}
+	@media only screen and (min-width:815px) {
+	  #leftpanel{
+	    position:absolute!important;
+	    left:10px;
+	    top:0px;
+	    width:50%;
+	  }
+	  #rightpanel{
+	    position:fixed!important;
+	    right:10px;
+	    bottom:10px;
+	    width:50%;
+	  }
+	}
+	</style>
+	<body style="background-color:#ddd;margin:0;padding:0">
+    <div class="contentContainer centered">
+      <div id="leftpanel" class="panel">
+        <div class="panel leftalign">
+          <h1>MsCompose95</h1>
+					<div id="howToConnect">
+						<h2 id="ipAddress"></h2>
+						<div id="qrcode"></div>
+					</div>
+          <p>
+            Just click a square or click and drag to get started.
+            Tested on firefox 45 &amp; chrome
+          </p>
+        </div>
+        <br>
+        <div id="sequencers" class="panel">
+        </div>
+        <br>
+        <a href="javascript:addMoreSequencers(15)">
+          <div id="adderButton" class="panel">
+            <h1>+</h1>
+          </div>
+        </a>
+      </div>
+      <br>
+      <div id="rightpanel" class="panel">
+        <div id="pane" class="panel leftalign" style="position:relative">
+          <h2>Mixer&amp;editor</h2>
+          <p>
+            Try channels with the round buttons, adjust volume and sample start &amp; end points.
+          </p>
+
+        </div>
+        <br>
+        <div class="panel">
+          <p>Bpm speed:
+            <canvas nx="metro" style="display:inline"></canvas>
+            <span style="display:inline-block"><canvas nx="number"></canvas></span>
+          </p>
+          <small>For advanced stuff, press f12. try channels and seqs</small>
+        </div>
+        <!-- <div style="width:100px; height:100px"></div> -->
+      </div>
+    <br>
+
+  </div>
+</body>
+<script type="text/javascript" src="js/soundchannels.js"></script>
+<script type="text/javascript" src="js/sequencerClass.js"></script>
+<script type="text/javascript" src="js/sequencer.melodic.js"></script>
+<script type="text/javascript" src="js/nexusElements.js"></script>
+<script type="text/javascript" src="js/transport.js"></script>
+<script type="text/javascript" src="js/mouseObject.js"></script>
+<script src="js//socket.io.js"></script>
+<script type="text/javascript" src="js/sockGlobal.js"></script>
+
+
+<script type="text/javascript">
+//pendant: Damn! this need a lot of tyding.
+var sw="switch";
+var seqs=[];
+
+// for(a=0; a<4;a++){
+//   seqs[a]={};
+// }
+
+stepFunction=function(data){};
+
+
+focusChannel=function(id){
+  $(".mixerPanel").removeClass("onFocus");
+  $("#editorPanel_"+id).addClass("onFocus");
+}
+
+$(document).ready(function(){
+
+		addMoreSequencers(4);
+
+})
+
+function giveUserASequencer(){
+	// console.log("maybe not push but put at the end. i dont know what push does exactly");
+  seqs.push(new Sequencer(seqs.length));
+	return {index:seqs.length-1,seqProg:seqProg-1};
+}
+
+function addMoreSequencers(count){
+  newLength=seqs.length+count;
+  for(a=seqs.length;a<newLength;a++){
+		if(channels[a%channels.length].type=="melodic"){
+			seqs.push(new MelodicSequencer(a));
+		}else{
+			seqs.push(new Sequencer(a));
+		}
+  }
+}
+
+</script>
+</html>

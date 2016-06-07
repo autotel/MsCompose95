@@ -1,0 +1,174 @@
+body{
+  font-family: "helvetica", sans-serif;
+}
+.sequencer{
+  float:left;
+  /*border:solid 1px;*/
+  /*margin:-1px;*/
+}
+.dead{
+  display:none;
+}
+.color_0{
+  background-color: rgb(247, 216, 77)!important;
+}
+.color_1{
+  background-color: rgb(86, 2, 152)!important;
+}
+.color_2{
+  background-color: rgb(150, 187, 28)!important;
+
+}
+.color_3{
+  background-color: rgb(20, 116, 210)!important;
+}
+.color_4{
+  background-color: rgb(218, 197, 66)!important;
+}
+.color_5{
+  background-color: rgb(244, 245, 43)!important;
+}
+.color_6{
+  background-color: rgb(172, 173, 6)!important;
+}
+.color_7{
+  background-color: rgb(36, 9, 152)!important;
+}
+.color_8{
+  background-color: rgb(20,50,210)!important;
+}
+.color_9{
+  background-color: rgb(27, 28, 35)!important;
+}
+.color_10{
+  background-color: rgb(160, 52, 52)!important;
+}
+.color_11{
+  background-color: rgb(214, 14, 14)!important;
+}
+.color_12{
+  background-color: rgb(159, 169, 183)!important;
+}
+.color_13 {
+    background-color: rgb(200, 232, 4)!important;
+}
+.color_14 {
+    background-color: rgb(132, 161, 177)!important;
+}
+.color_15 {
+    background-color: rgb(77, 112, 132)!important;
+}
+.color_16 {
+  background-color: rgb(143, 177, 195)!important;
+}
+.color_17 {
+  background-color: rgb(150, 187, 28)!important;
+}
+
+.editorPanel{
+  padding-top:3px;
+  box-shadow: 3px black;
+  position:absolute;
+  bottom:150px;
+  left:0;
+  opacity:0;
+  /*width:200px;*/
+  overflow:hidden;
+}
+.mixerPanel{
+  /*position:relative;*/
+  display:inline-block;
+  width:30px;
+  height:120px;
+  transition:0.2s;
+}
+.mixerPanel.onFocus>.editorPanel{
+  opacity:1;
+  transition:0.2s;
+  z-index:2
+}
+.mixerPanel .slider-container {
+    left: 2px;
+    background-color: rgba(0,0,0,0.2);
+    height: 87px;
+}
+.nx{
+  /*display:inline-block;*/
+}
+.melodicButton{
+  /*opacity:1;*/
+}
+.seqbutton{
+  background-color: #FFF;
+  /*margin:-1px;*/
+  float:left;
+  width:16px;
+  height:16px;
+  opacity:0.1;
+  transition:0.04s;
+}
+/*.seqbutton:hover{
+  opacity:0.3;
+  transition:0.2s;
+}*/
+.seqbutton.on{
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.turn{
+  background-color: #000;
+  opacity:0.4;
+  transition:0.2s;
+}
+.seqbutton.on.turn{
+  opacity:1;
+  transition:0.2s;
+}
+.panel{
+  display:inline-block;
+  /*width:490px;*/
+}
+
+.centered{
+  text-align: center;
+}
+.leftalign{
+  text-align: left;
+
+}
+.contentContainer{
+  display:block;
+
+}
+.slider-container .sliderlabel{
+    position: absolute;
+    z-index: 8;
+    top: -15px;
+    color: white;
+    pointer-events: none;
+    left: 5px;
+
+}
+.slider-container.vertical{
+  width:25px;
+  height:100px;
+}
+.slider-container{
+  width:100px;
+  height:25px;
+  /*background-color: #CCC;*/
+  border:solid 1px rgba(0,0,0,0.2);
+  overflow: hidden;
+  border-radius: 3px;
+  padding:-1px
+}
+.slider-inner{
+  width:50px;
+  height:30px;
+  background-color: #A50E0E;
+  transition:background-color 0.5s;
+}
+.slider-container:hover>.slider-inner{
+  background-color: #FCC;
+  transition:background-color 0.2s;
+}
