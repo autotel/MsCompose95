@@ -1,32 +1,20 @@
-
 var sMaster={};
-var sClients={};
 var dataTracker={seqs:[]};
 var express = require('express');
-var masterport=8080;
-var clientport=80;
+var masterport=80;
 sMaster.app=express();
-sClients.app=express();
 sMaster.http = require('http').Server(sMaster.app);
-sClients.http = require('http').Server(sClients.app);
 sMaster.io = require('socket.io')(sMaster.http);
-sClients.io = require('socket.io')(sClients.http);
 
 sMaster.app.get('/', function(req, res){
   sMaster.app.use(express.static('public'));
-  res.sendFile(__dirname + '/public/masteruser.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
-sClients.app.get('/', function(req, res){
-  sClients.app.use(express.static('public'));
-  res.sendFile(__dirname + '/public/user.html');
-});
+
 sMaster.http.listen(masterport, function(){
   console.log('listening on *:'+masterport);
 });
 
-sClients.http.listen(clientport, function(){
-  console.log('listening on *:'+clientport);
-});
 
 sMaster.io.on('connection', function(socket){
   //on hello, the master will create a new sequencer and respond with the index number.
@@ -35,15 +23,9 @@ sMaster.io.on('connection', function(socket){
   //maybe the socket server is the one that rules the sequencer ids...
   //or rather not...
   socket.emit('helloMaster',"nothing");
-  ipname={address:"http://autotel.co/collab95"};
-  socket.emit('ipAddress',ipname);
-
-
+  // ipname={address:"http://autotel.co/collab95"};
+  // socket.emit('ipAddress',ipname);
   socket.on('newSequencerCreated',function(data){
-    //this code particularizes a single socket
-    //otherwise, every client gets the helloUser.
-    //it is in array because is called outside the socket event of clients
-    sClients.sockets[data.loggingSocket].emit('helloUser');
     for(itm in data.sequencers){
       sClients.sockets[data.loggingSocket].emit('newSequencer',data.sequencers[itm]);
       dataTracker.seqs[data.sequencers[itm].index]=data.sequencers;
@@ -59,45 +41,7 @@ sMaster.io.on('connection', function(socket){
     console.log(data);
     //cross connections... maybe there is a more elegant solution to this
     sMaster.io.emit('change',data);
-    sClients.io.emit('change',data);
-  });
-});
-sClients.sockets=[];
-sClients.io.on('connection', function(socket){
-  socket.timeout=setInterval(function(){
-    if(socket.expectingMessage){
-      console.log("Socket "+socket.arrayIndex+"no longer alive. disconnected");
-      socket.disconnect();
-      socket.expectingMessage=true;
-    }else{
-      socket.emit("areYouAlive");
-      // console.log("emitted areYouAlive to "+socket.arrayIndex);
-    }
-  },30*1000);
-  socket.on('imAlive',function(){
-    // console.log("Socket "+socket.arrayIndex+" is still alive");
-    socket.expectingMessage=false;
-  });
-  socket.arrayIndex=sClients.sockets.length;
-  console.log('a client '+socket.arrayIndex+' connected');
-  sClients.sockets.push(socket);
-  sMaster.io.emit('userEntered',socket.arrayIndex);
-  socket.on('disconnect', function(number){
-    console.log(number);
-    // sClients.sockets.splice(socket.arrayIndex,1);
-    // dataTracker.seqs.splice(number,1);
-    var thisSocket=sClients.sockets[socket.arrayIndex];
-    for(itm in thisSocket.sequencers){
-      console.log('client '+(socket.arrayIndex||-1)+' seq num '+(thisSocket.sequencers[itm].index||-1)+' disconnected');
-      sMaster.io.emit('userLeft',thisSocket.sequencers[itm].index);
-    }
-  });
-
-  socket.on('change', function(data){
-    console.log(data);
-    //cross connections... maybe there is a more elegant solution to this
-    sClients.io.emit('change',data);
-    sMaster.io.emit('change',data);
+    //pendant: should be socket.emit
   });
 });
 

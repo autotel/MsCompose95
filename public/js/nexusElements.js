@@ -20,17 +20,20 @@ nx.onload = function() {
 
   for(chan in channels){
     var channel=channels[chan];
-    thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="editorPanel_'+chan+'"></div>');
-    editorContainer=$('<div class="color_'+chan+' editorPanel"></div>');
+    thiscontainer=$('<div class="color_'+chan+' mixerPanel" id="mixerPanel_'+chan+'" style="background-color:transparent"></div>');
+    editorContainer=$('<div id="editor_'+chan+'" class="editorPanel"></div>');
+    editorTrigger=$('<div id="trigger_'+chan+'" class="msbutton triggerButton"></div>');
     (function(){
       var mychan=chan;
       thiscontainer.on("mousedown",function(){
         focusChannel(mychan);
       });
     }());
-    $("#pane").append(thiscontainer);
-    $(thiscontainer).append(editorContainer);
-    nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer, class:"trhee"});
+    $("#mixerPane").append(thiscontainer);
+    $("#editorPane").append(editorContainer);
+
+    // nx.add( "button" ,{name:"trigger"+chan, parent:thiscontainer, class:"trhee"});
+    thiscontainer.append(editorTrigger);
     // nx.add( "slider" ,{name:"vol"+chan, parent:thiscontainer,val:0.25});
     mixerSliders[chan]=new Slider(chan,thiscontainer,{height:87});
     $("#trigger"+chan).css({width:"30px",height:"30px",display:"block"});
@@ -85,14 +88,14 @@ nx.onload = function() {
     for(chan in channels){
       function initSampler(){
         var thisChan=chan;
-        nx.widgets["trigger"+thisChan].on("*",function(data){
-          if(data.press==1){
-            var loopStart=channels[thisChan].startOffset;
-            var loopEnd=channels[thisChan].endTime;
-            channels[thisChan].sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
-            //
-            // console.log(thisChan);
+        $("#trigger_"+thisChan).on("click mouseenter",function(event){
+          // console.log(event);
+          if((event.type=="mouseenter"&!mouse.buttonDown)){
+            return false;
           }
+          var loopStart=channels[thisChan].startOffset;
+          var loopEnd=channels[thisChan].endTime;
+          channels[thisChan].sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
         });
         initval=0.5;
         if(channels[thisChan].hasOwnProperty("volume")){
@@ -196,3 +199,8 @@ nx.onload = function() {
     }
   });
 };
+focusChannel=function(id){
+  console.log($("#color_"+id)[0]);
+  $(".editorPanel").removeClass("onFocus");
+  $("#editor_"+id).addClass("onFocus");
+}
