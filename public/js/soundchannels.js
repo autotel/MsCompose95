@@ -2,7 +2,7 @@ channels = [{
   "type": "sampler",
   "name": "Sampler0",
   "source": "audio/mscomposeKit-03.mp3",
-  "startOffset": 0.066,
+  "startOffset": 0.013,
   "endTime": 0.06,
   "id": "0"
 
@@ -10,7 +10,7 @@ channels = [{
   "type": "sampler",
   "name": "Sampler1",
   "source": "audio/mscomposeKit-02.mp3",
-  "startOffset": 0.051,
+  "startOffset": 0.011,
   "endTime": 0.1,
   "id": "1"
 // }, {

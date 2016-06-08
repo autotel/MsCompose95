@@ -45,6 +45,20 @@ $(document).ready(function(){
 					console.log("problem! object didnt have setDisplace()",object);
 				}
 			}
+			// if(data.change=="stpoint"){
+			// 	if(object.hasOwnProperty("setDisplace")){
+			// 		object.setDisplace(data.val);
+			// 	}else{
+			// 		console.log("problem! object didnt have setDisplace()",object);
+			// 	}
+			// }
+			// if(data.change=="enpoint"){
+			// 	if(object.hasOwnProperty("setDisplace")){
+			// 		object.setDisplace(data.val);
+			// 	}else{
+			// 		console.log("problem! object didnt have setDisplace()",object);
+			// 	}
+			// }
 	}
   socket.on('change', makeReceivedChange);
   // socket.on('helloUser', function(msg){

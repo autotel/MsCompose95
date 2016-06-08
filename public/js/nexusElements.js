@@ -115,7 +115,7 @@ nx.onload = function() {
         })
         mixerSliders[thisChan].setData(initval);
         // mixerSliders[thisChan].addClass("color_"+thischan);
-        nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine._buffer._buffer);
+        nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine.buffer._buffer);
         nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,(channels[thisChan].endTime+channels[thisChan].startOffset)*1000)
         $("#cuep"+thisChan).css({width:"390px",height:"100px"});
         nx.widgets["cuep"+thisChan].on("*",function(data){
