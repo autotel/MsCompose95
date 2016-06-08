@@ -1,12 +1,14 @@
 SequencerButton=function(n,parent){
   this.jq=$('<div class="seqbutton"></div>');
+  this._bindN=sockman.bindList.push(this)-1;
   parent.jq.append(this.jq);
   this.data=0;
+  //pendant: evaluate wether the var n is still useful. remove it at every end.
   this.n=n;
   var me=this;
   this.setData=function(to,emit){
     if(emit==true){
-      sockChange("seqs:"+parent.id+"/data:"+me.n+"","sV",to);
+      sockChange("seqb:"+me._bindN+"","sV",to);
     }
     if(to==1){
       this.data=1;

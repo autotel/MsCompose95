@@ -1,4 +1,7 @@
-
+var sockman={
+	bindList:[]
+}
+//pendant: all the following should be inside socket namespace
 sockChange=function(subject,change,value){
   // console.log("sockChange was not initialized");
 };
@@ -7,18 +10,9 @@ stringToObject=function(whos){
 	//whos=the string representing who I want to adress
   //this hardcoded line avoids hacking into the master's javascript
   whos=whos.split(/[\/\:]/g);
-	console.log(whos);
-  if(whos[0]=="seqs"){
-		ret=seqs;
-		//console.log("brocmove")
-	}
-	if(whos[0]=="slid"){
-		ret=slidersBindList;
-		//console.log("brocmove")
-	}
-
+	ret=sockman.bindList;
 	for(a=1;a<whos.length;a++){
-    console.log(ret);
+    // console.log(ret);
 		ret=ret[whos[a]];
 	}
 	return ret;

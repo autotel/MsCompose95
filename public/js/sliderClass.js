@@ -1,8 +1,10 @@
-//pendant: towards a data binding controllers, slidersBindList should be a member of a socket class, and seqs also, therefore, the sockGlobal stuff makes more sense.
-//actually there should not be a different list for each kind of element, just a single list for every data-bint element, so in sockgobal's stringtoobject we dont have to hardcode the selection of element seq/slider. The condition woudl be that the addressed object always has the setdata, and also use string names in the emission to sent a warning whenever data crosses object types
-var slidersBindList=[];
+
+
 Slider=function(n,parent,css,label){
-  this._bindN=slidersBindList.push(this)-1;
+  //my reference number for data binding. With this number the socket binder knows who is the reciever of the data, and also with what name to send it
+  //pendant: this can potentially create a problem, because two objects can be created simultaneously at different ends at the same time.
+  //maybe instead of the simple push, there could be a callback, adn the object waits to receive it's socket id once its creation was propagated throughout all the network, or maybe there is an array for senting and other different for receiving... first option seems more sensible
+  this._bindN=sockman.bindList.push(this)-1;
   this.jq=$('<div class="slider-container" style="position:relative"></div>');
   this.sjq=$('<div class="slider-inner" style="pointer-events:none; position:absolute"></div>');
   this.label=label||"";
