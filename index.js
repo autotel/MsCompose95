@@ -1,7 +1,9 @@
 var sMaster={};
-var dataTracker={seqs:[]};
+var dataTracker={};
 var express = require('express');
 var masterport=80;
+
+
 sMaster.app=express();
 sMaster.http = require('http').Server(sMaster.app);
 sMaster.io = require('socket.io')(sMaster.http);
@@ -22,15 +24,11 @@ sMaster.io.on('connection', function(socket){
   console.log('a master connected');
   //maybe the socket server is the one that rules the sequencer ids...
   //or rather not...
-  socket.emit('helloMaster',"nothing");
+  console.log(dataTracker);
+  socket.emit('helloMaster',dataTracker);
   // ipname={address:"http://autotel.co/collab95"};
   // socket.emit('ipAddress',ipname);
   socket.on('newSequencerCreated',function(data){
-    for(itm in data.sequencers){
-      sClients.sockets[data.loggingSocket].emit('newSequencer',data.sequencers[itm]);
-      dataTracker.seqs[data.sequencers[itm].index]=data.sequencers;
-      console.log("created sequencer socket index: "+data.loggingSocket+"sequencer: "+data.sequencers[itm].index);
-    }
     sClients.sockets[data.loggingSocket].sequencers=data.sequencers;
   });
   socket.on('disconnect', function(){
@@ -42,6 +40,7 @@ sMaster.io.on('connection', function(socket){
     //cross connections... maybe there is a more elegant solution to this
     sMaster.io.emit('change',data);
     //pendant: should be socket.emit
+    dataTracker[data.subject]=data;
   });
 });
 
