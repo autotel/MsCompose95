@@ -98,12 +98,14 @@ nx.onload = function() {
           channels[thisChan].sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
         });
         initval=0.5;
-        if(channels[thisChan].hasOwnProperty("volume")){
-          initval=channels[thisChan].volume;
+        if(mixerSliders[thisChan].data.value==0){
+          if(channels[thisChan].hasOwnProperty("volume")){
+            initval=channels[thisChan].volume;
+          }
+        }else{
+          initval=mixerSliders[thisChan].data.value;
         }
-        mixerSliders[thisChan].setData(initval);
-
-        channels[thisChan].engine.volume.value=initval*70-60;
+        // channels[thisChan].engine.volume.value=initval*70-60;
         // channels[thisChan].engine.volume=0.5*70-60;
         mixerSliders[thisChan].onChange(function(data){
           console.log(data);
@@ -111,6 +113,7 @@ nx.onload = function() {
           //just for export purposes:
           channels[thisChan].volume=data.value*70-60;
         })
+        mixerSliders[thisChan].setData(initval);
         // mixerSliders[thisChan].addClass("color_"+thischan);
         nx.widgets["cuep"+thisChan].setBuffer( channels[thisChan].engine._buffer._buffer);
         nx.widgets["cuep"+thisChan].select(channels[thisChan].startOffset*1000,(channels[thisChan].endTime+channels[thisChan].startOffset)*1000)
