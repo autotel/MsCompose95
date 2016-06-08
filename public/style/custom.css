@@ -9,83 +9,84 @@ body{
 .dead{
   display:none;
 }
-.color_0{
-  background-color: rgb(247, 216, 77)!important;
+.color_0,.color_0 .slider-inner, .color_0 .msbutton{
+  background-color: rgb(247, 216, 77);
 }
-.color_1{
-  background-color: rgb(86, 2, 152)!important;
+.color_1,.color_1 .slider-inner, .color_1 .msbutton{
+  background-color: rgb(86, 2, 152);
 }
-.color_2{
-  background-color: rgb(150, 187, 28)!important;
+.color_2,.color_2 .slider-inner, .color_2 .msbutton{
+  background-color: rgb(150, 187, 28);
 
 }
-.color_3{
-  background-color: rgb(20, 116, 210)!important;
+.color_3,.color_3 .slider-inner, .color_3 .msbutton{
+  background-color: rgb(20, 116, 210);
 }
-.color_4{
-  background-color: rgb(218, 197, 66)!important;
+.color_4,.color_4 .slider-inner, .color_4 .msbutton{
+  background-color: rgb(218, 197, 66);
 }
-.color_5{
-  background-color: rgb(244, 245, 43)!important;
+.color_5,.color_5 .slider-inner, .color_5 .msbutton{
+  background-color: rgb(244, 245, 43);
 }
-.color_6{
-  background-color: rgb(172, 173, 6)!important;
+.color_6,.color_6 .slider-inner, .color_6 .msbutton{
+  background-color: rgb(172, 173, 6);
 }
-.color_7{
-  background-color: rgb(36, 9, 152)!important;
+.color_7,.color_7 .slider-inner, .color_7 .msbutton{
+  background-color: rgb(36, 9, 152);
 }
-.color_8{
-  background-color: rgb(20,50,210)!important;
+.color_8,.color_8 .slider-inner, .color_8 .msbutton{
+  background-color: rgb(20,50,210);
 }
-.color_9{
-  background-color: rgb(27, 28, 35)!important;
+.color_9,.color_9 .slider-inner, .color_9 .msbutton{
+  background-color: rgb(27, 28, 35);
 }
-.color_10{
-  background-color: rgb(160, 52, 52)!important;
+.color_10,.color_10 .slider-inner, .color_10 .msbutton{
+  background-color: rgb(160, 52, 52);
 }
-.color_11{
-  background-color: rgb(214, 14, 14)!important;
+.color_11,.color_11 .slider-inner, .color_11 .msbutton{
+  background-color: rgb(214, 14, 14);
 }
-.color_12{
-  background-color: rgb(159, 169, 183)!important;
+.color_12,.color_12 .slider-inner, .color_12 .msbutton{
+  background-color: rgb(159, 169, 183);
 }
-.color_13 {
-    background-color: rgb(200, 232, 4)!important;
+.color_13,.color_13 .slider-inner, .color_13 .msbutton{
+    background-color: rgb(200, 232, 4);
 }
-.color_14 {
-    background-color: rgb(132, 161, 177)!important;
+.color_14,.color_14 .slider-inner, .color_14 .msbutton{
+    background-color: rgb(132, 161, 177);
 }
-.color_15 {
-    background-color: rgb(77, 112, 132)!important;
+.color_15,.color_15 .slider-inner, .color_15 .msbutton{
+    background-color: rgb(77, 112, 132);
 }
-.color_16 {
-  background-color: rgb(143, 177, 195)!important;
+.color_16,.color_16 .slider-inner, .color_16 .msbutton{
+  background-color: rgb(143, 177, 195);
 }
-.color_17 {
-  background-color: rgb(150, 187, 28)!important;
+.color_17,.color_17 .slider-inner, .color_17 .msbutton{
+  background-color: rgb(150, 187, 28);
 }
-
+/* the part that can be hidden, that contains the sample section selector*/
 .editorPanel{
-  padding-top:3px;
-  box-shadow: 3px black;
+
   position:absolute;
-  bottom:150px;
-  left:0;
+  bottom:-7px;
   opacity:0;
-  /*width:200px;*/
-  overflow:hidden;
+  pointer-events: none;
+  z-index: 1;
 }
+/*the panel element that has the prehear button and the vol slider*/
 .mixerPanel{
   /*position:relative;*/
   display:inline-block;
   width:30px;
   height:120px;
   transition:0.2s;
+  z-index:2;
 }
-.mixerPanel.onFocus>.editorPanel{
+.editorPanel.onFocus{
   opacity:1;
   transition:0.2s;
-  z-index:2
+  pointer-events:auto;
+  /*z-index:2*/
 }
 .mixerPanel .slider-container {
     left: 2px;
@@ -134,7 +135,6 @@ body{
 }
 .leftalign{
   text-align: left;
-
 }
 .contentContainer{
   display:block;
@@ -171,4 +171,18 @@ body{
 .slider-container:hover>.slider-inner{
   background-color: #FCC;
   transition:background-color 0.2s;
+}
+.msbutton:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+.msbutton:active {
+    border: 1px inset;
+}
+.msbutton {
+    height: 21px;
+    border: 1px outset;
+    margin: 2.5px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: backgroud-color 1s;
 }

@@ -1,13 +1,19 @@
+
 sockChange=function(subject,change,value){
-  console.log("sockChange was not initialized");
+  // console.log("sockChange was not initialized");
 };
 stringToObject=function(whos){
 	var ret=null;
 	//whos=the string representing who I want to adress
   //this hardcoded line avoids hacking into the master's javascript
   whos=whos.split(/[\/\:]/g);
+	console.log(whos);
   if(whos[0]=="seqs"){
 		ret=seqs;
+		//console.log("brocmove")
+	}
+	if(whos[0]=="slid"){
+		ret=slidersBindList;
 		//console.log("brocmove")
 	}
 
@@ -20,10 +26,6 @@ stringToObject=function(whos){
 $(document).ready(function(){
 	var socket = io();
 	//this is here just for easier maintenance, maybe could be shortcutted.
-	sockChange=function(subject,change,value){
-    console.log("sockchange");
-		socket.emit('change',{change:change,subject:subject,val:value});
-	}
 
   socket.on('areYouAlive',function(){
     socket.emit("imAlive");
@@ -54,6 +56,13 @@ $(document).ready(function(){
   });
 
   socket.on('helloMaster', function(msg){
+
+    sockChange=function(subject,change,value){
+      console.log("sockchange");
+      socket.emit('change',{change:change,subject:subject,val:value});
+    }
+
+
     console.log("hello master");
 		console.log(msg);
     socket.on('userEntered',function(loggingSocket){
