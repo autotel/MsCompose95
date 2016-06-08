@@ -7,8 +7,13 @@ stringToObject=function(whos){
 	//whos=the string representing who I want to adress
   //this hardcoded line avoids hacking into the master's javascript
   whos=whos.split(/[\/\:]/g);
+	console.log(whos);
   if(whos[0]=="seqs"){
 		ret=seqs;
+		//console.log("brocmove")
+	}
+	if(whos[0]=="slid"){
+		ret=slidersBindList;
 		//console.log("brocmove")
 	}
 
