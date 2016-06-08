@@ -2,6 +2,8 @@ var sockman={
 	bindList:[]
 }
 //pendant: all the following should be inside socket namespace
+//pendant: the object itself changes from the action of the user and also upon reception of the socket value; that is not efficient.
+//socket should onl emiy to all the other users.
 sockChange=function(subject,change,value){
   // console.log("sockChange was not initialized");
 };
@@ -30,8 +32,19 @@ $(document).ready(function(){
 	    //see sockChange(... on sequencerClass.js
 	    object=stringToObject(data.subject);
 	    if(data.change=="sV"){
-	      object.setData(data.val);
+				if(object.hasOwnProperty("setData")){
+		      object.setData(data.val);
+				}else{
+					console.log("problem! object didnt have setData()",object);
+				}
 	    }
+			if(data.change=="dspl"){
+				if(object.hasOwnProperty("setDisplace")){
+					object.setDisplace(data.val);
+				}else{
+					console.log("problem! object didnt have setDisplace()",object);
+				}
+			}
 	}
   socket.on('change', makeReceivedChange);
   // socket.on('helloUser', function(msg){

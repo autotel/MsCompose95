@@ -10,16 +10,20 @@ SequencerButton=function(n,parent){
     if(emit==true){
       sockChange("seqb:"+me._bindN+"","sV",to);
     }
-    if(to==1){
-      this.data=1;
-      this.jq.addClass("on");
-      parent.aliveChild++;
+    //socket may set data to 0 when is already 0, generating displace of parent's alivedhild
+    if(to!=this.data){
+      if(to==1){
+        this.data=1;
+        this.jq.addClass("on");
+        parent.aliveChild++;
+      }
+      if(to==0){
+        this.data=0;
+        this.jq.removeClass("on");
+        parent.aliveChild--;
+      }
     }
-    if(to==0){
-      this.data=0;
-      this.jq.removeClass("on");
-      parent.aliveChild--;
-    }
+    // console.log(parent.aliveChild);
   }
   this.jq.on("mousedown tap touchstart",function(event){
     event.preventDefault();
@@ -61,6 +65,7 @@ var seqProg=0;
 Sequencer=function(n){
   $("#sequencers").append('<div class="sequencer" id="seq_'+n+'"><p style="position:absolute"></p></div>');
   this.alive=false;
+  this._bindN=sockman.bindList.push(this)-1;
   this.jq=$('#seq_'+n);
   this.pos=0;
   this.data=[];
@@ -72,6 +77,7 @@ Sequencer=function(n){
   this.jq.addClass("color_"+seqProg%channels.length);
   this.disp=0;
   this.id=n;
+  this.beatDisplace=0;
   var me=this;
   seqProg++;
   this.channel=channels[this.id%channels.length];
@@ -79,15 +85,35 @@ Sequencer=function(n){
     this.data[bn]=new SequencerButton(bn,this)
   }
   this.aliveChild=0;
+  this.displace=0;
+  this.setDisplace=function(to,emit){
+    if(emit=="only"){
+      emit=true;
+    }else{
+      this.subpos=((transportCurrentStep)%(this.len*this.evry))+to;
+    }
+    if(emit==true){
+      sockChange("seq:"+me._bindN+"","dspl",to);
+    }
+  }
   this.step=function(){
+    var prevalive=this.alive;
     this.alive=this.aliveChild>0;
     if(this.alive){
+      //if the state of this.alive changes, we must emit the displacement, because it is new
+      if(!prevalive){
+        this.displace=(transportCurrentStep+this.subpos)%(this.len*this.evry);
+        console.log("ok. emit displae: "+this.displace);
+        this.setDisplace(this.displace,"only");
+      };
       //each sequencer has a different speed rates. while some plays one step per click, others will have one step per several clock ticks.
+      //the sequencer starting point is also displaced, and it depends on the time when it got alived+its position at that moment.
       if(this.subpos%this.evry==0){
         // console.log("sq"+this.pos);
         // data={sequencer:this.id,pos:this.pos,stepVal:this.data[this.pos].eval()};
         // this.onStepTrigger(data);
         // stepFunction(data);
+        this.pos=(this.subpos/this.evry)%(this.len);
         if(this.data[this.pos].eval()==1){
           // this.channel.engine.start(0,this.channel.startOffset,this.channel.endTime);
           //so, this is called elsewhere aswelll.... the channel should have a trigger function
@@ -95,11 +121,13 @@ Sequencer=function(n){
           var loopEnd=this.channel.endTime;
           this.channel.sampler.triggerAttack(false,0,1,{start:loopStart,end:loopEnd});
         }
-        this.pos=(this.pos+1)%this.len;
       }else{
       }
+      //what is more economic??
+      // this.subpos=(this.subpos+1)%(this.len*this.evry);
+      //i guess that.. but it can grow eternally
+      this.subpos++;
     }
-    this.subpos++;
   }
   this.die=function(){
     for(bn in this.data){
