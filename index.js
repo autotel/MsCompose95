@@ -1,7 +1,7 @@
 var sMaster={};
 var dataTracker={};
 var express = require('express');
-var masterport=80;
+var masterport=process.env.PORT || 3000;
 
 
 sMaster.app=express();
