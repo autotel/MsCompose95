@@ -62,10 +62,10 @@ nx.onload = function() {
       nx.widgets["cuep"+chan].mode="edge";
       // delay=new Tone.JCReverb(0.3);
       // delay.wet=0.2;
-      channels[chan].sampler=new Tone.Sampler(channels[chan].source,{
-        retrigger:true
-      }).toMaster();
+      channels[chan].sampler=new Tone.Sampler(channels[chan].source).toMaster();
+    //  channels[chan].sampler.retrigger=true;
       channels[chan].engine=channels[chan].sampler.player;
+      channels[chan].engine.toMaster();
       // delay.toMaster();
     }
   }
@@ -200,7 +200,7 @@ nx.onload = function() {
         initSynth();
       }
     }
-  });
+  })
 };
 focusChannel=function(id){
   console.log($("#color_"+id)[0]);
