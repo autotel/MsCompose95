@@ -4,7 +4,8 @@
 		<title>Autotel.Collaborative MsCompose95</title>
 		<script type="text/javascript" src="js/nexusUI.js"></script>
 		<script type="text/javascript" src="js/Tone.js"></script>
-    <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+    <script   src="js/jquery.js" ></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script type="text/javascript" src="js/sliderClass.js"></script>
 		<script type="text/javascript" src="js/qrcode.js"></script>
@@ -78,19 +79,14 @@
     <div class="contentContainer centered">
 			<div id="globalPane" class="panel">
 				<p>
-					<b>MsCompose 95</b>&nbsp; Autotel. <a style="color:black; padding:4px; text-decoration:none" class="msbutton color_12" href="https://mscompose95.herokuapp.com/">Go to multiplayer!</a>
+					<b>MsCompose 95</b> - multiplayer&nbsp; Autotel.
 
 
 				</p>
 			</div>
         <div id="sequencers" class="panel">
         </div>
-        <br><a href="javascript:addMoreSequencers(11)">
-          <div id="adderButton" class=" panel">
-            <h1>+</h1>
-          </div>
-        </a>
-				<div>
+				<div style="display:none">
 					<small>For advanced stuff, press f12. try channels and seqs</small>
 					&nbsp;Bpm speed:
 					<canvas nx="metro" style="display:inline"></canvas>
@@ -100,6 +96,11 @@
 				<div id="scrollSpacer" class="panel">
 				</div>
         <br>
+        <!--<a href="javascript:addMoreSequencers(15)">
+          <div id="adderButton" class="panel">
+            <h1>+</h1>
+          </div>
+        </a>-->
 			<div id="bottomPane" class="panel">
 	      <div id="mixerPane">
 	      </div>
@@ -112,16 +113,14 @@
 
   </div>
 </body>
-<script>
-var sockman={bindList:[]};
-</script>
 <script type="text/javascript" src="js/soundchannels.js"></script>
 <script type="text/javascript" src="js/sequencerClass.js"></script>
 <script type="text/javascript" src="js/sequencer.melodic.js"></script>
 <script type="text/javascript" src="js/nexusElements.js"></script>
 <script type="text/javascript" src="js/transport.js"></script>
 <script type="text/javascript" src="js/mouseObject.js"></script>
-
+<script src="js//socket.io.js"></script>
+<script type="text/javascript" src="js/sockGlobal.js"></script>
 
 
 <script type="text/javascript">
@@ -134,13 +133,13 @@ var seqs=[];
 // }
 
 stepFunction=function(data){};
-sockChange=function(){};
+
 
 
 
 $(document).ready(function(){
 
-		addMoreSequencers(64);
+		addMoreSequencers(100);
 
 })
 
