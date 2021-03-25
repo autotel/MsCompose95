@@ -1,17 +1,20 @@
 {
-  "name": "MsCompose95",
-  "version": "1.2.0",
-  "description": "fun rhythm sequencer",
+  "name": "MsComposeMini",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "socket.io": "^1.4.6",
-    "express": "^4.13.4"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js"
+    "dev": "webpack --mode development -w",
+    "compile": "webpack --mode production"
   },
-  "author": "autotel",
-  "license": "ISC"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "audio-buffer-from": "^1.1.1",
+    "file-loader": "^6.2.0",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.5.0"
+  }
 }
